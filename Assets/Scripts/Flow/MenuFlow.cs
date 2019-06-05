@@ -5,7 +5,6 @@ public class MenuFlow : Flow
 {
     Canvas menuCanvas;
     Button playButton, optionsButton, exitButton;
-    bool startMenuPassed = false;
 
     public override void Initialize()
     {
