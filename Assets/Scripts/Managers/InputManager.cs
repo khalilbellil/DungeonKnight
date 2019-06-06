@@ -21,6 +21,8 @@ public class InputManager
     public InputPkg fixedInputPressed; //Every fixed update we fill this
     public InputPkg inputPressed;      //Every update we fill this
 
+    // // //
+
     public void Initialize()
     {
         fixedInputPressed = new InputPkg();
@@ -69,6 +71,8 @@ public class InputManager
     {
 
     }
+
+    // // //
 
     public class InputPkg
     {

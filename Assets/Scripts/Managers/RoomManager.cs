@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager
+public class RoomManager
 {
     #region Singleton Pattern
-    private static EnemyManager instance = null;
-    private EnemyManager() { }
-    public static EnemyManager Instance
+    private static RoomManager instance = null;
+    private RoomManager() { }
+    public static RoomManager Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = new EnemyManager();
+                instance = new RoomManager();
             }
             return instance;
         }
     }
     #endregion
 
-
     // // // 
 
     public void Initialize()
-    {
-
+    {//Generate Rooms
+        
     }
 
     public void UpdateManager()
@@ -44,10 +43,5 @@ public class EnemyManager
     }
 
     // // // 
-
-    void SpawnEnemy()
-    {//Instantiate the Enemy(ies)
-
-    }
 
 }
