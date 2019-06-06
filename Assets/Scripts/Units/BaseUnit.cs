@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class BaseUnit : MonoBehaviour
 {
-    private int health = 100;
 
-    bool isAlive;
+    #region VARIABLES
+    public bool isAlive;
+    #endregion
+    
+    #region Unit Stats
+    [Header("Unit Stats:")]
+    private int health = 100;
+    private int speed = 10;
+    private double critChance = 0.05;
+    private double critMultipier = 1.5;
+    #endregion
+
     // weapon[] wpns;
     //int wpnIndex = 0;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     virtual public void Init()
     {
@@ -20,6 +30,7 @@ public class BaseUnit : MonoBehaviour
     
     virtual public void UnitUpdate()
     {
+
         Debug.Log("basic update");
     }
 
@@ -41,14 +52,13 @@ public class BaseUnit : MonoBehaviour
     public void UpdateMovement(Vector2 dir)
     {
         Debug.Log("basic move");
-        this.transform.position += new Vector3(dir.x, dir.y, 0);
+        rb.AddForce(dir * speed);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int dmg)
     {
+        health -= dmg;
         Debug.Log("basic takedamage");
     }
-
-
 
 }
