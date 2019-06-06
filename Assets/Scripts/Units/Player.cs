@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour
+//[RequireComponent(typeof(Rigidbody2D))]
+public class Player : BaseUnit
 {
-    #region VARIABLES
+    /*#region VARIABLES
     [Header("LINKS :")]
     Rigidbody2D rb;
     #endregion
@@ -50,6 +50,6 @@ public class Player : MonoBehaviour
     void Jump()
     {
 
-    }
+    }*/
 
 }
