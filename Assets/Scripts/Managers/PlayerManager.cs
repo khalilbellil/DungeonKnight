@@ -20,6 +20,7 @@ public class PlayerManager
 
     public Player player;
 
+    // // //
 
     public void Initialize()
     {
@@ -40,11 +41,13 @@ public class PlayerManager
 
     }
 
+    // // //
+
     //Functions:
 
     void SpawnPlayer()
-    {
-
+    {//Instantiate the Player(s)
+        
     }
 
 }
