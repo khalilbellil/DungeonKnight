@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tiles_Floor
+    uniqueID: 4003084975
+    locked: 0
+  - name: Tile_Walls
+    uniqueID: 2739806561
+    locked: 0
+  - name: Tiles_Object
+    uniqueID: 1340384307
+    locked: 0
+  - name: Tiles_Door
+    uniqueID: 1653895271
+    locked: 0
