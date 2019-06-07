@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BaseUnit : MonoBehaviour
 {
 
@@ -11,10 +12,10 @@ public class BaseUnit : MonoBehaviour
     
     #region Unit Stats
     [Header("Unit Stats:")]
-    private int health = 100;
-    private int speed = 10;
-    private double critChance = 0.05;
-    private double critMultipier = 1.5;
+    [SerializeField] private int health;
+    [SerializeField] private int speed;
+    [SerializeField] private double critChance;
+    [SerializeField] private double critMultipier;
     #endregion
 
     // weapon[] wpns;
@@ -24,6 +25,7 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void Init()
     {
+        isAlive = true;
         rb = GetComponent<Rigidbody2D>();
         Debug.Log("basic init");
     }
@@ -45,6 +47,11 @@ public class BaseUnit : MonoBehaviour
         isAlive = false;
     }
 
+    virtual public void MovementAnimations()
+    {
+        Debug.Log("basic animation");
+    }
+
     public void useWeapon() {
         Debug.Log("basic use weapon");
     }
@@ -52,7 +59,7 @@ public class BaseUnit : MonoBehaviour
     public void UpdateMovement(Vector2 dir)
     {
         Debug.Log("basic move");
-        rb.AddForce(dir * speed);
+        rb.velocity = dir * speed;
     }
 
     public void TakeDamage(int dmg)
