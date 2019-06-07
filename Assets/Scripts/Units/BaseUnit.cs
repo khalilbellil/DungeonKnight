@@ -52,14 +52,27 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("basic animation");
     }
 
-    public void useWeapon() {
-        Debug.Log("basic use weapon");
+    
+    public void useWeapon(Vector2 dir) {
+            Debug.Log("basic use weapon");
     }
 
-    public void UpdateMovement(Vector2 dir)
+    virtual public void UpdateMovement(Vector2 dir)
     {
-        Debug.Log("basic move");
         rb.velocity = dir * speed;
+
+        Debug.Log("Movement: " + dir);
+
+    }
+
+    public void UseDash(Vector2 dir)
+    {
+        
+            Debug.Log("Dash");
+        
+
+     //   rb.AddForce(dir * speed);
+
     }
 
     public void TakeDamage(int dmg)

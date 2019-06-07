@@ -6,7 +6,7 @@ public class MenuFlow : Flow
     Canvas menuCanvas;
     Button playButton, optionsButton, exitButton;
 
-    public override void Initialize()
+    public override void Initialize(Player player)
     {
         
 

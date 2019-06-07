@@ -38,7 +38,7 @@ public class InputManager
         inputPressed.leftMouseButtonPressed = Input.GetMouseButton(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButton(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButton(2);
-        //
+        
         inputPressed.anyKeyPressed = Input.anyKeyDown;
         inputPressed.inventoryPressed = Input.GetButtonDown("Inventory");
         inputPressed.interactPressed = Input.GetButtonDown("Interaction");
@@ -57,11 +57,10 @@ public class InputManager
         inputPressed.leftMouseButtonPressed = Input.GetMouseButton(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButton(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButton(2);
-        //
+        
         inputPressed.anyKeyPressed = Input.anyKeyDown;
         inputPressed.inventoryPressed = Input.GetButtonDown("Inventory");
         inputPressed.interactPressed = Input.GetButtonDown("Interaction");
-
         fixedInputPressed.dirPressed.x = Input.GetAxis("Horizontal");
         fixedInputPressed.dirPressed.y = Input.GetAxis("Vertical");
         fixedInputPressed.jumpPressed = Input.GetButtonDown("Jump");

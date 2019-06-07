@@ -6,6 +6,7 @@ public class Enemy : BaseUnit
 {
     override public void Init()
     {
+        rb = GetComponent<Rigidbody2D>();
         Debug.Log("enemy init");
     }
 
@@ -23,6 +24,7 @@ public class Enemy : BaseUnit
     {
         Debug.Log("enemy isDead");
         DropItem();
+        isAlive = false;
     }
 
     override public void MovementAnimations()
@@ -44,3 +46,5 @@ public class Enemy : BaseUnit
 
 
 }
+
+

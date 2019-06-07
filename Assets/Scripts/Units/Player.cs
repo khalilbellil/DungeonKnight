@@ -9,13 +9,29 @@ public class Player : BaseUnit
         Debug.Log("player init");
     }
 
-    override public void UnitUpdate()
+    public void PlayerUpdate(InputManager.InputPkg input)
     {
+
         Debug.Log("player update");
+        if(input.leftMouseButtonPressed)
+            useWeapon(input.dirPressed);
+
+        if(input.interactPressed)
+            Interact();
+
+        base.UnitUpdate();
     }
 
-    override public void UnitFixedUpdate()
+    public void PlayerFixedUpdate(InputManager.InputPkg input)
     {
+        if (input.jumpPressed)
+            UseDash(input.dirPressed);
+
+        UpdateMovement(input.dirPressed);
+
+        base.UnitFixedUpdate();
+
+
         Debug.Log("player fixedupdate");
     }
 
@@ -27,6 +43,17 @@ public class Player : BaseUnit
     override public void MovementAnimations()
     {
         Debug.Log("player animation");
+    }
+
+    void Jump()
+    {
+
+    }
+
+
+    public void Interact()
+    {
+            Debug.Log("Interact");
     }
 
 }

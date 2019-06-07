@@ -2,12 +2,14 @@
 
 public class GameFlow : Flow
 {
-    public override void Initialize()
+    private Player player;
+    public override void Initialize(Player player)
     {
+        this.player = player;
         InputManager.Instance.Initialize();
         UIManager.Instance.Initialize();
         RoomManager.Instance.Initialize();
-        PlayerManager.Instance.Initialize();
+        //PlayerManager.Instance.Initialize();
         EnemyManager.Instance.Initialize();
 
         initialized = true;

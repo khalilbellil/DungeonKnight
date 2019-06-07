@@ -4,7 +4,7 @@ public class Flow
 {
     protected bool initialized;
 
-    public virtual void Initialize()
+    public virtual void Initialize(Player player)
     {
 
         initialized = true;
