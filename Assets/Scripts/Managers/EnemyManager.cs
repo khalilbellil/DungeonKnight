@@ -20,6 +20,7 @@ public class EnemyManager
     }
     #endregion
 
+    ArrayList enemiesAlive = new ArrayList();
 
     // // // 
 
@@ -45,9 +46,18 @@ public class EnemyManager
 
     // // // 
 
-    void SpawnEnemy()
+    void SpawnEnemy(int roomLvl)
     {//Instantiate the Enemy(ies)
 
     }
 
+    void AddEnemy(Enemy enemyToAdd)
+    {//add enemy to the collection
+        enemiesAlive.Add(enemyToAdd);
+    }
+
+    void RemoveEnemy(Enemy enemyToRemove)
+    {//remove enemy from the collection
+        enemiesAlive.Remove(enemyToRemove);
+    }
 }
