@@ -151,6 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a4da0780d83f447a252b45077f9fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 0
+  health: 100
+  speed: 10
+  critChance: 0.05
+  critMultipier: 1.5
+  rb: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

@@ -1,35 +1,59 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+
 public class Player : BaseUnit
 {
-    public GameObject test;
+    
     override public void Init()
     {
-        base.Init();
-        //rb = GetComponent<Rigidbody2D>();
         Debug.Log("player init");
     }
 
-    override public void UnitUpdate()
+    public void PlayerUpdate(InputManager.InputPkg input)
     {
+
         Debug.Log("player update");
+        if(input.leftMouseButtonPressed)
+            useWeapon(input.dirPressed);
+
+        if(input.interactPressed)
+            Interact();
+
+        base.UnitUpdate();
     }
 
-    override public void UnitFixedUpdate()
+    public void PlayerFixedUpdate(InputManager.InputPkg input)
     {
+        if (input.jumpPressed)
+            UseDash(input.dirPressed);
+
+        UpdateMovement(input.dirPressed);
+
+        base.UnitFixedUpdate();
+
+
         Debug.Log("player fixedupdate");
     }
 
     override public void death()
     {
         Debug.Log("player isDead");
-        isAlive = false;
     }
 
-    public void MovementAnimations()
+    override public void MovementAnimations()
     {
         Debug.Log("player animation");
+    }
+
+    void Jump()
+    {
+
+    }
+
+
+    public void Interact()
+    {
+            Debug.Log("Interact");
     }
 
 }

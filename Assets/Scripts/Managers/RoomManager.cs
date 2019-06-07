@@ -32,7 +32,6 @@ public class RoomManager
 
     public void Initialize()
     {//Generate Rooms
-        
     }
 
     public void UpdateManager()
