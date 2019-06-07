@@ -9,7 +9,7 @@ public class MainEntry : MonoBehaviour
     CurrentState currentState;
     Flow curFlow;
     bool sceneLoaded = false;
-
+    public Player player;
     public static int sceneNb = 1;
 
     public void Initialize(CurrentState cs)
@@ -22,7 +22,8 @@ public class MainEntry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InputManager.Instance.Initialize();
+        PlayerManager.Instance.Initialize(player);
     }
 
     // Update is called once per frame
@@ -46,6 +47,7 @@ public class MainEntry : MonoBehaviour
             }
 
         }
+
     }
 
     private void FixedUpdate()
@@ -55,6 +57,7 @@ public class MainEntry : MonoBehaviour
             float dt = Time.fixedDeltaTime;
             curFlow.FixedUpdate(dt);
         }
+
     }
 
     private Flow InitializeFlowScript(CurrentState flowType, bool sceneAlreadyLoaded)
@@ -80,7 +83,7 @@ public class MainEntry : MonoBehaviour
         }
         else
         {
-            newFlow.Initialize();
+            newFlow.Initialize(player);
             flowInitialized = true;
         }
 
@@ -106,7 +109,7 @@ public class MainEntry : MonoBehaviour
 
         if (verified)
         {
-            curFlow.Initialize();
+            curFlow.Initialize(player);
             flowInitialized = true;
         }
         else

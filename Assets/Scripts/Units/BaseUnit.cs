@@ -10,7 +10,7 @@ public class BaseUnit : MonoBehaviour
     // weapon[] wpns;
     //int wpnIndex = 0;
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     virtual public void Init()
     {
@@ -34,14 +34,23 @@ public class BaseUnit : MonoBehaviour
         isAlive = false;
     }
 
-    public void useWeapon() {
-        Debug.Log("basic use weapon");
+    public void useWeapon(Vector2 dir) {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+            Debug.Log("basic use weapon");
     }
 
     public void UpdateMovement(Vector2 dir)
     {
-        Debug.Log("basic move");
-        this.transform.position += new Vector3(dir.x, dir.y, 0);
+        UseDash(dir);
+
+    }
+
+    public void UseDash(Vector2 dir)
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Dash");
+        }
     }
 
     public void TakeDamage()

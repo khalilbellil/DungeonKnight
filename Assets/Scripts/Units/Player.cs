@@ -52,4 +52,11 @@ public class Player : BaseUnit
 
     }*/
 
+    public void Interact()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Interact");
+        }
+    }
 }
