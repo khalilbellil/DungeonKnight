@@ -17,7 +17,7 @@ public class BaseUnit : MonoBehaviour
     private double critMultipier = 1.5;
     #endregion
 
-    // weapon[] wpns;
+    // weapon[] wpns; *use ArrayList
     //int wpnIndex = 0;
 
     public Rigidbody2D rb;

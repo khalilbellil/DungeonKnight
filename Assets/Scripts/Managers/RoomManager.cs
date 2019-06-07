@@ -1,6 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
+enum RoomType
+{
+    Boss,Enemy,Shop
+}
 
 public class RoomManager
 {
@@ -20,6 +26,8 @@ public class RoomManager
     }
     #endregion
 
+    //GeneriqueRoom currentRoom;
+    GameObject currentRoom;
     // // // 
 
     public void Initialize()
@@ -43,5 +51,25 @@ public class RoomManager
     }
 
     // // // 
+
+    void GenerateRooms()
+    {
+
+    }
+
+    void SetCurrentRoom(RoomType roomType)
+    {
+        //set room type path
+        string roomPath = "Prefabs/Rooms/" + roomType.ToString() + "/";
+
+        //now grab a room in this folder randomly
+
+        string roomName = "enemy1";
+
+        //then instantiate the room and store it into currentRoom
+        currentRoom = Resources.Load<GameObject>(roomPath + roomName);
+        
+
+    }
 
 }

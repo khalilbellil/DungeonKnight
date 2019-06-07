@@ -21,6 +21,7 @@ public class EnemyManager
     #endregion
 
     ArrayList enemiesAlive = new ArrayList();
+    ArrayList coins = new ArrayList();
 
     // // // 
 
@@ -47,8 +48,14 @@ public class EnemyManager
     // // // 
 
     void SpawnEnemy(int roomLvl)
-    {//Instantiate the Enemy(ies)
+    {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
 
+    }
+
+    void KillEnemy(Enemy killedEnemy)
+    {//Remove the enemy from the collection, then add effects(spawn coin at his last position, sounds, update the player score)
+        SpawnCoin(killedEnemy.transform.position);
+        RemoveEnemy(killedEnemy);
     }
 
     void AddEnemy(Enemy enemyToAdd)
@@ -59,5 +66,10 @@ public class EnemyManager
     void RemoveEnemy(Enemy enemyToRemove)
     {//remove enemy from the collection
         enemiesAlive.Remove(enemyToRemove);
+    }
+
+    void SpawnCoin(Vector2 killedEnemyPosition)
+    {//Instantiate the Coin and set his position to the killed enemy position, then add it to the collection
+
     }
 }

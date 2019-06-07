@@ -3,10 +3,11 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : BaseUnit
 {
-    
+    public GameObject test;
     override public void Init()
     {
-        rb = GetComponent<Rigidbody2D>();
+        base.Init();
+        //rb = GetComponent<Rigidbody2D>();
         Debug.Log("player init");
     }
 
