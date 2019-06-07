@@ -16,7 +16,6 @@ public class MainEntry : MonoBehaviour
     {
         //THIS IS THE FIRST POINT EVER ENTERED BY THIS PROGRAM. (Except for MainEntryCreator.cs, who creates this script and runs this function for the game to start)
         currentState = cs;
-
     }
 
     // Start is called before the first frame update

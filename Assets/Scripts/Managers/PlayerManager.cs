@@ -22,7 +22,6 @@ public class PlayerManager
     private Player player;
 
 
-
     public void Initialize(Player player)
     {
         this.player = player;
@@ -33,13 +32,14 @@ public class PlayerManager
 
     public void UpdateManager()
     {
-        input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
-        player.UnitUpdate(InputManager.Instance);
+        //input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
+        player.PlayerUpdate(InputManager.Instance.inputPressed);
     }
 
     public void FixedUpdateManager()
     {
-        input.UpdatePosition(InputManager.Instance.inputPressed.dirPressed, player);
+        //input.UpdatePosition(InputManager.Instance.inputPressed.dirPressed, player);
+        player.PlayerFixedUpdate(InputManager.Instance.fixedInputPressed);
     }
 
     public void StopManager()
@@ -47,11 +47,11 @@ public class PlayerManager
 
     }
 
-    //Functions:
 
     void SpawnPlayer()
     {
-
+        //Instantiate the Player(s)
+        
     }
 
 }

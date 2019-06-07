@@ -1,62 +1,61 @@
 ﻿using UnityEngine;
 
-//[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : BaseUnit
 {
-    /*#region VARIABLES
-    [Header("LINKS :")]
-    Rigidbody2D rb;
-    #endregion
-
-    #region Player Stats
-    [Header("Player Stats:")]
-    //Walk Speed:
-    [Range(20f, 50f)]
-    public float playerSpeed = 35f;
-    float maxSpeed = 50f;
-
-    //Jump:
-    [Range(20f, 50f)]
-    public float jumpForce = 30f;
-    #endregion
-
-    void Start()
+    
+    override public void Init()
     {
         rb = GetComponent<Rigidbody2D>();
+        Debug.Log("player init");
     }
 
-    void Update()
+    public void PlayerUpdate(InputManager.InputPkg input)
     {
-        MovementAnimations();
+
+        Debug.Log("player update");
+        if(input.leftMouseButtonPressed)
+            useWeapon(input.dirPressed);
+
+        if(input.interactPressed)
+            Interact();
+
+        base.UnitUpdate();
     }
 
-    void FixedUpdate()
+    public void PlayerFixedUpdate(InputManager.InputPkg input)
     {
-        PlayerMovement();
-        Jump();
+        if (input.jumpPressed)
+            UseDash(input.dirPressed);
+
+        UpdateMovement(input.dirPressed);
+
+        base.UnitFixedUpdate();
+
+
+        Debug.Log("player fixedupdate");
     }
 
-    void PlayerMovement()
+    override public void death()
     {
-
+        Debug.Log("player isDead");
+        isAlive = false;
     }
 
-
-    void MovementAnimations()
+    public void MovementAnimations()
     {
-
+        Debug.Log("player animation");
     }
 
     void Jump()
     {
 
-    }*/
+    }
+
 
     public void Interact()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
             Debug.Log("Interact");
-        }
     }
+
 }

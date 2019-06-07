@@ -21,6 +21,8 @@ public class InputManager
     public InputPkg fixedInputPressed; //Every fixed update we fill this
     public InputPkg inputPressed;      //Every update we fill this
 
+    // // //
+
     public void Initialize()
     {
         fixedInputPressed = new InputPkg();
@@ -59,7 +61,6 @@ public class InputManager
         inputPressed.anyKeyPressed = Input.anyKeyDown;
         inputPressed.inventoryPressed = Input.GetButtonDown("Inventory");
         inputPressed.interactPressed = Input.GetButtonDown("Interaction");
-
         fixedInputPressed.dirPressed.x = Input.GetAxis("Horizontal");
         fixedInputPressed.dirPressed.y = Input.GetAxis("Vertical");
         fixedInputPressed.jumpPressed = Input.GetButtonDown("Jump");
@@ -69,6 +70,8 @@ public class InputManager
     {
 
     }
+
+    // // //
 
     public class InputPkg
     {

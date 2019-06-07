@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class BaseUnit : MonoBehaviour
 {
-    private int health = 100;
 
-    bool isAlive;
+    #region VARIABLES
+    public bool isAlive;
+    #endregion
+    
+    #region Unit Stats
+    [Header("Unit Stats:")]
+    private int health = 100;
+    private int speed = 10;
+    private double critChance = 0.05;
+    private double critMultipier = 1.5;
+    #endregion
+
     // weapon[] wpns;
     //int wpnIndex = 0;
 
@@ -20,6 +30,7 @@ public class BaseUnit : MonoBehaviour
     
     virtual public void UnitUpdate()
     {
+
         Debug.Log("basic update");
     }
 
@@ -35,29 +46,30 @@ public class BaseUnit : MonoBehaviour
     }
 
     public void useWeapon(Vector2 dir) {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
             Debug.Log("basic use weapon");
     }
 
-    public void UpdateMovement(Vector2 dir)
+    virtual public void UpdateMovement(Vector2 dir)
     {
-        UseDash(dir);
+
+        Debug.Log("Movement: " + dir);
 
     }
 
     public void UseDash(Vector2 dir)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        
             Debug.Log("Dash");
-        }
+        
+
+     //   rb.AddForce(dir * speed);
+
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int dmg)
     {
+        health -= dmg;
         Debug.Log("basic takedamage");
     }
-
-
 
 }

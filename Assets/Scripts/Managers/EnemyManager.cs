@@ -2,17 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Singleton Pattern
+    private static EnemyManager instance = null;
+    private EnemyManager() { }
+    public static EnemyManager Instance
     {
-        
+        get
+        {
+            if (instance == null)
+            {
+                instance = new EnemyManager();
+            }
+            return instance;
+        }
+    }
+    #endregion
+
+
+    // // // 
+
+    public void Initialize()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateManager()
     {
-        
+
     }
+
+    public void FixedUpdateManager()
+    {
+
+    }
+
+    public void StopManager()
+    {
+
+    }
+
+    // // // 
+
+    void SpawnEnemy()
+    {//Instantiate the Enemy(ies)
+
+    }
+
 }
