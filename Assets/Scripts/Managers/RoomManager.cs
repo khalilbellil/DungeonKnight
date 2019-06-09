@@ -49,6 +49,10 @@ public class RoomManager
 
     }
 
+    public void RoomExited(Directions dir)
+    {
+        Debug.Log(dir);
+    }
     // // // 
 
     void GenerateRooms()
