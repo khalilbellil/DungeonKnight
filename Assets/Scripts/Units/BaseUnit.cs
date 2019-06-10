@@ -21,7 +21,7 @@ public class BaseUnit : MonoBehaviour
     // weapon[] wpns; *use ArrayList
     //int wpnIndex = 0;
 
-    public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
 
     virtual public void Init()
     {
@@ -41,7 +41,20 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("basic fixedupdate");
     }
 
-    virtual public void death()
+
+	virtual public void CharacterRotation(Vector2 target) {
+
+
+		Vector3 mousePosition = Input.mousePosition;
+		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+		target = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+
+		transform.up = target;
+	}
+
+
+	virtual public void death()
     {
         Debug.Log("basic isDead");
         isAlive = false;
@@ -59,7 +72,7 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void UpdateMovement(Vector2 dir)
     {
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed * Time.deltaTime;
 
         Debug.Log("Movement: " + dir);
 

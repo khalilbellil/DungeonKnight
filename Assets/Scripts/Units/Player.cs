@@ -31,6 +31,8 @@ public class Player : BaseUnit
 
         base.UnitFixedUpdate();
 
+		CharacterRotation(input.deltaMouse);
+
 
         Debug.Log("player fixedupdate");
     }
@@ -40,7 +42,8 @@ public class Player : BaseUnit
         Debug.Log("player isDead");
     }
 
-    override public void MovementAnimations()
+
+	override public void MovementAnimations()
     {
         Debug.Log("player animation");
     }
@@ -50,10 +53,15 @@ public class Player : BaseUnit
 
     }
 
-
     public void Interact()
     {
             Debug.Log("Interact");
+    }
+
+
+    public void UseActive()
+    {
+
     }
 
 }

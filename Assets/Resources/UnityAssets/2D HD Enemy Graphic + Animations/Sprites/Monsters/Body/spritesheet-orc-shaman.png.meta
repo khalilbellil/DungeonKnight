@@ -1,0 +1,359 @@
+fileFormatVersion: 2
+guid: e90679f2fc2de49ea8e0aeee67d5c9a2
+timeCreated: 1531386868
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: body-idle
+    21300002: body-run1
+    21300004: body-run2
+    21300006: body-run3
+    21300008: body-run4
+    21300010: body-jump
+    21300012: body-slide
+    21300014: body-climb
+    21300016: body-dash
+    21300018: front-arm1
+    21300020: front-arm2
+    21300022: front-arm3
+    21300024: front-arm4
+    21300026: head
+    21300028: hat
+    21300030: back-arm3
+    21300032: back-arm2
+    21300034: back-arm1
+    21300036: back
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 512
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: body-idle
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 407
+        width: 66
+        height: 94
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-run1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 418
+        width: 89
+        height: 83
+      alignment: 9
+      pivot: {x: 0.485, y: 0.83}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-run2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 407
+        width: 71
+        height: 94
+      alignment: 9
+      pivot: {x: 0.53, y: 0.85}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-run3
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 411
+        width: 73
+        height: 90
+      alignment: 9
+      pivot: {x: 0.5, y: 0.84}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-run4
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 413
+        width: 82
+        height: 88
+      alignment: 9
+      pivot: {x: 0.49, y: 0.84}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-jump
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 412
+        width: 85
+        height: 89
+      alignment: 9
+      pivot: {x: 0.48, y: 0.85}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-slide
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 314
+        width: 91
+        height: 85
+      alignment: 9
+      pivot: {x: 0.2575403, y: 0.8157}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-climb
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 314
+        width: 71
+        height: 82
+      alignment: 9
+      pivot: {x: 0.75, y: 0.82}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body-dash
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 320
+        width: 94
+        height: 75
+      alignment: 9
+      pivot: {x: 0.71, y: 0.78}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front-arm1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 323
+        width: 37
+        height: 68
+      alignment: 9
+      pivot: {x: 0.62893426, y: 0.8332372}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front-arm2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 336
+        width: 50
+        height: 56
+      alignment: 9
+      pivot: {x: 0.3330304, y: 0.70232284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front-arm3
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 342
+        width: 38
+        height: 51
+      alignment: 9
+      pivot: {x: 0.64123297, y: 0.7221578}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front-arm4
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 359
+        width: 46
+        height: 38
+      alignment: 9
+      pivot: {x: 0.3314753, y: 0.46861508}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 199
+        width: 103
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5, y: 0.07}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: hat
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 178
+        width: 163
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5000001, y: 0.49445343}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back-arm3
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 278
+        width: 40
+        height: 51
+      alignment: 9
+      pivot: {x: 0.4105522, y: 0.6636957}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back-arm2
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 278
+        width: 51
+        height: 53
+      alignment: 9
+      pivot: {x: 0.20768708, y: 0.7025233}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back-arm1
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 278
+        width: 41
+        height: 71
+      alignment: 9
+      pivot: {x: 0.23820086, y: 0.7687636}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 178
+        width: 88
+        height: 92
+      alignment: 9
+      pivot: {x: 0.64907974, y: 0.75926954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
