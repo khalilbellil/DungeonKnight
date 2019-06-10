@@ -9,5 +9,7 @@ public class PrefabsDir
     static string playerDir = "Prefabs/Player/Player";
     static string enemyDir = "Prefabs/Enemies/Enemy";
     static string bossDir = "Prefabs/Enemies/Boss";
-
+	static string coinDir = "Prefabs/Items/Coin";
+	static string arrowDir = "Prefabs/Items/Arrow";
+	static string potionDir = "Prefabs/Items/Potion";
 }
