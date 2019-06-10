@@ -18,7 +18,7 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private double critMultipier;
     #endregion
 
-    // weapon[] wpns;
+    // weapon[] wpns; *use ArrayList
     //int wpnIndex = 0;
 
     [HideInInspector] public Rigidbody2D rb;
@@ -81,12 +81,9 @@ public class BaseUnit : MonoBehaviour
     {
         
             Debug.Log("Dash");
-        
-
-     //   rb.AddForce(dir * speed);
 
     }
-
+     
     public void TakeDamage(int dmg)
     {
         health -= dmg;

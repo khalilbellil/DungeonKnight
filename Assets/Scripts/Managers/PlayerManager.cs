@@ -19,7 +19,7 @@ public class PlayerManager
     }
     #endregion
 
-    private Player player;
+    public Player player;
 
 
     public void Initialize(Player player)
