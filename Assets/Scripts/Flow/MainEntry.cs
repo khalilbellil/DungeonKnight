@@ -21,8 +21,7 @@ public class MainEntry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InputManager.Instance.Initialize();
-        PlayerManager.Instance.Initialize(player);
+
     }
 
     // Update is called once per frame
