@@ -50,10 +50,15 @@ public class Player : BaseUnit
 
     }
 
-
     public void Interact()
     {
             Debug.Log("Interact");
+    }
+
+
+    public void UseActive()
+    {
+
     }
 
 }
