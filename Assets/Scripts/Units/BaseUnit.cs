@@ -21,7 +21,7 @@ public class BaseUnit : MonoBehaviour
     // weapon[] wpns;
     //int wpnIndex = 0;
 
-    public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
 
     virtual public void Init()
     {

@@ -236,6 +236,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prototype
       objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[0].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[1].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[2].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[3].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[4].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[5].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[6].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[7].second.m_ColliderType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3930782816993426178, guid: 99a361a749f184748b5ed40f7dfec52e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -554,46 +594,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300034, guid: ea66a1f6eef405149b1e91e9f473a1c3,
         type: 3}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[0].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[1].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[2].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[3].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[4].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[5].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[6].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930782816924719324, guid: 99a361a749f184748b5ed40f7dfec52e,
-        type: 3}
-      propertyPath: m_Tiles.Array.data[7].second.m_ColliderType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3930782816924719325, guid: 99a361a749f184748b5ed40f7dfec52e,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.size
