@@ -18,7 +18,7 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private double critMultipier;
     #endregion
 
-    // weapon[] wpns;
+    // weapon[] wpns; *use ArrayList
     //int wpnIndex = 0;
 
     [HideInInspector] public Rigidbody2D rb;
@@ -72,12 +72,7 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void UpdateMovement(Vector2 dir)
     {
-        float dt = Time.deltaTime;
         rb.velocity = dir * speed * Time.deltaTime;
-       // this.transform.Translate(dir.x * dt * speed, dir.y * dt * speed, 0);
-
-        rb.AddForce(dir * speed);
-
 
         Debug.Log("Movement: " + dir);
 
