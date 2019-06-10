@@ -21,7 +21,7 @@ public class BaseUnit : MonoBehaviour
     // weapon[] wpns;
     //int wpnIndex = 0;
 
-    public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
 
     virtual public void Init()
     {
@@ -72,7 +72,12 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void UpdateMovement(Vector2 dir)
     {
-        rb.velocity = dir * speed;
+        float dt = Time.deltaTime;
+        rb.velocity = dir * speed * Time.deltaTime;
+       // this.transform.Translate(dir.x * dt * speed, dir.y * dt * speed, 0);
+
+        rb.AddForce(dir * speed);
+
 
         Debug.Log("Movement: " + dir);
 
