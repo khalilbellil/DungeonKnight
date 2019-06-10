@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-enum RoomType
-{
-    Boss,Enemy,Shop
-}
-
 public class RoomManager
 {
     #region Singleton Pattern
@@ -26,12 +21,15 @@ public class RoomManager
     }
     #endregion
 
-    //GeneriqueRoom currentRoom;
-    GameObject currentRoom;
+    Room room;
+    string[] prototypeRooms = new string[1];
     // // // 
 
     public void Initialize()
     {//Generate Rooms
+        room = GameObject.FindObjectOfType<Room>();
+        //SetCurrentRoomRandomly(RoomType.Prototype);
+        Debug.Log("test");
     }
 
     public void UpdateManager()
@@ -60,19 +58,20 @@ public class RoomManager
 
     }
 
-    void SetCurrentRoom(RoomType roomType)
+    void SetCurrentRoomRandomly(RoomType roomType)
     {
         //set room type path
-        string roomPath = "Prefabs/Rooms/" + roomType.ToString() + "/";
+        string roomPath = "Prefabs/Room/" + roomType.ToString() + "/";
 
         //now grab a room in this folder randomly
+        string roomName;
+        int rand = Random.Range(0, prototypeRooms.Length);
+        roomName = prototypeRooms[rand];
 
-        string roomName = "enemy1";
+        roomPath += roomName;
 
         //then instantiate the room and store it into currentRoom
-        currentRoom = Resources.Load<GameObject>(roomPath + roomName);
-        
-
+        room.SetRoom(roomPath);
     }
 
 }
