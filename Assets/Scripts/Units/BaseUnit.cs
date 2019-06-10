@@ -72,12 +72,8 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void UpdateMovement(Vector2 dir)
     {
-        float dt = Time.deltaTime;
-        rb.velocity = dir * speed * Time.deltaTime;
-       // this.transform.Translate(dir.x * dt * speed, dir.y * dt * speed, 0);
 
-        rb.AddForce(dir * speed);
-
+        rb.velocity = dir * speed;
 
         Debug.Log("Movement: " + dir);
 
@@ -87,12 +83,9 @@ public class BaseUnit : MonoBehaviour
     {
         
             Debug.Log("Dash");
-        
-
-     //   rb.AddForce(dir * speed);
 
     }
-
+     
     public void TakeDamage(int dmg)
     {
         health -= dmg;
