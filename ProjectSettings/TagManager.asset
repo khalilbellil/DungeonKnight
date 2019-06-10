@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,11 +14,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Doors
+  - Walls
+  - Objects
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -40,4 +41,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tiles_Floor
+    uniqueID: 3932292067
+    locked: 0
+  - name: Tiles_Walls
+    uniqueID: 2415066667
+    locked: 0
+  - name: Tiles_Object
+    uniqueID: 3721991691
+    locked: 0
+  - name: Tiles_Doors
+    uniqueID: 857697481
+    locked: 0
+  - name: Player
+    uniqueID: 2372815241
     locked: 0
