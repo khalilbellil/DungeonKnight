@@ -17,6 +17,9 @@ public class GeneriqueRooms : MonoBehaviour
     public GameObject east;
     public GameObject west;
     public Tilemap tileDoors;
+    
+    ArrayList coins = new ArrayList(); //Keep track of existing coins.
+
     public Dictionary<RoomType, Color> doorColorDic = new Dictionary<RoomType, Color>() {
         { RoomType.Boss, new Color(1f,.84f,0f,1) },
         { RoomType.Enemy, new Color(.5f,.5f,.5f,1) },
