@@ -1,0 +1,368 @@
+fileFormatVersion: 2
+guid: 369710656e35b44efa39c9634f20d267
+timeCreated: 1531588696
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spritesheet-slime-snake_0
+    21300002: spritesheet-slime-snake_1
+    21300004: spritesheet-slime-snake_2
+    21300006: spritesheet-slime-snake_3
+    21300008: spritesheet-slime-snake_4
+    21300010: spritesheet-slime-snake_5
+    21300012: spritesheet-slime-snake_6
+    21300014: spritesheet-slime-snake_7
+    21300016: spritesheet-slime-snake_8
+    21300018: spritesheet-slime-snake_9
+    21300020: spritesheet-slime-snake_10
+    21300022: spritesheet-slime-snake_11
+    21300024: spritesheet-slime-snake_12
+    21300026: spritesheet-slime-snake_13
+    21300028: spritesheet-slime-snake_14
+    21300030: spritesheet-slime-snake_15
+    21300032: spritesheet-slime-snake_16
+    21300034: spritesheet-slime-snake_17
+    21300036: spritesheet-slime-snake_18
+    21300038: spritesheet-slime-snake_19
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 451
+        width: 56
+        height: 57
+      alignment: 9
+      pivot: {x: 0.4740904, y: 0.9359163}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 451
+        width: 64
+        height: 54
+      alignment: 9
+      pivot: {x: 0.54801655, y: 0.9632218}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_2
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 451
+        width: 74
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5923435, y: 0.96166104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 451
+        width: 66
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5758346, y: 0.93299145}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_4
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 451
+        width: 55
+        height: 57
+      alignment: 9
+      pivot: {x: 0.44064274, y: 0.8913687}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_5
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 451
+        width: 87
+        height: 49
+      alignment: 9
+      pivot: {x: 0.9211044, y: 0.8035116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_6
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 451
+        width: 80
+        height: 44
+      alignment: 9
+      pivot: {x: 0.90807533, y: 0.1619977}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 383
+        width: 77
+        height: 65
+      alignment: 9
+      pivot: {x: 0.3468981, y: 0.047977857}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_8
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 383
+        width: 77
+        height: 65
+      alignment: 9
+      pivot: {x: 0.36338598, y: 0.05355835}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_9
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 375
+        width: 77
+        height: 73
+      alignment: 9
+      pivot: {x: 0.3567576, y: 0.16076869}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_10
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 360
+        width: 81
+        height: 88
+      alignment: 9
+      pivot: {x: 0.34797725, y: 0.28821737}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_11
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 428
+        width: 47
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_13
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 401
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_14
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 276
+        width: 83
+        height: 93
+      alignment: 9
+      pivot: {x: 0.52622175, y: 0.13531592}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_15
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 344
+        width: 83
+        height: 32
+      alignment: 9
+      pivot: {x: 0.53138274, y: 0.32188988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_16
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 344
+        width: 82
+        height: 25
+      alignment: 9
+      pivot: {x: 0.52560776, y: 0.42019776}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_17
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 276
+        width: 84
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5259094, y: 0.198697}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_18
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 276
+        width: 95
+        height: 64
+      alignment: 9
+      pivot: {x: 0.59163785, y: 0.19677734}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet-slime-snake_19
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 278
+        width: 101
+        height: 62
+      alignment: 9
+      pivot: {x: 0.40303144, y: 0.17236918}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

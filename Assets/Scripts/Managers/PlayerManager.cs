@@ -40,6 +40,7 @@ public class PlayerManager
     {
         //input.UpdatePosition(InputManager.Instance.inputPressed.dirPressed, player);
         player.PlayerFixedUpdate(InputManager.Instance.fixedInputPressed);
+		
     }
 
     public void StopManager()
