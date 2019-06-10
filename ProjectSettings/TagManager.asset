@@ -54,3 +54,6 @@ TagManager:
   - name: Tiles_Door
     uniqueID: 1653895271
     locked: 0
+  - name: Player
+    uniqueID: 3968060103
+    locked: 0
