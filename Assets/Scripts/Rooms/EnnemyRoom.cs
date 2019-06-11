@@ -11,8 +11,8 @@ public class EnnemyRoom : GeneriqueRooms
     {
         base.Initialize(_lvl, _doors);
         //Choose the roomset using index of child
-        roomSet = Random.Range(8, 12);
-        transform.GetChild(roomSet).gameObject.SetActive(true);
+        roomSet = Random.Range(0,transform.GetChild(8).childCount);
+        transform.GetChild(8).GetChild(roomSet).gameObject.SetActive(true);
         if (!isCleared)
         {
             LockDoors();
