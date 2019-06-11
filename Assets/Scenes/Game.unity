@@ -682,7 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 0
   health: 0
-  speed: 40
+  speed: 100
   critChance: 0
   critMultipier: 0
   rb: {fileID: 1763768777}
@@ -706,7 +706,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &2028356895
 GameObject:
   m_ObjectHideFlags: 0

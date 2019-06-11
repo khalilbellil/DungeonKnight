@@ -39,6 +39,8 @@ public class Enemy : BaseUnit
         UpdateMovement(dir);
     }
 
+    //public void CalculatedD
+
     public void DropItem()
     {
         Debug.Log("enemy Droped item");

@@ -20,6 +20,7 @@ public class EnemyManager
     }
     #endregion
 
+
     public ArrayList enemiesAlive = new ArrayList();
     ArrayList coins = new ArrayList();
 
@@ -31,7 +32,7 @@ public class EnemyManager
     }
 
     public void UpdateManager()
-    {
+    {//Check if enemies are alive, if not call KillEnemy.
 
     }
 
