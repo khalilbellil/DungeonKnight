@@ -23,9 +23,10 @@ public class PlayerManager
 
     public void Initialize()
     {
-        player.Init();
         SpawnPlayer();
+        player.Init();
         Debug.Log("PlayerManager Initialize");
+
     }
 
     public void UpdateManager()
@@ -58,6 +59,7 @@ public class PlayerManager
     {
         //Instantiate the Player(s)
         player = GameObject.Instantiate(Resources.Load<Player>(PrefabsDir.playerDir));
+        //player.enabled = true;
     }
 
     void GameOver()

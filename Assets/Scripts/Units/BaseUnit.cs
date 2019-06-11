@@ -29,6 +29,8 @@ public class BaseUnit : MonoBehaviour
         isAlive = true;
         activeWeaponIndex = 0;
 
+        weaponList = new Weapon[2];
+
         weaponList[0] = new Sword();
        //weaponList[1] = new Bow();
 
@@ -56,7 +58,7 @@ public class BaseUnit : MonoBehaviour
 		transform.up = target;
 	}
 
-	virtual public void death()
+	virtual public void Death()
     {
         Debug.Log("basic isDead");
         isAlive = false;

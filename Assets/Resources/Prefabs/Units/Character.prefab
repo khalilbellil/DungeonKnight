@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2920689651686160338}
   - component: {fileID: 2920689651686160337}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2920689651701672096}
   - component: {fileID: 2920689651701672103}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: rightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2920689651722798807}
   - component: {fileID: 2920689651722798806}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2920689652331378929}
   - component: {fileID: 2920689652331378928}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2920689653398150835}
   - component: {fileID: 2920689653398150834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: rightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a4da0780d83f447a252b45077f9fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponList: []
   isAlive: 0
+  activeWeaponIndex: 0
   health: 0
   speed: 5
   critChance: 0
