@@ -21,13 +21,13 @@ public class RoomManager
     }
     #endregion
 
-    Room room;
+    //Room room;
     string[] prototypeRooms = new string[1];
     // // // 
 
     public void Initialize()
     {//Generate Rooms
-        room = GameObject.FindObjectOfType<Room>();
+        //room = GameObject.FindObjectOfType<Room>();
         //SetCurrentRoomRandomly(RoomType.Prototype);
         Debug.Log("test");
     }
@@ -71,7 +71,7 @@ public class RoomManager
         roomPath += roomName;
 
         //then instantiate the room and store it into currentRoom
-        room.SetRoom(roomPath);
+        //room.SetRoom(roomPath);
     }
 
 }

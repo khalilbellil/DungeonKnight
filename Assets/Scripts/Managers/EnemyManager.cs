@@ -20,7 +20,7 @@ public class EnemyManager
     }
     #endregion
 
-    ArrayList enemiesAlive = new ArrayList();
+    public ArrayList enemiesAlive = new ArrayList();
     ArrayList coins = new ArrayList();
 
     // // // 
