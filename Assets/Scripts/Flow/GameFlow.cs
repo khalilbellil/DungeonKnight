@@ -9,7 +9,7 @@ public class GameFlow : Flow
         InputManager.Instance.Initialize();
         UIManager.Instance.Initialize();
         RoomManager.Instance.Initialize();
-        //PlayerManager.Instance.Initialize();
+        PlayerManager.Instance.Initialize(player);
         EnemyManager.Instance.Initialize();
 
         initialized = true;
