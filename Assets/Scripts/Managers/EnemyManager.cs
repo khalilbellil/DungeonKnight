@@ -20,7 +20,9 @@ public class EnemyManager
     }
     #endregion
 
-    ArrayList enemiesAlive = new ArrayList(); //Keep track of alive enemies.
+
+    public ArrayList enemiesAlive = new ArrayList();
+    ArrayList coins = new ArrayList();
 
     // // // 
 
