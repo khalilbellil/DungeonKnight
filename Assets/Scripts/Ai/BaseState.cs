@@ -4,30 +4,39 @@ using UnityEngine;
 
 public class BaseState
 {
-    public enum eUnitState{ATTACK,MOVE,DODGE}
+    StateMachine.eUnitState state;
+    List<Transition> list;
+    Enemy enemy;
 
-    public BaseState(BaseUnit unit,  List<Transition> list)
+    public BaseState(Enemy e,  List<Transition> list, StateMachine.eUnitState state)
     {
-
+        this.enemy = e;
+        this.list = list;
+        this.state = state;
     }
 
     virtual public void Enter()
     {
-        
+        Debug.Log("BASE ENTER");
     }
     
     virtual public void Update()
     {
-        
+        Debug.Log("BASE UPDATE");
     }
 
     virtual public void Exit()
     {
-
+        Debug.Log("BASE EXIT");
     }
 
-    public eUnitState Evaluate()
+    public StateMachine.eUnitState Evaluate()
     {
-        return eUnitState.ATTACK;
+        foreach (Transition t in list)
+        {
+            if (!t.Evluate())
+                return t.toState;
+        }
+        return state;
     }
 }
