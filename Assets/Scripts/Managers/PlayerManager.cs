@@ -2,7 +2,6 @@
 
 public class PlayerManager
 {
-    private InputController input;
     #region Singleton Pattern
     private static PlayerManager instance = null;
     private PlayerManager() { }
@@ -25,9 +24,10 @@ public class PlayerManager
     public void Initialize(Player player)
     {
         this.player = player;
+        player.Init();
         SpawnPlayer();
-        input = InputController.Instance;
-        input.Initialize(player);
+
+
     }
 
     public void UpdateManager()

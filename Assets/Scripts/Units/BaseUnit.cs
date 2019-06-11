@@ -5,9 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BaseUnit : MonoBehaviour
 {
+    public Weapon[] weaponList;
 
     #region VARIABLES
     public bool isAlive;
+    public int activeWeaponIndex;  //  0 = Sword, 1 = Bow (not implemented yet)
     #endregion
     
     #region Unit Stats
@@ -18,14 +20,16 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private double critMultipier;
     #endregion
 
-    // weapon[] wpns; *use ArrayList
-    //int wpnIndex = 0;
-
     [HideInInspector] public Rigidbody2D rb;
 
     virtual public void Init()
     {
         isAlive = true;
+        activeWeaponIndex = 0;
+
+        weaponList[0] = new Sword();
+       //weaponList[1] = new Bow();
+
         rb = GetComponent<Rigidbody2D>();
         Debug.Log("basic init");
     }
@@ -54,7 +58,7 @@ public class BaseUnit : MonoBehaviour
 	}
 
 
-	virtual public void death()
+	virtual public void Death()
     {
         Debug.Log("basic isDead");
         isAlive = false;
@@ -66,8 +70,10 @@ public class BaseUnit : MonoBehaviour
     }
 
     
-    public void useWeapon(Vector2 dir) {
-            Debug.Log("basic use weapon");
+    public void UseWeapon(Vector2 dir) {
+
+        weaponList[activeWeaponIndex].Attack(dir);
+        Debug.Log("basic use weapon");
     }
 
     virtual public void UpdateMovement(Vector2 dir)

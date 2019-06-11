@@ -20,7 +20,7 @@ public class Enemy : BaseUnit
         Debug.Log("enemy fixedupdate");
     }
 
-    override public void death()
+    override public void Death()
     {
         Debug.Log("enemy isDead");
         DropItem();

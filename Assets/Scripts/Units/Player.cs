@@ -3,7 +3,7 @@
 
 public class Player : BaseUnit
 {
-    
+ 
     override public void Init()
     {
         Debug.Log("player init");
@@ -14,10 +14,13 @@ public class Player : BaseUnit
 
         Debug.Log("player update");
         if(input.leftMouseButtonPressed)
-            useWeapon(input.dirPressed);
+            UseWeapon(input.dirPressed);
 
         if(input.interactPressed)
             Interact();
+
+        if (input.switchWeaponPressed)         
+            SwitchWeapon();
 
         base.UnitUpdate();
     }
@@ -37,7 +40,7 @@ public class Player : BaseUnit
         Debug.Log("player fixedupdate");
     }
 
-    override public void death()
+    override public void Death()
     {
         Debug.Log("player isDead");
     }
@@ -62,6 +65,22 @@ public class Player : BaseUnit
     public void UseActive()
     {
 
+    }
+
+    public void SwitchWeapon()
+    {
+       // weaponList[activeWeaponIndex].enabled = false;  //turns off the weapon we are unequiping
+        if (activeWeaponIndex == 0)         /*When prefabs for the weapons are attached to the player, just hide the one not used*/
+        {
+            activeWeaponIndex = 1;
+            Debug.Log("Bow equipped");
+        }
+        else
+        {
+            activeWeaponIndex = 0;
+            Debug.Log("Sword equipped");
+        }
+        //weaponList[activeWeaponIndex].enabled = true;   //turns on the weapon using now
     }
 
 }

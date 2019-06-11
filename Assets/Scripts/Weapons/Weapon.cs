@@ -10,8 +10,8 @@ public class Weapon : MonoBehaviour
 
     #region Weapon Stats
     [Header("Weapon Stats:")]
-    [SerializeField] private int dammage;
-    [SerializeField] private Vector2 hitBoxSize;
+    [SerializeField] public int dammage;
+    [SerializeField] public Vector2 hitBoxSize;
     #endregion
 
     virtual public void Init()
