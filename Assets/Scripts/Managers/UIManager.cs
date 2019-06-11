@@ -19,8 +19,10 @@ public class UIManager
     #endregion
 
     #region Variables
-    [Header("LINKS:")]
+    [Header("UI Prafabs links:")]
     public GameObject inventoryUI;
+    public GameObject pauseMenuUI;
+    public GameObject gameOverUI;
     #endregion
 
     // // // 
@@ -28,7 +30,6 @@ public class UIManager
     public void Initialize()
     {
         AddListenerToButtons();
-
     }
 
     public void UpdateManager()
@@ -38,6 +39,7 @@ public class UIManager
 
     public void FixedUpdateManager()
     {
+
     }
 
     public void StopManager()
@@ -57,7 +59,6 @@ public class UIManager
 
     }
 
-
     void ActivateMouseForUI()
     {//Desactivate Inputs for player movement and camera movement, activate mouse for UI
         
@@ -66,6 +67,18 @@ public class UIManager
     void DesactivateMouseForUI()
     {
 
+    }
+
+
+    //GameOver UI:
+    void BackToMainMenuButton()
+    {//Go back to Menu
+        MainEntry.sceneNb = 1; //Switch to Menu Scene and Menu Flow.
+    }
+    void TryAgainButton()
+    {//Restart GameFlow
+        MainEntry.sceneNb = 1; //Switch to Menu
+        MainEntry.sceneNb = 2; //Switch to Game
     }
 
 }

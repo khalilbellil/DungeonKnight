@@ -20,20 +20,27 @@ public class PlayerManager
     #endregion
 
     public Player player;
+    bool gameOverDone = false;
 
-
-    public void Initialize(Player player)
+    public void Initialize()
     {
-        this.player = player;
         SpawnPlayer();
-        input = InputController.Instance;
-        input.Initialize(player);
+        //input = InputController.Instance;
+        //input.Initialize(player);
+        Debug.Log("PlayerManager Initialize");
     }
 
     public void UpdateManager()
     {
         //input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
         player.PlayerUpdate(InputManager.Instance.inputPressed);
+
+        if (!player.isAlive && !gameOverDone)
+        {
+            gameOverDone = true;
+            GameOver();
+        }
+
     }
 
     public void FixedUpdateManager()
@@ -52,7 +59,13 @@ public class PlayerManager
     void SpawnPlayer()
     {
         //Instantiate the Player(s)
-        
+        player = GameObject.Instantiate(Resources.Load<Player>(PrefabsDir.playerDir));
+    }
+
+    void GameOver()
+    {
+        //Game Over UI Here
+        Debug.Log("Game Over !");
     }
 
 }

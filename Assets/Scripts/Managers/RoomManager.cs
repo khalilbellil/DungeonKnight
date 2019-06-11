@@ -80,6 +80,7 @@ public class RoomManager
     void GenerateRooms()
     {
         //Room Generation Logic: -First room always has to be a SpawnRoom, -check every door(N,S,W,E) and generate a room in this direction after the actual room.
+
     }
 
     void SetCurrentRoomRandomly(RoomType roomType)
