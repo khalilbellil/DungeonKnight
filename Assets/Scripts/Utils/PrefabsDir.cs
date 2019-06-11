@@ -6,8 +6,8 @@ public class PrefabsDir
 {
     //Put all the Prefabs directions here
 
-    static string playerDir = "Prefabs/Player/Player";
-    static string enemyDir = "Prefabs/Enemies/Enemy";
-    static string bossDir = "Prefabs/Enemies/Boss";
+    public static string playerDir = "Prefabs/Units/Player";
+    public static string enemyDir = "Prefabs/Enemies/Enemy";
+    public static string bossDir = "Prefabs/Enemies/Boss";
 
 }

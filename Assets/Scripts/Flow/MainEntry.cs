@@ -9,13 +9,13 @@ public class MainEntry : MonoBehaviour
     CurrentState currentState;
     Flow curFlow;
     bool sceneLoaded = false;
-    public Player player;
     public static int sceneNb = 1;
 
     public void Initialize(CurrentState cs)
     {
         //THIS IS THE FIRST POINT EVER ENTERED BY THIS PROGRAM. (Except for MainEntryCreator.cs, who creates this script and runs this function for the game to start)
         currentState = cs;
+        curFlow = InitializeFlowScript(currentState, true);
     }
 
     // Start is called before the first frame update
@@ -29,21 +29,11 @@ public class MainEntry : MonoBehaviour
     {
         float dt = Time.deltaTime;
 
-        if (!flowInitialized)
-            curFlow = InitializeFlowScript(currentState, true);  //initial flow initialize
-
         if (flowInitialized)
         {
             if (curFlow == null)
                 return; //This means Initialize hasnt been called yet, can happen in weird Awake/Update way (should not though, but be safe)
             curFlow.Update(dt);
-
-            if (sceneNb == 2 && !sceneLoaded)
-            {
-                GoToNextFlow(CurrentState.Menu);
-                sceneLoaded = true;
-            }
-
         }
 
     }
@@ -81,7 +71,7 @@ public class MainEntry : MonoBehaviour
         }
         else
         {
-            newFlow.Initialize(player);
+            newFlow.Initialize();
             flowInitialized = true;
         }
 
@@ -107,7 +97,7 @@ public class MainEntry : MonoBehaviour
 
         if (verified)
         {
-            curFlow.Initialize(player);
+            curFlow.Initialize();
             flowInitialized = true;
         }
         else

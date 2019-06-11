@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class Player : BaseUnit
 {
  
@@ -11,8 +10,8 @@ public class Player : BaseUnit
 
     public void PlayerUpdate(InputManager.InputPkg input)
     {
-
         Debug.Log("player update");
+
         if(input.leftMouseButtonPressed)
             UseWeapon(input.dirPressed);
 
@@ -36,7 +35,6 @@ public class Player : BaseUnit
 
 		CharacterRotation(input.deltaMouse);
 
-
         Debug.Log("player fixedupdate");
     }
 
@@ -44,7 +42,6 @@ public class Player : BaseUnit
     {
         Debug.Log("player isDead");
     }
-
 
 	override public void MovementAnimations()
     {
@@ -58,9 +55,8 @@ public class Player : BaseUnit
 
     public void Interact()
     {
-            Debug.Log("Interact");
+        Debug.Log("Interact");
     }
-
 
     public void UseActive()
     {

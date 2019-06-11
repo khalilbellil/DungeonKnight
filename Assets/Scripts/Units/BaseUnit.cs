@@ -22,6 +22,8 @@ public class BaseUnit : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rb;
 
+    // // //
+
     virtual public void Init()
     {
         isAlive = true;
@@ -36,7 +38,6 @@ public class BaseUnit : MonoBehaviour
     
     virtual public void UnitUpdate()
     {
-
         Debug.Log("basic update");
     }
 
@@ -45,10 +46,8 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("basic fixedupdate");
     }
 
-
-	virtual public void CharacterRotation(Vector2 target) {
-
-
+	virtual public void CharacterRotation(Vector2 target)
+    {
 		Vector3 mousePosition = Input.mousePosition;
 		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
@@ -57,8 +56,7 @@ public class BaseUnit : MonoBehaviour
 		transform.up = target;
 	}
 
-
-	virtual public void Death()
+	virtual public void death()
     {
         Debug.Log("basic isDead");
         isAlive = false;
@@ -69,7 +67,6 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("basic animation");
     }
 
-    
     public void UseWeapon(Vector2 dir) {
 
         weaponList[activeWeaponIndex].Attack(dir);
@@ -80,16 +77,12 @@ public class BaseUnit : MonoBehaviour
     {
         rb.velocity = dir * speed;
 
-
         Debug.Log("Movement: " + dir);
-
     }
 
     public void UseDash(Vector2 dir)
     {
-        
-            Debug.Log("Dash");
-
+        Debug.Log("Dash");
     }
      
     public void TakeDamage(int dmg)
