@@ -22,7 +22,7 @@ public class GameFlow : Flow
         InputManager.Instance.UpdateManager();
         UIManager.Instance.UpdateManager();
         RoomManager.Instance.UpdateManager();
-        PlayerManager.Instance.UpdateManager();
+        PlayerManager.Instance.UpdateManager(dt);
         EnemyManager.Instance.UpdateManager();
 
     }
@@ -32,7 +32,7 @@ public class GameFlow : Flow
         InputManager.Instance.FixedUpdateManager();
         UIManager.Instance.FixedUpdateManager();
         RoomManager.Instance.FixedUpdateManager();
-        PlayerManager.Instance.FixedUpdateManager();
+        PlayerManager.Instance.FixedUpdateManager(dt);
         EnemyManager.Instance.FixedUpdateManager();
     }
 

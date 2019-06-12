@@ -30,7 +30,7 @@ public class BaseUnit : MonoBehaviour
         activeWeaponIndex = 0;
 
         weaponList = new Weapon[2];
-
+         
         weaponList[0] = new Sword();
        //weaponList[1] = new Bow();
 
@@ -69,10 +69,10 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("basic animation");
     }
 
-    public void UseWeapon(Vector2 dir) {
+    public void UseWeapon(Vector2 dir, float dt) {
 
-        weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
-        Debug.Log("basic use weapon");
+        weaponList[activeWeaponIndex].Attack(dir, this.transform.position, dt);
+        //Debug.Log("basic use weapon");
     }
 
     virtual public void UpdateMovement(Vector2 dir)

@@ -6,14 +6,14 @@ public class Player : BaseUnit
     override public void Init()
     {
         base.Init();
-        Debug.Log("player init");
+        //Debug.Log("player init");
     }
 
-    public void PlayerUpdate(InputManager.InputPkg input)
+    public void PlayerUpdate(InputManager.InputPkg input, float dt)
     {
 
         if(input.leftMouseButtonPressed)
-            UseWeapon(input.aimingDirection);
+            UseWeapon(input.aimingDirection, dt);
 
         if(input.interactPressed)
             Interact();
@@ -21,10 +21,12 @@ public class Player : BaseUnit
         if (input.switchWeaponPressed)         
             SwitchWeapon();
 
+        weaponList[activeWeaponIndex].WeaponUpdate(dt);
+
         base.UnitUpdate();
     }
 
-    public void PlayerFixedUpdate(InputManager.InputPkg input)
+    public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
     {
         if (input.jumpPressed)
             UseDash(input.dirPressed);
@@ -66,6 +68,7 @@ public class Player : BaseUnit
        // weaponList[activeWeaponIndex].enabled = false;  //turns off the weapon we are unequiping
         if (activeWeaponIndex == 0)         /*When prefabs for the weapons are attached to the player, just hide the one not used*/
         {
+
             activeWeaponIndex = 1;
             Debug.Log("Bow equipped");
         }

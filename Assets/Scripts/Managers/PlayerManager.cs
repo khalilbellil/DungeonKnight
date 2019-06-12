@@ -29,11 +29,10 @@ public class PlayerManager
 
     }
 
-    public void UpdateManager()
+    public void UpdateManager(float dt)
     {
         //input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
-        player.PlayerUpdate(InputManager.Instance.inputPressed);
-
+        player.PlayerUpdate(InputManager.Instance.inputPressed, dt);
         if (!player.isAlive && !gameOverDone)
         {
             gameOverDone = true;
@@ -42,10 +41,10 @@ public class PlayerManager
 
     }
 
-    public void FixedUpdateManager()
+    public void FixedUpdateManager(float dt)
     {
         //input.UpdatePosition(InputManager.Instance.inputPressed.dirPressed, player);
-        player.PlayerFixedUpdate(InputManager.Instance.fixedInputPressed);
+        player.PlayerFixedUpdate(InputManager.Instance.fixedInputPressed, dt);
 		
     }
 
