@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MoveState : BaseState
 {
-    public MoveState(Enemy e, List<Transition> list) : base(e, list, StateMachine.eUnitState.MOVE)
-    {
+    
 
+    public MoveState(Enemy e, List<Transition> list) : base(e, list, eUnitState.MOVE)
+    {
     }
 
     public override void Enter()
     {
+        
         Debug.Log("MOVE ENTER");
         base.Enter();
     }
@@ -19,6 +21,12 @@ public class MoveState : BaseState
     {
         Debug.Log("MOVE UPDATE");
         base.Update();
+    }
+
+    public override void FixedUpdate()
+    {
+        enemy.Move();
+        Debug.Log("MOVE FIXEDUPDATE");
     }
 
     public override void Exit()

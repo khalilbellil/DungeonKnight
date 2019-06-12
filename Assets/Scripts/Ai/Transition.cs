@@ -7,11 +7,11 @@ public class Transition
     public delegate bool MyDelegate(Enemy enemy);
 
     bool evaluate;
-    public StateMachine.eUnitState toState;
+    public eUnitState toState;
     List<MyDelegate> list;
     Enemy enemy;
 
-   public Transition(StateMachine.eUnitState toState, List<MyDelegate> list, Enemy enemy )
+   public Transition(eUnitState toState, List<MyDelegate> list, Enemy enemy )
    {
         this.toState = toState;
         this.list = list;

@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class DodgeState : BaseState
 {
-    public DodgeState(Enemy e, List<Transition> list) : base(e, list, StateMachine.eUnitState.DODGE)
+
+    
+
+    public DodgeState(Enemy e, List<Transition> list) : base(e, list, eUnitState.DODGE)
     {
 
     }
 
     public override void Enter()
     {
+        
+        enemy.Dodge();
         Debug.Log("DODGE ENTER");
         base.Enter();
     }
@@ -19,6 +24,11 @@ public class DodgeState : BaseState
     {
         Debug.Log("DODGE UPDATE");
         base.Update();
+    }
+
+    public override void FixedUpdate()
+    {
+        Debug.Log("DODGE FIXEDUPDATE");
     }
 
     public override void Exit()

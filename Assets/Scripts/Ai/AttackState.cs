@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class AttackState : BaseState
 {
-    public AttackState(Enemy e, List<Transition> list ) : base(e, list, StateMachine.eUnitState.ATTACK)
+    
+
+    public AttackState(Enemy e, List<Transition> list) : base(e, list, eUnitState.ATTACK)
     {
         
     }
 
     public override void Enter()
     {
+       
+        enemy.Attack();
         Debug.Log("ATTACK ENTER");
         base.Enter();
     }
@@ -19,6 +23,11 @@ public class AttackState : BaseState
     {
         Debug.Log("ATTACK UPDATE");
         base.Update();
+    }
+
+    public override void FixedUpdate()
+    {
+        Debug.Log("ATTACK FIXEDUPDATE");
     }
 
     public override void Exit()

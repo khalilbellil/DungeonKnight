@@ -35,7 +35,7 @@ public class TESTSCRIPT : MonoBehaviour
 
         };
 
-        Transition t = new Transition(StateMachine.eUnitState.ATTACK, list, e);
+        Transition t = new Transition(eUnitState.ATTACK, list, e);
 
         Debug.Log(t.Evluate());
 
