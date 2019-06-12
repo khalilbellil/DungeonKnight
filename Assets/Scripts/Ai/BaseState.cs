@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BaseState
 {
-    StateMachine.eUnitState state;
-    List<Transition> list;
-    Enemy enemy;
+    public eUnitState state;
+    public List<Transition> list;
+    public Enemy enemy;
 
-    public BaseState(Enemy e,  List<Transition> list, StateMachine.eUnitState state)
+    public BaseState(Enemy e,  List<Transition> list, eUnitState state)
     {
         this.enemy = e;
         this.list = list;
@@ -25,12 +25,17 @@ public class BaseState
         Debug.Log("BASE UPDATE");
     }
 
+    virtual public void FixedUpdate()
+    {
+        Debug.Log("BASE FIXEDUPDATE");
+    }
+
     virtual public void Exit()
     {
         Debug.Log("BASE EXIT");
     }
 
-    public StateMachine.eUnitState Evaluate()
+    public eUnitState Evaluate()
     {
         foreach (Transition t in list)
         {

@@ -10,18 +10,6 @@ public class Enemy : BaseUnit
         return 30;
     }
 
-    
-
-    override public void UnitUpdate()
-    {
-        Debug.Log("enemy update");
-    }
-
-    override public void UnitFixedUpdate()
-    {
-        Debug.Log("enemy fixedupdate");
-    }
-
     override public void death()
     {
         Debug.Log("enemy isDead");
@@ -48,7 +36,20 @@ public class Enemy : BaseUnit
         Debug.Log("enemy Droped item");
     }
 
+    public void Dodge()
+    {
 
+    }
+
+    public void Attack()
+    {
+        //useWeapon();
+    }
+
+    public void Move()
+    {
+        //MoveTo();
+    }
 }
 
 
