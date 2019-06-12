@@ -85,26 +85,26 @@ public class GeneriqueRooms : MonoBehaviour
         switch (dir)
         {
             case Directions.North:
-                pos0 = new Vector3Int(-1, 4, 0);
-                pos1 = new Vector3Int(0, 4, 0);
+                pos0 = new Vector3Int(-1, 11, 0);
+                pos1 = new Vector3Int(0, 11, 0);
                 //tm.SetColor(new Vector3Int(11, 1, 0), newDoorColor);
                 //tm.SetColor(new Vector3Int(12, 1, 0), newDoorColor);
                 break;
             case Directions.South:
-                pos0 = new Vector3Int(-1, -4, 0);
-                pos1 = new Vector3Int(0, -4, 0);
+                pos0 = new Vector3Int(-1, -11, 0);
+                pos1 = new Vector3Int(0, -11, 0);
                 //tm.SetColor(new Vector3Int(11, 10, 0), newDoorColor);
                 //tm.SetColor(new Vector3Int(12, 10, 0), newDoorColor);
                 break;
             case Directions.East:
-                pos0 = new Vector3Int(11, 0, 0);
-                pos1 = new Vector3Int(11, -1, 0);
+                pos0 = new Vector3Int(22, 0, 0);
+                pos1 = new Vector3Int(22, -1, 0);
                 //tm.SetColor(new Vector3Int(21, 6, 0), newDoorColor);
                 //tm.SetColor(new Vector3Int(21, 7, 0), newDoorColor);
                 break;
             case Directions.West:
-                pos0 = new Vector3Int(-11, 0, 0);
-                pos1 = new Vector3Int(-11, -1, 0);
+                pos0 = new Vector3Int(-22, 0, 0);
+                pos1 = new Vector3Int(-22, -1, 0);
                 //tm.SetColor(new Vector3Int(0, 6, 0), newDoorColor);
                 //tm.SetColor(new Vector3Int(0, 7, 0), newDoorColor);
                 break;
@@ -131,22 +131,22 @@ public class GeneriqueRooms : MonoBehaviour
         {
             if(thingEnteredDoor.position.x <= 1 && thingEnteredDoor.position.x >= -1)
             {
-                if(thingEnteredDoor.position.y >= 3)
+                if(thingEnteredDoor.position.y >= 10)
                 {
                     RoomManager.Instance.RoomExited(Directions.North);
                 }
-                else if(thingEnteredDoor.position.y <= -3)
+                else if(thingEnteredDoor.position.y <= -10)
                 {
                     RoomManager.Instance.RoomExited(Directions.South);
                 }
             }
             else if (thingEnteredDoor.position.y <= 1 && thingEnteredDoor.position.y >= -1)
             {
-                if (thingEnteredDoor.position.x >= 9)
+                if (thingEnteredDoor.position.x >= 21)
                 {
                     RoomManager.Instance.RoomExited(Directions.East);
                 }
-                else if (thingEnteredDoor.position.x <= -9)
+                else if (thingEnteredDoor.position.x <= -21)
                 {
                     RoomManager.Instance.RoomExited(Directions.West);
                 }

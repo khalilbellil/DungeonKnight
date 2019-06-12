@@ -19,7 +19,7 @@ TagManager:
   - Objects
   - Player
   - Enemy
-  - 
+  - RoomSet
   - 
   - 
   - 
@@ -56,4 +56,22 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2372815241
+    locked: 0
+  - name: SouthWall
+    uniqueID: 3732047601
+    locked: 0
+  - name: NorthWall
+    uniqueID: 388589131
+    locked: 0
+  - name: EastWall
+    uniqueID: 2579854397
+    locked: 0
+  - name: WestWall
+    uniqueID: 2528450341
+    locked: 0
+  - name: Tiles_RoomSet1
+    uniqueID: 2961183173
+    locked: 0
+  - name: Tiles_RoomSet2
+    uniqueID: 816913261
     locked: 0

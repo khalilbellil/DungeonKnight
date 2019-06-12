@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Enemy : BaseUnit
 {
-    override public void Init()
+
+    public int GetRange( )
     {
-        rb = GetComponent<Rigidbody2D>();
-        Debug.Log("enemy init");
+        return 30;
     }
+
+    
 
     override public void UnitUpdate()
     {
@@ -38,6 +40,8 @@ public class Enemy : BaseUnit
         Debug.Log("enemy isMoving");
         UpdateMovement(dir);
     }
+
+    //public void CalculatedD
 
     public void DropItem()
     {

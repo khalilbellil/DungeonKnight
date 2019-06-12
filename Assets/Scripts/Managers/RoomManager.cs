@@ -20,10 +20,10 @@ public class RoomManager
         }
     }
     #endregion
-
+    
+    //Room room;
     int[,,] roomsPositions = new int[10, 10, 10]; //Store all the rooms positions, Template: roomsPositions[i,x,y]; Example: roomsPositions[1,5,5]; -> room1(5,5)
 
-    //Store all the Rooms Prefabs Names by rooms types (don't forget to set the array size):
     string[] prototypeRooms = new string[1];
     string[] enemiesRooms = new string[2];
     string[] bossRooms = new string[2];
@@ -36,6 +36,8 @@ public class RoomManager
 
     public void Initialize()
     {//Generate Rooms
+        //room = GameObject.FindObjectOfType<Room>();
+        //SetCurrentRoomRandomly(RoomType.Prototype);
         GenerateRooms();
         Debug.Log("RoomManager.Initialize()");
     }
@@ -80,6 +82,7 @@ public class RoomManager
     void GenerateRooms()
     {
         //Room Generation Logic: -First room always has to be a SpawnRoom, -check every door(N,S,W,E) and generate a room in this direction after the actual room.
+
     }
 
     void SetCurrentRoomRandomly(RoomType roomType)
@@ -118,7 +121,7 @@ public class RoomManager
         roomPath += roomName;
 
         //then instantiate the room and store it into currentRoom
-
+        //room.SetRoom(roomPath);
     }
 
 }
