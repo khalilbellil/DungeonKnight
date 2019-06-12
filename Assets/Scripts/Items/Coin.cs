@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+	int value = 1;
+	public override void Init()
+	{
+		base.Init();
+		itemType = AllItems.coin;
+	}
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	protected override void CollidedWithPlayer(Player player)
+	{
+		player.coins += value;
+	}
 }

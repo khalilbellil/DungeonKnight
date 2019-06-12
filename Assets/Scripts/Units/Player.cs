@@ -3,7 +3,7 @@
 
 public class Player : BaseUnit
 {
-    
+	public int coins;
     override public void Init()
     {
         Debug.Log("player init");
