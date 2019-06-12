@@ -24,8 +24,7 @@ public class GameFlow : Flow
         RoomManager.Instance.UpdateManager();
         PlayerManager.Instance.UpdateManager();
         EnemyManager.Instance.UpdateManager();
-        
-        Debug.Log("GAMEFLOW");
+
     }
 
     public override void FixedUpdate(float dt)

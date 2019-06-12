@@ -5,15 +5,15 @@ public class Player : BaseUnit
  
     override public void Init()
     {
+        base.Init();
         Debug.Log("player init");
     }
 
     public void PlayerUpdate(InputManager.InputPkg input)
     {
-        Debug.Log("player update");
 
         if(input.leftMouseButtonPressed)
-            UseWeapon(input.dirPressed);
+            UseWeapon(input.aimingDirection);
 
         if(input.interactPressed)
             Interact();
@@ -34,8 +34,6 @@ public class Player : BaseUnit
         base.UnitFixedUpdate();
 
 		CharacterRotation(input.deltaMouse);
-
-        Debug.Log("player fixedupdate");
     }
 
     override public void Death()

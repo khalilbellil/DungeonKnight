@@ -35,6 +35,7 @@ public class InputManager
         inputPressed.deltaMouse.x = Input.GetAxis("Mouse X");
         inputPressed.deltaMouse.y = Input.GetAxis("Mouse Y");
         inputPressed.mousePosToRay = inputPressed.MousePosToRay(Input.mousePosition);
+        inputPressed.aimingDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         inputPressed.leftMouseButtonPressed = Input.GetMouseButton(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButton(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButton(2);
@@ -55,6 +56,8 @@ public class InputManager
         inputPressed.deltaMouse.x = Input.GetAxis("Mouse X");
         inputPressed.deltaMouse.y = Input.GetAxis("Mouse Y");
         inputPressed.mousePosToRay = inputPressed.MousePosToRay(Input.mousePosition);
+        inputPressed.aimingDirection =  Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Debug.Log(string.Format("AimDir:{0},WP:{1},MP:{2}", inputPressed.aimingDirection.normalized, Camera.main.ScreenToWorldPoint(Input.mousePosition), Input.mousePosition));
         inputPressed.leftMouseButtonPressed = Input.GetMouseButton(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButton(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButton(2);
@@ -65,7 +68,7 @@ public class InputManager
         fixedInputPressed.dirPressed.x = Input.GetAxis("Horizontal");
         fixedInputPressed.dirPressed.y = Input.GetAxis("Vertical");
         fixedInputPressed.jumpPressed = Input.GetButtonDown("Jump");
-        fixedInputPressed.switchWeaponPressed = Input.GetButtonDown("Switch Weapon");
+        inputPressed.switchWeaponPressed = Input.GetButtonDown("Switch Weapon");
     }
 
     public void StopManager()
@@ -79,6 +82,7 @@ public class InputManager
     {
         public Vector2 dirPressed;   //side to side and foward and back
         public Vector2 deltaMouse;   //the delta change of mouse position
+        public Vector2 aimingDirection;
         public Ray mousePosToRay;
         public bool leftMouseButtonPressed;
         public bool rightMouseButtonPressed;

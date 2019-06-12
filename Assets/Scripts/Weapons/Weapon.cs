@@ -12,11 +12,13 @@ public class Weapon : MonoBehaviour
     [Header("Weapon Stats:")]
     [SerializeField] public int dammage;
     [SerializeField] public Vector2 hitBoxSize;
+    protected int layerToHit;
+
     #endregion
 
-    virtual public void Init()
+    virtual public void Init(string hitableLayer)
     {
-
+        layerToHit = LayerMask.NameToLayer(hitableLayer);
     }
 
     virtual public void WeaponUpdate()
@@ -30,9 +32,9 @@ public class Weapon : MonoBehaviour
     }
 
 
-    virtual public void Attack(Vector2 dir)
+    virtual public void Attack(Vector2 dir, Vector2 casterLocation)
     {
-        Debug.Log("Default attack");
+
     }
 
 

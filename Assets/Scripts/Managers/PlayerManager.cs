@@ -25,7 +25,7 @@ public class PlayerManager
     {
         SpawnPlayer();
         player.Init();
-        Debug.Log("PlayerManager Initialize");
+
 
     }
 

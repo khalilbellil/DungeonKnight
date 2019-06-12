@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-
-    #region Sword Stats:
-    [Header("Sword Specific:")]
-    [SerializeField] private int hitFrames;     //ammount of frame the weapon will be able to hit something
-    #endregion
-
-
-    public override void Init()
+    Vector2 centre;
+    protected float range;
+    public override void Init(string hitableLayer)
     {
-        base.Init();
+        range = 1;
+        base.Init(hitableLayer);
+        hitBoxSize = new Vector2(1.5f, 1.5f);
+
     }
 
     public override void WeaponUpdate()
@@ -26,19 +24,29 @@ public class Sword : Weapon
         base.WeaponFixedUpdate();
     }
 
-    public override void Attack(Vector2 dir)
+    public override void Attack(Vector2 dir, Vector2 casterLocation)
     {
-        float angle = Mathf.Atan(dir.y / dir.x);
-        Collider2D[] targetsHit = Physics2D.OverlapBoxAll(dir, hitBoxSize, angle, LayerMask.NameToLayer("Enemy"));      //Creates a box and returns all colliders with Layer named "Enemy" inside it 
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(new Vector3(dir.x, dir.y), new Vector3(hitBoxSize.x, hitBoxSize.y));
-
+        dir.Normalize();
+        float angle = Mathf.Atan(dir.y / dir.x) * Mathf.Rad2Deg;
+        
+        Collider2D[] targetsHit = Physics2D.OverlapBoxAll(casterLocation , hitBoxSize, angle, layerToHit);      //Creates a box and returns all colliders with Layer named "Enemy" inside it 
+ //       if (angle >= 180)
+ //       {
+ //           angle -= 360;
+ //       }
+        Debug.Log("Angle: " + angle);
+        Debug.Log("Direction : " + dir);
         foreach (Collider2D target in targetsHit)
         {
-            target.gameObject.GetComponent<BaseUnit>().TakeDamage(dammage);
+            target.gameObject.GetComponent<BaseUnit>()?.TakeDamage(dammage);
         }
-
-        base.Attack(dir);
+        base.Attack(dir, casterLocation);
     }
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(centre, hitBoxSize);
+
+    }
 }
