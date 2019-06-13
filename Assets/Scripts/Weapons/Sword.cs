@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-    Vector2 centre;
     protected float range;
 
-    public override void Init(string hitableLayer)
+    public override void Init(LayerMask hitableLayer)
     {
-        range = 1;
+        range = 2;
         hitBoxSize = new Vector2(1.5f, 1.5f);
         base.Init(hitableLayer);
     }
@@ -24,14 +23,14 @@ public class Sword : Weapon
         base.WeaponFixedUpdate();
     }
 
-    public override void Attack(Vector2 dir, Vector2 casterLocation, float dt)
+    public override void Attack(Vector2 dir, Vector2 casterLocation)
     {
+
         if (attackAvailable)
         {
             attackAvailable = false;
 
-            Vector2 hitBoxLocation = new Vector2(casterLocation.x + 1.5f, casterLocation.y + 1.5f);
-            dir.Normalize();
+            Vector2 hitBoxLocation = casterLocation + dir * range;
             float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
             angle = -angle;
 
@@ -39,14 +38,32 @@ public class Sword : Weapon
             {
                 angle -= 360;
             }
+
             Collider2D[] targetsHit = Physics2D.OverlapBoxAll(hitBoxLocation, hitBoxSize, angle, layerToHit);      //Creates a box and returns all colliders with Layer named "Enemy" inside it 
-            Debug.Log("Angle: " + angle);
-            Debug.Log("Direction : " + dir);
+
+          //  Debug.Log("Angle: " + angle);
+           // Debug.Log("Direction : " + dir);
+
             foreach (Collider2D target in targetsHit)
             {
                 target.gameObject.GetComponent<BaseUnit>()?.TakeDamage(dammage);
             }
             base.Attack(dir, casterLocation, dt);
+
+            DrawHitBox(true, angle, hitBoxLocation, hitBoxSize);
+
         }
+    }
+
+    private void DrawHitBox(bool drawBox, float rot, Vector2 center,Vector2 size)
+    {
+        GameObject hitbox = new GameObject() ;
+        hitbox.AddComponent<SpriteRenderer>();
+        hitbox.GetComponent<SpriteRenderer>().sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0,0,size.x,size.y), new Vector2(.5f,.5f), 1);
+        hitbox.transform.position = center;
+        hitbox.transform.eulerAngles = new Vector3(0, 0, rot);
+       // Debug.LogError("");
+        hitbox.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+        GameObject.Destroy(hitbox, 2);
     }
 }

@@ -10,7 +10,7 @@ public class Player : BaseUnit
         //Debug.Log("player init");
         foreach(Weapon weapon in weaponList)
         {
-            weapon.Init(hitableLayer.ToString());
+            weapon.Init(hitableLayer);
         }
     }
 
@@ -18,7 +18,7 @@ public class Player : BaseUnit
     {
 
         if(input.leftMouseButtonPressed)
-            UseWeapon(input.aimingDirection, dt);
+            UseWeapon(input.aimingDirection);
 
         if(input.interactPressed)
             Interact();

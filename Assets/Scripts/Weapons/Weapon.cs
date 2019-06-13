@@ -9,15 +9,15 @@ public class Weapon : MonoBehaviour
     [SerializeField] public int dammage;
     [SerializeField] public Vector2 hitBoxSize;
     [SerializeField] public float cdForNextAtk;
-    protected int layerToHit;
+    protected LayerMask layerToHit;
     protected bool attackAvailable;
     protected float currentCdTimer;
     #endregion
 
-    virtual public void Init(string hitableLayer)
+    virtual public void Init(LayerMask hitableLayer)
     {
         currentCdTimer = 0;
-        layerToHit = LayerMask.NameToLayer(hitableLayer);
+        layerToHit = hitableLayer;
         attackAvailable = true;
     }
 
@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
     }
 
 
-    virtual public void Attack(Vector2 dir, Vector2 casterLocation, float dt)
+    virtual public void Attack(Vector2 dir, Vector2 casterLocation)
     {
     }
 

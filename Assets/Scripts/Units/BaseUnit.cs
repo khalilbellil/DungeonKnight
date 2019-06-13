@@ -69,9 +69,9 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("basic animation");
     }
 
-    public void UseWeapon(Vector2 dir, float dt) {
+    public void UseWeapon(Vector2 dir) {
 
-        weaponList[activeWeaponIndex].Attack(dir, this.transform.position, dt);
+        weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
         //Debug.Log("basic use weapon");
     }
 
@@ -90,7 +90,9 @@ public class BaseUnit : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         health -= dmg;
-        Debug.Log("basic takedamage " + dmg + "Remaining health : " + health);
+        if (health <= 0)
+            isAlive = false;
+        Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
 
     }
 
