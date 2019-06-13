@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Enemy : BaseUnit
 {
+
 	//----Krina is Testing stuff----//
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		Debug.Log("gotcha");
 		HealthBar.health -= 10f;
 	}
+    public StateMachine stateM;
+    public Grid grid;
 
 	//-----------------------------//
 
@@ -18,7 +21,7 @@ public class Enemy : BaseUnit
         return 30;
     }
 
-    override public void death()
+    override public void Death()
     {
         Debug.Log("enemy isDead");
         DropItem();
@@ -54,8 +57,9 @@ public class Enemy : BaseUnit
         //useWeapon();
     }
 
-    public void Move()
+    public void Move(Transform goal)
     {
+        grid.Astar(this.transform, goal);
         //MoveTo();
     }
 }

@@ -35,6 +35,7 @@ public class InputManager
         inputPressed.deltaMouse.x = Input.GetAxis("Mouse X");
         inputPressed.deltaMouse.y = Input.GetAxis("Mouse Y");
         inputPressed.mousePosToRay = inputPressed.MousePosToRay(Input.mousePosition);
+        inputPressed.aimingDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - PlayerManager.Instance.player.transform.position).normalized;
         inputPressed.leftMouseButtonPressed = Input.GetMouseButton(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButton(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButton(2);
@@ -46,6 +47,7 @@ public class InputManager
         inputPressed.dirPressed.x = Input.GetAxis("Horizontal");
         inputPressed.dirPressed.y = Input.GetAxis("Vertical");
         inputPressed.jumpPressed = Input.GetButtonDown("Jump");
+        inputPressed.switchWeaponPressed = Input.GetButtonDown("Switch Weapon");
     }
 
     public void FixedUpdateManager()
@@ -54,6 +56,8 @@ public class InputManager
         inputPressed.deltaMouse.x = Input.GetAxis("Mouse X");
         inputPressed.deltaMouse.y = Input.GetAxis("Mouse Y");
         inputPressed.mousePosToRay = inputPressed.MousePosToRay(Input.mousePosition);
+        inputPressed.aimingDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - PlayerManager.Instance.player.transform.position).normalized;
+        //Debug.Log(string.Format("AimDir:{0},WP:{1},MP:{2}", inputPressed.aimingDirection.normalized, Camera.main.ScreenToWorldPoint(Input.mousePosition), Input.mousePosition));
         inputPressed.leftMouseButtonPressed = Input.GetMouseButton(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButton(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButton(2);
@@ -64,6 +68,7 @@ public class InputManager
         fixedInputPressed.dirPressed.x = Input.GetAxis("Horizontal");
         fixedInputPressed.dirPressed.y = Input.GetAxis("Vertical");
         fixedInputPressed.jumpPressed = Input.GetButtonDown("Jump");
+        inputPressed.switchWeaponPressed = Input.GetButtonDown("Switch Weapon");
     }
 
     public void StopManager()
@@ -77,6 +82,7 @@ public class InputManager
     {
         public Vector2 dirPressed;   //side to side and foward and back
         public Vector2 deltaMouse;   //the delta change of mouse position
+        public Vector2 aimingDirection;
         public Ray mousePosToRay;
         public bool leftMouseButtonPressed;
         public bool rightMouseButtonPressed;
@@ -85,10 +91,11 @@ public class InputManager
         public bool anyKeyPressed;
         public bool inventoryPressed;
         public bool interactPressed;
+        public bool switchWeaponPressed;
 
         public override string ToString()
         {
-            return string.Format("DirPressed[{0}],DeltaMouse[{1}],JumpPressed[{2}],InventoryPressed[{3}],InteractPressed[{4}] ", dirPressed, deltaMouse, jumpPressed, inventoryPressed, interactPressed);
+            return string.Format("DirPressed[{0}],DeltaMouse[{1}],JumpPressed[{2}],InventoryPressed[{3}],InteractPressed[{4}], SwitchWeaponPressed[{5}] ", dirPressed, deltaMouse, jumpPressed, inventoryPressed, interactPressed, switchWeaponPressed);
         }
 
         public Ray MousePosToRay(Vector3 mousePos)

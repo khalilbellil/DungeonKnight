@@ -39,18 +39,17 @@ public class RoomManager
         //room = GameObject.FindObjectOfType<Room>();
         //SetCurrentRoomRandomly(RoomType.Prototype);
         GenerateRooms();
-        Debug.Log("RoomManager.Initialize()");
+        //Debug.Log("RoomManager.Initialize()");
     }
 
     public void UpdateManager()
     {
-        Debug.Log("RoomManager.UpdateManager()");
 
     }
 
     public void FixedUpdateManager()
     {
-        Debug.Log("RoomManager.FixedUpdateManager()");
+       // Debug.Log("RoomManager.FixedUpdateManager()");
     }
 
     public void StopManager()
