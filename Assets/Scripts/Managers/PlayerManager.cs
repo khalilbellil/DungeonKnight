@@ -25,22 +25,21 @@ public class PlayerManager
     public void Initialize()
     {
         SpawnPlayer();
-        //input = InputController.Instance;
-        //input.Initialize(player);
         Debug.Log("PlayerManager Initialize");
     }
 
     public void UpdateManager()
     {
-        //input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
-        player.PlayerUpdate(InputManager.Instance.inputPressed);
-
-        if (!player.isAlive && !gameOverDone)
+        if (player != null)
         {
-            gameOverDone = true;
-            GameOver();
-        }
+            player.PlayerUpdate(InputManager.Instance.inputPressed);
 
+            if (!player.isAlive && !gameOverDone)
+            {
+                gameOverDone = true;
+                GameOver();
+            }
+        }
     }
 
     public void FixedUpdateManager()
@@ -51,8 +50,8 @@ public class PlayerManager
     }
 
     public void StopManager()
-    {
-
+    {//Reset everything
+        instance = null;
     }
 
 
@@ -64,8 +63,9 @@ public class PlayerManager
 
     void GameOver()
     {
-        //Game Over UI Here
+        //Game Over UI Here (Call the UIManager function to activate the concerned UI)
         Debug.Log("Game Over !");
+
     }
 
 }
