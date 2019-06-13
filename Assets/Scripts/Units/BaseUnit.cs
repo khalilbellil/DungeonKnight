@@ -9,7 +9,7 @@ public class BaseUnit : MonoBehaviour
     #region VARIABLES
     public bool isAlive;
     #endregion
-    
+
     #region Unit Stats
     [Header("Unit Stats:")]
     [SerializeField] private int health;

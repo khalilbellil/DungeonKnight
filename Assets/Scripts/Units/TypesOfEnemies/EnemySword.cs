@@ -6,10 +6,6 @@ public enum eUnitState { ATTACK, MOVE, DODGE }
 
 public class EnemySword : Enemy
 {
-
-
-    StateMachine stateM;
-
     List<Transition.MyDelegate> list1;
     List<Transition.MyDelegate> list2;
     List<Transition.MyDelegate> list3;
@@ -37,8 +33,8 @@ public class EnemySword : Enemy
 
         list3 = new List<Transition.MyDelegate>()
         {
-            //(enemy) => { return e.GetRange() >= Vector2.Distance(PlayerManager.Instance.player.transform.position, e.transform.position); }
-            (enemy) => { return enemy.GetRange() >= Vector2.Distance(new Vector2(1,1), new Vector2(9,9)); }
+            (enemy) => { return enemy.GetRange() >= Vector2.Distance(PlayerManager.Instance.player.transform.position, enemy.transform.position); }
+            //(enemy) => { return enemy.GetRange() >= Vector2.Distance(new Vector2(1,1), new Vector2(9,9)); }
         };
 
         list4 = new List<Transition.MyDelegate>()
@@ -71,6 +67,8 @@ public class EnemySword : Enemy
             { eUnitState.MOVE, new MoveState(this,transList3) }
         };
 
+        grid = new Grid();
+
         stateM = new StateMachine(eUnitState.MOVE, stateDict);
         
         Debug.Log("enemyS init");
@@ -87,9 +85,5 @@ public class EnemySword : Enemy
         stateM.FixedUpdate();
         Debug.Log("enemyS fixedupdate");
     }
-
-    
-
-
     
 }

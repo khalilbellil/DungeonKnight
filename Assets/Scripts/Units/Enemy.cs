@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemy : BaseUnit
 {
+    public StateMachine stateM;
+    public Grid grid;
+
+
 
     public int GetRange( )
     {
@@ -46,8 +50,9 @@ public class Enemy : BaseUnit
         //useWeapon();
     }
 
-    public void Move()
+    public void Move(Transform goal)
     {
+        grid.Astar(this.transform, goal);
         //MoveTo();
     }
 }

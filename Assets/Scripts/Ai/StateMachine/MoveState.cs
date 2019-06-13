@@ -25,7 +25,7 @@ public class MoveState : BaseState
 
     public override void FixedUpdate()
     {
-        enemy.Move();
+        //enemy.Move();
         Debug.Log("MOVE FIXEDUPDATE");
     }
 
