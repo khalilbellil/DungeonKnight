@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BaseUnit : MonoBehaviour
 {
+    //To add more weapons, increase the size of the weaponList in the unity, on the character's prefab
+    //and pass it a prefab that is or inherits of Weapon class
     public Weapon[] weaponList;
 
     #region VARIABLES
@@ -18,6 +20,7 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private int speed;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
+    [SerializeField] protected LayerMask hitableLayer;
     #endregion
 
     [HideInInspector] public Rigidbody2D rb;
@@ -26,14 +29,11 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void Init()
     {
+        speed = 10;
         isAlive = true;
-        activeWeaponIndex = 0;
-
-        weaponList = new Weapon[2];
-         
-        weaponList[0] = new Sword();
-       //weaponList[1] = new Bow();
-
+        if(weaponList != null)
+            activeWeaponIndex = 0;
+       
         rb = GetComponent<Rigidbody2D>();
        // Debug.Log("basic init");
     }

@@ -7,6 +7,10 @@ public class Player : BaseUnit
     {
         base.Init();
         //Debug.Log("player init");
+        foreach(Weapon weapon in weaponList)
+        {
+            weapon.Init(hitableLayer.ToString());
+        }
     }
 
     public void PlayerUpdate(InputManager.InputPkg input, float dt)
@@ -65,19 +69,22 @@ public class Player : BaseUnit
 
     public void SwitchWeapon()
     {
-       // weaponList[activeWeaponIndex].enabled = false;  //turns off the weapon we are unequiping
-        if (activeWeaponIndex == 0)         /*When prefabs for the weapons are attached to the player, just hide the one not used*/
+        if (weaponList != null)
         {
+            weaponList[activeWeaponIndex].gameObject.SetActive(false);  //turns off the weapon we are unequiping
 
-            activeWeaponIndex = 1;
-            Debug.Log("Bow equipped");
+            activeWeaponIndex++;
+
+
+            if(activeWeaponIndex + 1 > weaponList.Length)
+            {
+                activeWeaponIndex = 0;
+            }
+
+            Debug.Log(weaponList[activeWeaponIndex].transform.name + " equipped");
+            weaponList[activeWeaponIndex].gameObject.SetActive(true);   //turns on the weapon using now
         }
-        else
-        {
-            activeWeaponIndex = 0;
-            Debug.Log("Sword equipped");
-        }
-        //weaponList[activeWeaponIndex].enabled = true;   //turns on the weapon using now
+
     }
 
 }
