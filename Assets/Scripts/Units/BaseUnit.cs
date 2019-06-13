@@ -12,8 +12,9 @@ public class BaseUnit : MonoBehaviour
     
     #region Unit Stats
     [Header("Unit Stats:")]
-    [SerializeField] private int health;
-    [SerializeField] private int speed;
+    [SerializeField] public int health;
+	[SerializeField] public int maxHealth;
+	[SerializeField] private int speed;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
     #endregion

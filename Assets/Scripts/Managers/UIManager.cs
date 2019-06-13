@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
+
 
 public class UIManager
 {
@@ -25,19 +29,34 @@ public class UIManager
     public GameObject gameOverUI;
     [Header("other links:")]
     MainEntry mainEntry;
-    #endregion
+	#endregion
 
-    // // // 
+	// // // 
+	UILinks uiLinks;
 
-    public void Initialize()
+	public void Initialize()
     {
         mainEntry = GameObject.FindObjectOfType<MainEntry>();
-        AddListenerToButtons();
+		uiLinks = GameObject.FindObjectOfType<UILinks>();
+		AddListenerToButtons();
     }
 
     public void UpdateManager()
     {
-        OpenCloseInventory();
+		uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString();
+		// still have to do the arrow incrementation
+
+		// ------------ for the Demo Friday ------------//
+		
+			uiLinks.healthBar.fillAmount = PlayerManager.Instance.player.health / PlayerManager.Instance.player.maxHealth;
+		
+		// --------------------------------------------//
+
+
+		//uiLinks.currentWeapon = 
+		//uiLinks.active= 
+
+		OpenCloseInventory();
 
         if (InputManager.Instance.inputPressed.interactPressed)//test
         {
@@ -60,7 +79,7 @@ public class UIManager
     void AddListenerToButtons()
     {//Adding listeners to the buttons
 
-    }
+	}
 
     void OpenCloseInventory()
     {//Set the inventory UI to active when the inventory input is pressed

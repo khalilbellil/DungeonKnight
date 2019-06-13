@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Enemy : BaseUnit
 {
+	//----Krina is Testing stuff----//
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		Debug.Log("gotcha");
+		HealthBar.health -= 10f;
+	}
 
-    public int GetRange( )
+	//-----------------------------//
+
+	public int GetRange( )
     {
         return 30;
     }
