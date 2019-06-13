@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class Enemy : BaseUnit
 {
-    override public void Init()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        Debug.Log("enemy init");
-    }
 
-    override public void UnitUpdate()
+    public int GetRange( )
     {
-        Debug.Log("enemy update");
-    }
-
-    override public void UnitFixedUpdate()
-    {
-        Debug.Log("enemy fixedupdate");
+        return 30;
     }
 
     override public void Death()
@@ -46,7 +36,20 @@ public class Enemy : BaseUnit
         Debug.Log("enemy Droped item");
     }
 
+    public void Dodge()
+    {
 
+    }
+
+    public void Attack()
+    {
+        //useWeapon();
+    }
+
+    public void Move()
+    {
+        //MoveTo();
+    }
 }
 
 

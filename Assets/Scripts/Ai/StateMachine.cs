@@ -2,24 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine
 {
-    public enum eUnitState { ATTACK, MOVE, DODGE }
+    eUnitState currentState;
 
-    //Dictionary<eUnitState, BaseState> stateDict = new Dictionary<eUnitState, BaseState> { { eUnitState.ATTACK, new AttackState() }, { eUnitState.MOVE, new MoveState() }, { eUnitState.DODGE, new DodgeState() } };
+    Dictionary<eUnitState, BaseState> stateDict;
+
+    public StateMachine(eUnitState currentState, Dictionary<eUnitState, BaseState> stateDict)
+    {
+        this.currentState = currentState;
+        this.stateDict = stateDict;
+    }
 
     public void Update()
     {
-        //updateSenses();
-
-        //stateDict[CurrentState].update();
-        //eUnitState newState = stateDict[CurrentState].Evaluate();
-        /*if (newState != CurrentState)
+        stateDict[currentState].Update();
+        eUnitState newState = stateDict[currentState].Evaluate();
+        if (newState != currentState)
         {
-            stateDict[CurrentState].Exit();
-            CurrentState = newState;
-            stateDict[CurrentState].Enter();
-        }*/
+            stateDict[currentState].Exit();
+            currentState = newState;
+            stateDict[currentState].Enter();
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        stateDict[currentState].FixedUpdate();
     }
 
 }

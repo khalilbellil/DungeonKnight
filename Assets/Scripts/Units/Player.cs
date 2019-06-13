@@ -2,7 +2,8 @@
 
 public class Player : BaseUnit
 {
- 
+	public int coins;
+
     override public void Init()
     {
         base.Init();
