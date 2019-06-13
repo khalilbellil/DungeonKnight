@@ -13,7 +13,6 @@ public class GameFlow : Flow
         RoomManager.Instance.Initialize();
         PlayerManager.Instance.Initialize();
         EnemyManager.Instance.Initialize();
-
         initialized = true;
     }
 

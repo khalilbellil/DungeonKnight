@@ -12,6 +12,7 @@ public class MenuFlow : Flow
         mainEntry = GameObject.FindObjectOfType<MainEntry>();
         InputManager.Instance.Initialize();
         initialized = true;
+        Debug.Log("MenuFlow init");
     }
 
     public override void Update(float dt)
@@ -39,7 +40,7 @@ public class MenuFlow : Flow
     void PlayButton()
     {
         Debug.Log("PLAY");
-        mainEntry.GoToNextFlow(CurrentState.Menu);//Go to next Flow and the scene that is attatched to it.
+        mainEntry.GoToNextFlow(CurrentState.Menu);//Switch to Game Scene/Flow.
     }
 
     void OptionsButton()

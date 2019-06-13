@@ -43,7 +43,7 @@ public class EnemyManager
 
     public void StopManager()
     {
-
+        instance = null;
     }
 
     // // // 

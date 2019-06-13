@@ -73,7 +73,7 @@ public class InputManager
 
     public void StopManager()
     {
-
+        instance = null;
     }
 
     // // //
