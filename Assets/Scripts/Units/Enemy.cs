@@ -14,7 +14,7 @@ public class Enemy : BaseUnit
         return 30;
     }
 
-    override public void death()
+    override public void Death()
     {
         Debug.Log("enemy isDead");
         DropItem();

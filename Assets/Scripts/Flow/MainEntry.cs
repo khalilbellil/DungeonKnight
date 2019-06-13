@@ -48,7 +48,7 @@ public class MainEntry : MonoBehaviour
 
     }
 
-    private Flow InitializeFlowScript(CurrentState flowType, bool sceneAlreadyLoaded)
+    public Flow InitializeFlowScript(CurrentState flowType, bool sceneAlreadyLoaded)
     {
         Flow newFlow;
         switch (flowType)
@@ -128,5 +128,6 @@ public class MainEntry : MonoBehaviour
         //Initialize the flow script for the scene
         curFlow = InitializeFlowScript(cs, false);
     }
+
 }
  

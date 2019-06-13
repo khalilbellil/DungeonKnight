@@ -8,10 +8,12 @@ public enum Directions { North,South,East,West}
 
 public class GeneriqueRooms : MonoBehaviour
 {
+    Vector2 posInRoomM;
+
     int lvl;
     string namePath;
     int numOfDoors;
-    RoomType[] doors;
+    public RoomType[] doors;
     public GameObject north;
     public GameObject south;
     public GameObject east;
@@ -68,10 +70,11 @@ public class GeneriqueRooms : MonoBehaviour
 
     public virtual void UnlockDoors()
     {
-        north.SetActive(false);
-        east.SetActive(false);
-        south.SetActive(false);
-        west.SetActive(false);
+        
+        north.SetActive(doors[0] == RoomType.None);
+        east.SetActive(doors[1] == RoomType.None);
+        south.SetActive(doors[2] == RoomType.None);
+        west.SetActive(doors[3] == RoomType.None);
         tileDoors.GetComponent<TilemapCollider2D>().enabled = true;
     }
 
@@ -154,5 +157,10 @@ public class GeneriqueRooms : MonoBehaviour
         }
         //calculate which direction
         //RoomManager.Instance.RoomExited(Directions.North)
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
     }
 }

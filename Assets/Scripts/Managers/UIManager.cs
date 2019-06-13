@@ -23,18 +23,26 @@ public class UIManager
     public GameObject inventoryUI;
     public GameObject pauseMenuUI;
     public GameObject gameOverUI;
+    [Header("other links:")]
+    MainEntry mainEntry;
     #endregion
 
     // // // 
 
     public void Initialize()
     {
+        mainEntry = GameObject.FindObjectOfType<MainEntry>();
         AddListenerToButtons();
     }
 
     public void UpdateManager()
     {
         OpenCloseInventory();
+
+        if (InputManager.Instance.inputPressed.interactPressed)//test
+        {
+            TryAgainButton();
+        }
     }
 
     public void FixedUpdateManager()
@@ -44,7 +52,7 @@ public class UIManager
 
     public void StopManager()
     {
-
+        instance = null;
     }
 
     // // // 
@@ -73,12 +81,11 @@ public class UIManager
     //GameOver UI:
     void BackToMainMenuButton()
     {//Go back to Menu
-        MainEntry.sceneNb = 1; //Switch to Menu Scene and Menu Flow.
+        mainEntry.GoToNextFlow(CurrentState.Game); //Switch to Menu Scene/Flow.
     }
     void TryAgainButton()
     {//Restart GameFlow
-        MainEntry.sceneNb = 1; //Switch to Menu
-        MainEntry.sceneNb = 2; //Switch to Game
+        mainEntry.GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
     }
 
 }

@@ -2,7 +2,6 @@
 
 public class PlayerManager
 {
-    private InputController input;
     #region Singleton Pattern
     private static PlayerManager instance = null;
     private PlayerManager() { }
@@ -25,34 +24,36 @@ public class PlayerManager
     public void Initialize()
     {
         SpawnPlayer();
-        //input = InputController.Instance;
-        //input.Initialize(player);
-        Debug.Log("PlayerManager Initialize");
+        player.Init();
+
+
+
+        //Debug.Log("PlayerManager Initialize");
+
     }
 
-    public void UpdateManager()
+    public void UpdateManager(float dt)
     {
         //input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
-        player.PlayerUpdate(InputManager.Instance.inputPressed);
-
+        player.PlayerUpdate(InputManager.Instance.inputPressed, dt);
         if (!player.isAlive && !gameOverDone)
         {
-            gameOverDone = true;
-            GameOver();
-        }
+                gameOverDone = true;
+                GameOver();
 
+        }
     }
 
-    public void FixedUpdateManager()
+    public void FixedUpdateManager(float dt)
     {
         //input.UpdatePosition(InputManager.Instance.inputPressed.dirPressed, player);
-        player.PlayerFixedUpdate(InputManager.Instance.fixedInputPressed);
+        player.PlayerFixedUpdate(InputManager.Instance.fixedInputPressed, dt);
 		
     }
 
     public void StopManager()
-    {
-
+    {//Reset everything
+        instance = null;
     }
 
 
@@ -60,12 +61,14 @@ public class PlayerManager
     {
         //Instantiate the Player(s)
         player = GameObject.Instantiate(Resources.Load<Player>(PrefabsDir.playerDir));
+        //player.enabled = true;
     }
 
     void GameOver()
     {
-        //Game Over UI Here
+        //Game Over UI Here (Call the UIManager function to activate the concerned UI)
         Debug.Log("Game Over !");
+
     }
 
 }

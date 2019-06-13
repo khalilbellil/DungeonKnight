@@ -39,22 +39,23 @@ public class RoomManager
         //room = GameObject.FindObjectOfType<Room>();
         //SetCurrentRoomRandomly(RoomType.Prototype);
         GenerateRooms();
-        Debug.Log("RoomManager.Initialize()");
+        //Debug.Log("RoomManager.Initialize()");
     }
 
     public void UpdateManager()
     {
-        Debug.Log("RoomManager.UpdateManager()");
+
     }
 
     public void FixedUpdateManager()
     {
-        Debug.Log("RoomManager.FixedUpdateManager()");
+       // Debug.Log("RoomManager.FixedUpdateManager()");
     }
 
     public void StopManager()
     {
         Debug.Log("RoomManager.StopManager()");
+        instance = null;
     }
 
     public void RoomExited(Directions dir)
@@ -122,6 +123,15 @@ public class RoomManager
 
         //then instantiate the room and store it into currentRoom
         //room.SetRoom(roomPath);
+    }
+
+    public RoomType RoomTypeOfDir(Directions dir)
+    {
+        RoomType retour = RoomType.None;
+        //check roomtype of the 4 neighbors (N, S, W, E)
+        //return the roomType of the wanted dir
+
+        return retour;
     }
 
 }

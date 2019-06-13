@@ -2,26 +2,36 @@
 
 public class Player : BaseUnit
 {
-    
+	public int coins;
+
     override public void Init()
     {
-        Debug.Log("player init");
+        base.Init();
+        //Debug.Log("player init");
+        foreach(Weapon weapon in weaponList)
+        {
+            weapon.Init(hitableLayer);
+        }
     }
 
-    public void PlayerUpdate(InputManager.InputPkg input)
+    public void PlayerUpdate(InputManager.InputPkg input, float dt)
     {
-        Debug.Log("player update");
 
         if(input.leftMouseButtonPressed)
-            useWeapon(input.dirPressed);
+            UseWeapon(input.aimingDirection);
 
         if(input.interactPressed)
             Interact();
 
+        if (input.switchWeaponPressed)         
+            SwitchWeapon();
+
+        weaponList[activeWeaponIndex].WeaponUpdate(dt);
+
         base.UnitUpdate();
     }
 
-    public void PlayerFixedUpdate(InputManager.InputPkg input)
+    public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
     {
         if (input.jumpPressed)
             UseDash(input.dirPressed);
@@ -31,11 +41,9 @@ public class Player : BaseUnit
         base.UnitFixedUpdate();
 
 		CharacterRotation(input.deltaMouse);
-
-        Debug.Log("player fixedupdate");
     }
 
-    override public void death()
+    override public void Death()
     {
         Debug.Log("player isDead");
     }
@@ -57,6 +65,26 @@ public class Player : BaseUnit
 
     public void UseActive()
     {
+
+    }
+
+    public void SwitchWeapon()
+    {
+        if (weaponList != null)
+        {
+            weaponList[activeWeaponIndex].gameObject.SetActive(false);  //turns off the weapon we are unequiping
+
+            activeWeaponIndex++;
+
+
+            if(activeWeaponIndex + 1 > weaponList.Length)
+            {
+                activeWeaponIndex = 0;
+            }
+
+            Debug.Log(weaponList[activeWeaponIndex].transform.name + " equipped");
+            weaponList[activeWeaponIndex].gameObject.SetActive(true);   //turns on the weapon using now
+        }
 
     }
 
