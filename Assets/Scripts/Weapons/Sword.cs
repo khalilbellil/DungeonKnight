@@ -48,7 +48,7 @@ public class Sword : Weapon
             {
                 target.gameObject.GetComponent<BaseUnit>()?.TakeDamage(dammage);
             }
-            base.Attack(dir, casterLocation, dt);
+            base.Attack(dir, casterLocation);
 
             DrawHitBox(true, angle, hitBoxLocation, hitBoxSize);
 
