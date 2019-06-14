@@ -17,14 +17,15 @@ public class BaseUnit : MonoBehaviour
     #region Unit Stats
     [Header("Unit Stats:")]
     [SerializeField] private int health;
-    [SerializeField] private int speed;
+    [SerializeField] protected int speed;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;
+    [HideInInspector] public float speedMultiplier = 1; 
     #endregion
 
     [HideInInspector] public Rigidbody2D rb;
-
+    protected Animator anim;
     // // //
 
     virtual public void Init()
@@ -35,7 +36,9 @@ public class BaseUnit : MonoBehaviour
             activeWeaponIndex = 0;
        
         rb = GetComponent<Rigidbody2D>();
-       // Debug.Log("basic init");
+        // Debug.Log("basic init");
+
+        anim = GetComponent<Animator>();
     }
     
     virtual public void UnitUpdate()
@@ -55,7 +58,8 @@ public class BaseUnit : MonoBehaviour
 
 		target = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
-		transform.up = target;
+		//transform.up = target;
+
 	}
 
 	virtual public void Death()
@@ -73,13 +77,20 @@ public class BaseUnit : MonoBehaviour
 
         weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
         //Debug.Log("basic use weapon");
+        anim.SetTrigger("UseWeapon");
     }
 
     virtual public void UpdateMovement(Vector2 dir)
     {
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed * speedMultiplier;
 
        // Debug.Log("Movement: " + dir);
+    }
+
+    public void ChangeSpeedMultiplier(float _speedMult)
+    {
+        speedMultiplier = _speedMult;
+
     }
 
     public void UseDash(Vector2 dir)

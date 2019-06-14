@@ -27,7 +27,7 @@ public class Player : BaseUnit
             SwitchWeapon();
 
         weaponList[activeWeaponIndex].WeaponUpdate(dt);
-
+        MovementAnimations();
         base.UnitUpdate();
     }
 
@@ -51,10 +51,7 @@ public class Player : BaseUnit
 	override public void MovementAnimations()
     {
         Debug.Log("player animation");
-    }
-
-    void Jump()
-    {
+        anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
 
     }
 
