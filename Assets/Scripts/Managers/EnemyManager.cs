@@ -23,22 +23,30 @@ public class EnemyManager
 
     public ArrayList enemiesAlive = new ArrayList();
     ArrayList coins = new ArrayList();
+    public EnemySword es;
 
     // // // 
 
     public void Initialize()
     {
-
+        /*for (int i = 0; i < enemiesAlive.Count; i++)
+        {
+            enemiesAlive[i].
+        }*/
+        SpawnEnemy(1);
+        es.Init();
+        
     }
 
     public void UpdateManager()
     {//Check if enemies are alive, if not call KillEnemy.
+        es.UnitUpdate();
 
     }
 
     public void FixedUpdateManager()
     {
-
+        es.UnitFixedUpdate();
     }
 
     public void StopManager()
@@ -50,7 +58,8 @@ public class EnemyManager
 
     void SpawnEnemy(int roomLvl)
     {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
-
+        es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir));
+        AddEnemy(es);
     }
 
     void KillEnemy(Enemy killedEnemy)

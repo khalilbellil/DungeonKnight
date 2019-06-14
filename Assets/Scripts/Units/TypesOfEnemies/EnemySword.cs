@@ -24,6 +24,7 @@ public class EnemySword : Enemy
         list1 = new List<Transition.MyDelegate>()
         {
             // attack ended
+            (enemy) => { return enemy.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, enemy.transform.position); }
         };
 
         list2 = new List<Transition.MyDelegate>()
@@ -71,19 +72,19 @@ public class EnemySword : Enemy
 
         stateM = new StateMachine(eUnitState.MOVE, stateDict);
         
-        Debug.Log("enemyS init");
+       // Debug.Log("enemyS init");
     }
 
     override public void UnitUpdate()
     {
         stateM.Update();
-        Debug.Log("enemyS update");
+        //Debug.Log("enemyS update");
     }
 
     override public void UnitFixedUpdate()
     {
         stateM.FixedUpdate();
-        Debug.Log("enemyS fixedupdate");
+        //Debug.Log("enemyS fixedupdate");
     }
     
 }

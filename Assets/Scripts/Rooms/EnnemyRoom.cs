@@ -7,6 +7,12 @@ public class EnnemyRoom : GeneriqueRooms
     int roomSet;
     bool isCleared = false;
 
+    private void Start()
+    {
+
+        Initialize(1, new RoomType[] { RoomType.Boss, RoomType.Enemy, RoomType.Shop,RoomType.None});
+    }
+
     public override void Initialize(int _lvl, RoomType[] _doors)
     {
         base.Initialize(_lvl, _doors);
@@ -43,12 +49,12 @@ public class EnnemyRoom : GeneriqueRooms
 
         foreach(Enemy e in EnemyManager.Instance.enemiesAlive)
         {
-            x = Random.Range(-21, 21);
-            y = Random.Range(-10, 10);
-            while(Physics2D.OverlapBox(new Vector2(x + .5f, y + .5f), new Vector2(.9f, .9f), 0, LayerMask.GetMask("Player", "Objects", "Walls")) != null)
+            x = Random.Range(1, 43);
+            y = Random.Range(2, 22);
+            while (Physics2D.OverlapBox(new Vector2(x + .5f, y + .5f), new Vector2(.9f, .9f), 0, LayerMask.GetMask("Player", "Objects", "Walls", "RoomSet")) != null)
             {
-                x = Random.Range(-21, 21);
-                y = Random.Range(-10, 10);
+                x = Random.Range(1, 43);
+                y = Random.Range(2, 22);
             }
             e.transform.position = new Vector3(x, y, 0);
         }

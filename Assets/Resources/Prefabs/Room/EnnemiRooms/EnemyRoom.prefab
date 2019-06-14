@@ -1328,7 +1328,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -4021,7 +4021,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -7876,7 +7876,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -11665,7 +11665,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -14176,7 +14176,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -14584,7 +14584,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -24483,7 +24483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8312595688941045487
 Transform:
   m_ObjectHideFlags: 0
@@ -24675,20 +24675,10 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.1, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 8312595688941045484}
-    m_ColliderPaths:
-    - - X: 220000000
-        Y: -10000000
-      - X: 220000000
-        Y: 10000000
-      - X: 210000000
-        Y: 10000000
-      - X: 210000000
-        Y: -10000000
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 21.9, y: 1}
@@ -26866,7 +26856,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -26967,7 +26957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8312595689892052039
 Transform:
   m_ObjectHideFlags: 0
@@ -27233,20 +27223,10 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.1}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 8312595689892052036}
-    m_ColliderPaths:
-    - - X: 20000000
-        Y: 120000000
-      - X: -20000000
-        Y: 120000000
-      - X: -20000000
-        Y: 100000000
-      - X: 20000000
-        Y: 100000000
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 2, y: 11.9}
@@ -27274,7 +27254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8312595690006651208
 Transform:
   m_ObjectHideFlags: 0
@@ -27532,20 +27512,10 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.1}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 8312595690006651317}
-    m_ColliderPaths:
-    - - X: 20000000
-        Y: -100000000
-      - X: -20000000
-        Y: -100000000
-      - X: -20000000
-        Y: -120000000
-      - X: 20000000
-        Y: -120000000
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 2, y: -9.9}
@@ -27573,7 +27543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8312595690117473294
 Transform:
   m_ObjectHideFlags: 0
@@ -27765,20 +27735,10 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.1, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 8312595690117473291}
-    m_ColliderPaths:
-    - - X: -210000000
-        Y: -10000000
-      - X: -210000000
-        Y: 10000000
-      - X: -220000000
-        Y: 10000000
-      - X: -220000000
-        Y: -10000000
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: -20.9, y: 1}
@@ -27851,6 +27811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46cbacea57ace343a691cfefef70ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doors: 
   north: {fileID: 8312595689892052056}
   south: {fileID: 8312595690006651209}
   east: {fileID: 8312595688941045472}
@@ -28155,7 +28116,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -28169,14 +28130,6 @@ CompositeCollider2D:
         Y: 100000000
       - X: 10000000
         Y: 100000000
-    - - X: 220000000
-        Y: 10000000
-      - X: 210000000
-        Y: 10000000
-      - X: 210000000
-        Y: -10000000
-      - X: 220000000
-        Y: -10000000
     - - X: -210000000
         Y: 10000000
       - X: -220000000
@@ -28184,6 +28137,14 @@ CompositeCollider2D:
       - X: -220000000
         Y: -10000000
       - X: -210000000
+        Y: -10000000
+    - - X: 220000000
+        Y: 10000000
+      - X: 210000000
+        Y: 10000000
+      - X: 210000000
+        Y: -10000000
+      - X: 220000000
         Y: -10000000
     - - X: 10000000
         Y: -100000000
@@ -28199,14 +28160,14 @@ CompositeCollider2D:
       - {x: -1, y: 11}
       - {x: -1, y: 10}
       - {x: 1, y: 10}
-    - - {x: 22, y: 1}
-      - {x: 21, y: 1}
-      - {x: 21, y: -1}
-      - {x: 22, y: -1}
     - - {x: -21, y: 1}
       - {x: -22, y: 1}
       - {x: -22, y: -1}
       - {x: -21, y: -1}
+    - - {x: 22, y: 1}
+      - {x: 21, y: 1}
+      - {x: 21, y: -1}
+      - {x: 22, y: -1}
     - - {x: 1, y: -10}
       - {x: -1, y: -10}
       - {x: -1, y: -11}
