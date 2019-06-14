@@ -503,7 +503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2920689653637063254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 0.02, z: 0}
+  m_LocalPosition: {x: 2, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2920689651686160338}
@@ -580,6 +580,7 @@ MonoBehaviour:
   isAlive: 1
   activeWeaponIndex: 0
   health: 100
+  maxHealth: 0
   speed: 5
   critChance: 0
   critMultipier: 0

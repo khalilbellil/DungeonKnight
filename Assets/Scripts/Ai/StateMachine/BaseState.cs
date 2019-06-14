@@ -22,7 +22,7 @@ public class BaseState
     
     virtual public void Update()
     {
-        Debug.Log("BASE UPDATE");
+        //Debug.Log("BASE UPDATE");
     }
 
     virtual public void FixedUpdate()

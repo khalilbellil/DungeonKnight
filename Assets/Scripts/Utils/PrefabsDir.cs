@@ -10,7 +10,7 @@ public class PrefabsDir
 	public static string potionDir = "Prefabs/Items/Potion";
 
     public static string playerDir = "Prefabs/Units/Character";
-    public static string enemyDir = "Prefabs/Enemies/Enemy";
+    public static string enemyDir = "Prefabs/Units/Enemy";
     public static string bossDir = "Prefabs/Enemies/Boss";
 
 }

@@ -9,35 +9,40 @@ public class Grid
     public float nodeRadius;
     public float distance;
 
-    bool[,] gridColiders;
-    Vector2[,] realGrid;
+    static bool[,] gridColiders = new bool[45, 25];
     Node[,] gridN;
-    public List<Node> FinalPath;
-    
+    public List<Node> FinalPath = new List<Node>();
+
     int gridSizeX, gridSizeY;
 
-    public Grid()
+    public static void InitBoolGrid()
     {
-        for (int i = 0; i < 44; i++)
+        Vector2[,] realGrid = new Vector2[45, 25];
+        for (int i = 0; i < 45; i++)
         {
-            for (int j = 0; j < 24; j++)
+            for (int j = 0; j < 25; j++)
             {
-                realGrid[i, j] = new Vector2((float)(i - 21.5), (float)(j - 11.5));
+                realGrid[i, j] = new Vector2((float)(i), (float)(j));
             }
         }
 
-        for (int i = 0; i < 44; i++)
+        for (int i = 0; i < 45; i++)
         {
-            for (int j = 0; j < 24; j++)
+            for (int j = 0; j < 25; j++)
             {
-                gridColiders[i, j] = Physics2D.OverlapPoint(realGrid[i, j], LayerMask.GetMask("Objects", "Walls", "RoomSet"), -Mathf.Infinity, +Mathf.Infinity);
+                gridColiders[i, j] = Physics2D.OverlapPoint(realGrid[i, j] + new Vector2(.5f,.5f), LayerMask.GetMask("Objects", "Walls", "RoomSet", "Doors"), -Mathf.Infinity, +Mathf.Infinity);
             }
         }
     }
 
+    public Grid()
+    {
+
+    }
+
     public int SearchInList(List<Node> l, Node n)
     {
-        for (int i = 0; i < l.Count;i++)
+        for (int i = 0; i < l.Count; i++)
         {
             if (l[i].position == n.position)
             {
@@ -69,9 +74,8 @@ public class Grid
             }
         }
 
-
         list[minIndex] = list[list.Count - 1];
-        list.Remove(list[minIndex]);
+        list.Remove(list[list.Count - 1]);
 
         return result;
     }
@@ -80,25 +84,56 @@ public class Grid
     {
         List<Node> result = new List<Node>();
 
-        int[,] v = new  int[,]{ {0,1}, {1,0}, {0,-1}, {-1,0}, {1,1}, {-1,1}, {-1,-1}, {1,-1} };
+        int[,] v = new int[,] { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 }, { 1, 1 }, { -1, 1 }, { -1, -1 }, { 1, -1 } };
 
         for (int i = 0; i < 8; i++)
         {
-            Vector2 tempv2 = n.position;
-            tempv2.x += v[i, 0];
-            tempv2.y += v[0, i];
+            Vector2Int gridLocToCheck = n.gridLoc;
 
-            if (gridColiders[(int)tempv2.x,(int)tempv2.y] == false)
+            gridLocToCheck.x += v[i, 0];
+            gridLocToCheck.y += v[i, 1];
+
+            //int a = (int)(tempv2.x);
+            //int b = (int)(tempv2.y);
+            try
             {
-                double d = Mathf.Sqrt(tempv2.x * tempv2.x + tempv2.y * tempv2.y);
-                result.Add(new Node(tempv2,n.gCost + (int)d, Hcost(tempv2, goal), n));
+                bool addNode = !IsWallAtLocation(gridLocToCheck);
+                if (!IsWallAtLocation(gridLocToCheck))
+                {
+                    double d = Mathf.Sqrt(gridLocToCheck.x * gridLocToCheck.x + gridLocToCheck.y * gridLocToCheck.y);
+                    result.Add(new Node(gridLocToCheck, n.gCost + (int)d, Hcost(gridLocToCheck, goal), n));
+                }
+
             }
-            
+            catch
+            {
+                Debug.LogError("");
+            }
+
+
         }
 
         return result;
 
     }
+    private bool IsWallAtLocation(Vector2Int locToCheck)
+    {
+        if ((locToCheck.x < 0 || locToCheck.x > 43) || (locToCheck.y < 0 || locToCheck.y > 23))//y...
+        {
+            return true;
+        }
+        return gridColiders[(int)(locToCheck.x), (int)(locToCheck.y)];
+    }
+
+    //private Vector2Int WorldPosToGridLoc(Vector2 v2)
+    //{
+    //    return 
+    //}
+    //
+    //private Vector2 GridLocToWorld(Vector2Int v2)
+    //{
+    //
+    //}
 
     public bool Astar(Transform position, Transform goal)
     {
@@ -107,19 +142,19 @@ public class Grid
         
         bool PathFound = false;
 
-        openList.Add(new Node(new Vector2(Mathf.Round(position.position.x), Mathf.Round(position.position.y)), 0, Hcost(position.position,goal), null));
+        openList.Add(new Node(new Vector2(position.position.x, position.position.y), 0, Hcost(position.position,goal), null));
 
-        while (openList != null)
+        while (openList.Count > 0)
         {
             Node n = SearchNode(openList);
-            List<Node> path = new List<Node>();
 
-            if (n.position.Equals(goal.position))
+            //Debug.Log("openList not empty");
+            if (n.position == new Vector2(goal.position.x, goal.position.y))
             {
-
+               // Debug.Log("Equals");
                 while (n.parent != null)
                 {
-                    path.Add(n);
+                    FinalPath.Add(n);
                     n = n.parent;
                 }
 
@@ -150,10 +185,14 @@ public class Grid
                     openList.Add(no);
                 }
             }
-
         }
 
         return false;
+    }
+
+    public List<Node> GetPath()
+    {
+        return FinalPath;
     }
 
 }
