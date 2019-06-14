@@ -5,7 +5,18 @@ using UnityEngine;
 public class Enemy : BaseUnit
 {
 
-    public int GetRange( )
+	//----Krina is Testing stuff----//
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		Debug.Log("gotcha");
+		HealthBar.health -= 10f;
+	}
+    public StateMachine stateM;
+    public Grid grid;
+
+	//-----------------------------//
+
+	public int GetRange( )
     {
         return 30;
     }
@@ -46,8 +57,9 @@ public class Enemy : BaseUnit
         //useWeapon();
     }
 
-    public void Move()
+    public void Move(Transform goal)
     {
+        grid.Astar(this.transform, goal);
         //MoveTo();
     }
 }

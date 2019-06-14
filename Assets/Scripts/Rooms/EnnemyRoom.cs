@@ -43,12 +43,12 @@ public class EnnemyRoom : GeneriqueRooms
 
         foreach(Enemy e in EnemyManager.Instance.enemiesAlive)
         {
-            x = Random.Range(1, 43);
-            y = Random.Range(1, 23);
+            x = Random.Range(-21, 21);
+            y = Random.Range(-10, 10);
             while(Physics2D.OverlapBox(new Vector2(x + .5f, y + .5f), new Vector2(.9f, .9f), 0, LayerMask.GetMask("Player", "Objects", "Walls")) != null)
             {
-                x = Random.Range(1, 43);
-                y = Random.Range(1, 23);
+                x = Random.Range(-21, 21);
+                y = Random.Range(-10, 10);
             }
             e.transform.position = new Vector3(x, y, 0);
         }

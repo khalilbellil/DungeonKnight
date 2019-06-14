@@ -13,11 +13,13 @@ public class BaseUnit : MonoBehaviour
     public bool isAlive;
     public int activeWeaponIndex;  //  0 = Sword, 1 = Bow (not implemented yet)
     #endregion
-    
+
     #region Unit Stats
     [Header("Unit Stats:")]
-    [SerializeField] private int health;
-    [SerializeField] protected int speed;
+
+    [SerializeField] public int health;
+	[SerializeField] public int maxHealth;
+	[SerializeField] protected int speed;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;
@@ -100,11 +102,13 @@ public class BaseUnit : MonoBehaviour
      
     public void TakeDamage(int dmg)
     {
-        health -= dmg;
-        if (health <= 0)
-            isAlive = false;
-        Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
-
+		if (isAlive)
+		{
+			health -= dmg;
+			if (health <= 0)
+				isAlive = false;
+			Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
+		}
     }
 
 }
