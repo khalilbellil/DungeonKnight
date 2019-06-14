@@ -6,11 +6,12 @@ public class Sword : Weapon
 {
     protected float range;
 
-    public override void Init(LayerMask hitableLayer)
+    public override void Init(LayerMask hitableLayer, BaseUnit _owner)
     {
         range = 2;
         hitBoxSize = new Vector2(1.5f, 1.5f);
-        base.Init(hitableLayer);
+        base.Init(hitableLayer, _owner);
+        animTrigger = "UseSword";
     }
 
     public override void WeaponUpdate(float dt)

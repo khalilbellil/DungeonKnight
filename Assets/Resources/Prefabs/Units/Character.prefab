@@ -529,7 +529,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11918521, y: 0.3822589}
+  m_Offset: {x: 0, y: 0.41}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -540,7 +540,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1283531, y: 1.7645178}
+  m_Size: {x: 1.03, y: 1.7}
   m_EdgeRadius: 0
 --- !u!50 &2920689653637063258
 Rigidbody2D:
@@ -588,6 +588,7 @@ MonoBehaviour:
   hitableLayer:
     serializedVersion: 2
     m_Bits: 4096
+  speedMultiplier: 1
   rb: {fileID: 2920689653637063258}
   coins: 0
 --- !u!95 &6626479789936854981
@@ -616,11 +617,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2920689651722798807}
     m_Modifications:
-    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
-        type: 3}
-      propertyPath: m_Name
-      value: Sword
-      objectReference: {fileID: 0}
     - target: {fileID: 3151011620313453921, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -675,6 +671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 83.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 2053142545729261402, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
