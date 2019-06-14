@@ -90,11 +90,13 @@ public class BaseUnit : MonoBehaviour
      
     public void TakeDamage(int dmg)
     {
-        health -= dmg;
-        if (health <= 0)
-            isAlive = false;
-        Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
-
+		if (isAlive)
+		{
+			health -= dmg;
+			if (health <= 0)
+				isAlive = false;
+			Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
+		}
     }
 
 }

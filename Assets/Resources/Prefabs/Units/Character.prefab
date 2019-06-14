@@ -580,6 +580,7 @@ MonoBehaviour:
   isAlive: 1
   activeWeaponIndex: 0
   health: 100
+  maxHealth: 100
   speed: 5
   critChance: 0
   critMultipier: 0
@@ -595,6 +596,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2920689653398150835}
     m_Modifications:
+    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword
+      objectReference: {fileID: 0}
     - target: {fileID: 3151011620313453921, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -649,11 +655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 83.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
-        type: 3}
-      propertyPath: m_Name
-      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 2053142545729261402, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
