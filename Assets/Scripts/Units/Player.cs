@@ -2,6 +2,7 @@
 
 public class Player : BaseUnit
 {
+
 	public int coins;
 
     override public void Init()
@@ -27,7 +28,7 @@ public class Player : BaseUnit
             SwitchWeapon();
 
         weaponList[activeWeaponIndex].WeaponUpdate(dt);
-
+        MovementAnimations();
         base.UnitUpdate();
     }
 
@@ -45,16 +46,14 @@ public class Player : BaseUnit
 
     override public void Death()
     {
-        Debug.Log("player isDead");
+		GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
+		Debug.Log("player isDead");
     }
 
 	override public void MovementAnimations()
     {
         Debug.Log("player animation");
-    }
-
-    void Jump()
-    {
+        anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
 
     }
 
