@@ -6,11 +6,12 @@ public class Sword : Weapon
 {
     protected float range;
 
-    public override void Init(LayerMask hitableLayer)
+    public override void Init(LayerMask hitableLayer, BaseUnit _owner)
     {
         range = 2;
         hitBoxSize = new Vector2(1.5f, 1.5f);
-        base.Init(hitableLayer);
+        base.Init(hitableLayer, _owner);
+        animTrigger = "UseSword";
     }
 
     public override void WeaponUpdate(float dt)
@@ -39,7 +40,7 @@ public class Sword : Weapon
                 angle -= 360;
             }
 
-            Collider2D[] targetsHit = Physics2D.OverlapBoxAll(hitBoxLocation, hitBoxSize, angle, layerToHit);      //Creates a box and returns all colliders with Layer named "Enemy" inside it 
+            Collider2D[] targetsHit = Physics2D.OverlapBoxAll(hitBoxLocation, hitBoxSize * range, angle, layerToHit);      //Creates a box and returns all colliders with Layer named "Enemy" inside it 
 
           //  Debug.Log("Angle: " + angle);
            // Debug.Log("Direction : " + dir);

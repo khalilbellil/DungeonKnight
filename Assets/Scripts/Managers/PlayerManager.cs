@@ -34,14 +34,17 @@ public class PlayerManager
 
     public void UpdateManager(float dt)
     {
-        //input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
-        player.PlayerUpdate(InputManager.Instance.inputPressed, dt);
-        if (!player.isAlive && !gameOverDone)
-        {
-                gameOverDone = true;
-                GameOver();
+		//input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
+		if (player != null)
+		{
+			player.PlayerUpdate(InputManager.Instance.inputPressed, dt);
+			if (!player.isAlive && !gameOverDone)
+			{
+				gameOverDone = true;
+				GameOver();
 
-        }
+			}
+		}
     }
 
     public void FixedUpdateManager(float dt)
@@ -66,6 +69,7 @@ public class PlayerManager
 
     void GameOver()
     {
+		player.Death();
         //Game Over UI Here (Call the UIManager function to activate the concerned UI)
         Debug.Log("Game Over !");
 

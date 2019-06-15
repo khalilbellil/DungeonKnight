@@ -109,7 +109,7 @@ public class RoomManager
 
     public void GoToNextRoom(Vector2Int pos, Directions dir)
     {
-       // currentRoom = GameObject.Instantiate(Resources.Load<GameObject>())
+       //. currentRoom = GameObject.Instantiate(Resources.Load<GameObject>())
     }
 
     public void SetCurrentRoomRandomly(RoomType roomType)

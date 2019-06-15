@@ -16,15 +16,18 @@ public class BaseUnit : MonoBehaviour
 
     #region Unit Stats
     [Header("Unit Stats:")]
+
     [SerializeField] public int health;
 	[SerializeField] public int maxHealth;
-	[SerializeField] private int speed;
+	[SerializeField] protected int speed;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;
+    [HideInInspector] public float speedMultiplier = 1; 
     #endregion
 
     [HideInInspector] public Rigidbody2D rb;
+    protected Animator anim;
 
     // // //
 
@@ -36,7 +39,9 @@ public class BaseUnit : MonoBehaviour
             activeWeaponIndex = 0;
        
         rb = GetComponent<Rigidbody2D>();
-       // Debug.Log("basic init");
+        // Debug.Log("basic init");
+
+        anim = GetComponent<Animator>();
     }
     
     virtual public void UnitUpdate()
@@ -56,7 +61,8 @@ public class BaseUnit : MonoBehaviour
 
 		target = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
-		transform.up = target;
+		//transform.up = target;
+
 	}
 
 	virtual public void Death()
@@ -78,9 +84,15 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void UpdateMovement(Vector2 dir)
     {
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed * speedMultiplier;
 
        // Debug.Log("Movement: " + dir);
+    }
+
+    public void ChangeSpeedMultiplier(float _speedMult)
+    {
+        speedMultiplier = _speedMult;
+
     }
 
     public void UseDash(Vector2 dir)
@@ -90,11 +102,18 @@ public class BaseUnit : MonoBehaviour
      
     public void TakeDamage(int dmg)
     {
-        health -= dmg;
-        if (health <= 0)
-            isAlive = false;
-        Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
+		if (isAlive)
+		{
+			health -= dmg;
+			if (health <= 0)
+				isAlive = false;
+			Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
+		}
+    }
 
+    public void UseAttackAnim(string triggerName)
+    {
+        anim.SetTrigger(triggerName);
     }
 
 }
