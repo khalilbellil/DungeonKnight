@@ -10,9 +10,12 @@ public class GeneriqueRooms : MonoBehaviour
 {
     Vector2 posInRoomM;
 
+    public bool isCleared = false;
+
     int lvl;
     string namePath;
     int numOfDoors;
+    public RoomType roomType;
     public RoomType[] doors;
     public GameObject north;
     public GameObject south;
@@ -35,6 +38,7 @@ public class GeneriqueRooms : MonoBehaviour
     {
         lvl = _lvl;   
         doors = _doors;
+        // roomType = _roomtype;
         north.SetActive(doors[0] == RoomType.None);
         east.SetActive(doors[1] == RoomType.None);
         south.SetActive(doors[2] == RoomType.None);
@@ -128,6 +132,7 @@ public class GeneriqueRooms : MonoBehaviour
 
     public void DoorTriggerEntered(Transform thingEnteredDoor)
     {
+        
         Debug.Log("thing entered door: " + thingEnteredDoor.name);
         //once confirmed is player & location
         if (thingEnteredDoor.CompareTag("Player"))

@@ -43,12 +43,12 @@ public class UIManager
 
     public void UpdateManager()
     {
-		uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString();
+		//uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString();
 		// still have to do the arrow incrementation
 
 		// ------------ for the Demo Friday ------------//
 		
-			uiLinks.healthBar.fillAmount = PlayerManager.Instance.player.health / PlayerManager.Instance.player.maxHealth;
+			//uiLinks.healthBar.fillAmount = PlayerManager.Instance.player.health / PlayerManager.Instance.player.maxHealth;
 		
 		// --------------------------------------------//
 

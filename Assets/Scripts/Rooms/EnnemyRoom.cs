@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnnemyRoom : GeneriqueRooms
 {
     int roomSet;
-    bool isCleared = false;
 
     public override void Initialize(int _lvl, RoomType[] _doors)
     {
+        roomType = RoomType.Enemy;
         base.Initialize(_lvl, _doors);
         //Choose the roomset using index of child
         roomSet = Random.Range(0,transform.GetChild(8).childCount);
