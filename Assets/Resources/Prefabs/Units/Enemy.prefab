@@ -192,6 +192,7 @@ MonoBehaviour:
   cdForNextAtk: 0
   arrowSpeed: 0
   nbArrow: 0
+  maxNbArrow: 0
   type: 0
 --- !u!1 &532366635
 GameObject:
@@ -373,6 +374,8 @@ MonoBehaviour:
   weaponList: []
   isAlive: 0
   activeWeaponIndex: 0
+  maxArrowCount: 0
+  arrowCount: 0
   health: 100
   maxHealth: 0
   speed: 4

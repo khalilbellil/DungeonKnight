@@ -12,6 +12,8 @@ public class BaseUnit : MonoBehaviour
     #region VARIABLES
     public bool isAlive;
     public int activeWeaponIndex;  //  0 = Sword, 1 = Bow (not implemented yet)
+    public int maxArrowCount;
+    public int arrowCount;
     #endregion
 
     #region Unit Stats
@@ -56,6 +58,7 @@ public class BaseUnit : MonoBehaviour
 
 	virtual public void CharacterRotation(Vector2 target)
     {
+
 		Vector3 mousePosition = Input.mousePosition;
 		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 

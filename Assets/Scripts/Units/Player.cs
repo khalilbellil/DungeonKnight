@@ -4,6 +4,8 @@ public class Player : BaseUnit
 {
 
 	public int coins;
+    public int arrowCount;
+    public int maxArrowCount;
 
     override public void Init()
     {
@@ -13,6 +15,7 @@ public class Player : BaseUnit
         {
             weapon.Init(hitableLayer, this);
         }
+        maxArrowCount = 20;
     }
 
     public void PlayerUpdate(InputManager.InputPkg input, float dt)
@@ -41,7 +44,7 @@ public class Player : BaseUnit
 
         base.UnitFixedUpdate();
 
-		CharacterRotation(input.deltaMouse);
+		//CharacterRotation(input.deltaMouse);
     }
 
     override public void Death()

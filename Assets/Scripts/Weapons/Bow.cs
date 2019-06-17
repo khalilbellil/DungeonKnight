@@ -12,12 +12,18 @@ enum ArrowType
 
 public class Bow : Weapon
 {
-    #region Sword Stats:
+    #region Bow Stats:
     [Header("Bow Specific:")]
-    [SerializeField] private float arrowSpeed;
+    [SerializeField] public float arrowSpeed;
     [SerializeField] private int nbArrow;
+    [SerializeField] private int maxNbArrow;
     [SerializeField] private ArrowType type;
     #endregion
 
-
+    private void Init()
+    {
+        nbArrow = maxNbArrow;
+        type = ArrowType.DEFAULT;
+        arrowSpeed = 15;        //to test
+    }
 }
