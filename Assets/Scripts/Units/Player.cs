@@ -37,7 +37,6 @@ public class Player : BaseUnit
         UpdateMovement(input.dirPressed);
 
         base.UnitFixedUpdate();
-        
     }
 
     override public void Death()

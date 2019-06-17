@@ -7,8 +7,6 @@ public class EnnemyRoom : GeneriqueRooms
     int roomSet;
     public bool roomSetted = false;
 
-    
-
     public override void Initialize(int _lvl, RoomType[] _doors)
     {
         roomType = RoomType.Enemy;
@@ -19,6 +17,7 @@ public class EnnemyRoom : GeneriqueRooms
             roomSetted = true;
         }
         roomSet = Random.Range(0,transform.GetChild(8).childCount);
+        
         transform.GetChild(8).GetChild(roomSet).gameObject.SetActive(true);
         if (!isCleared)
         {
@@ -58,7 +57,6 @@ public class EnnemyRoom : GeneriqueRooms
                 y = Random.Range(2, 22);
             }
             e.transform.position = new Vector3(x, y, 0);
-            //e.transform.position = new Vector3(40, 3, 0);
         }
     }
 }

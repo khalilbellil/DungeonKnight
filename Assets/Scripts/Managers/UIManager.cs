@@ -34,15 +34,21 @@ public class UIManager
 	// // // 
 	GameObject UI;
 	UILinks uiLinks;
-
+	Image bowImage;
+	Image swordImage;
+	Renderer render;
 	public void Initialize()
 	{
+		render = UI.GetComponent<Renderer>();
 		CreateUI();
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();
+		// check this out boi krina 
+		bowImage = Resources.Load(PrefabsDir.bowDir) as Image;
+		swordImage = Resources.Load(PrefabsDir.swordDir) as Image;
 		AddListenerToButtons();
 	}
-    
+
 	public void UpdateManager()
 	{
 		uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString();
@@ -52,9 +58,26 @@ public class UIManager
 			Debug.Log("new hp amount: " + PlayerManager.Instance.player.health);
 		}
 		float a = (float)PlayerManager.Instance.player.health / PlayerManager.Instance.player.maxHealth;
+
+
+
+		switch (PlayerManager.Instance.player.activeWeaponIndex)
+		{
+			case 0:
+				uiLinks.currentWeapon = bowImage;
+				break;
+			case 1:
+				uiLinks.currentWeapon = bowImage;
+				break;
+		}
+
+
+
+
 		//Debug.Log("a: " + a);
 
-		Color lerpColor = Color.Lerp(Color.red, Color.green, a); 
+		//changes the health bar color from green to red
+		Color lerpColor = Color.Lerp(Color.red, Color.green, a);
 		uiLinks.healthBar.fillAmount = a;
 		uiLinks.healthBar.color = lerpColor;
 
