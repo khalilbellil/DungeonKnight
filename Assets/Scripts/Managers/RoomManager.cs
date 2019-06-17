@@ -26,20 +26,25 @@ public class RoomManager
     public GameObject currentRoom; //The room where the player is.
     public Vector2Int currentRoomPos;
     Directions dirPlayerCameFrom; //Direction the player came from (example: If he takes the North Door, in the next room he will be exiting the South Door)
-    
+
+    Player player;
+
     // // // 
 
     public void Initialize()
     {//Generate Rooms
         currentRoom = GameObject.FindObjectOfType<GeneriqueRooms>().gameObject;
 
-        SetCurrentRoomRandomly(RoomType.Spawn);
-        //GenerateRooms();
+        //SetCurrentRoomRandomly(RoomType.Spawn);
+        GenerateRooms();
+        //currentRoom.GetComponent<GeneriqueRooms>().north.SetActive(true);
+
+        player = PlayerManager.Instance.player;
     }
 
     public void UpdateManager()
     {
-
+        ChangeRoom(player);
     }
 
     public void FixedUpdateManager()
@@ -57,28 +62,119 @@ public class RoomManager
 
     void GenerateRooms()
     {//Room Generation Logic: -First room always has to be a SpawnRoom, -check every door(N,S,W,E) and generate a room in this direction after the actual room.
+        rooms[0, 0] = RoomType.Spawn; //First room always a Spawn Room
 
-        //Fill the RoomTypes 2D Array:
-        int enemyRoomNb = 0;
-        rooms[0,0] = RoomType.Spawn;
+        InstantiateRoom(new Vector2Int(0, 0));
 
-        for (int i = 1; i < rooms.Length; i++)
+        for (int i = 0; i < 9; i++)
         {
-            for (int j = 1; j < rooms.Length; j++)
+            for (int j = 0; j < 9; j++)
             {
-                if (enemyRoomNb >= 25) //If 25 EnnemyRoom was generated, generate a BossRoom
+                if (i != 0 && j != 0)
                 {
-                    rooms[i, j] = RoomType.Boss;
-                    enemyRoomNb = 0; //Then reset the number of enemyRoom generated
-                }
-                else
-                {
-                    rooms[i, j] = RoomType.Enemy;
-                    enemyRoomNb++;
+                    int x = Random.Range(1, 3);
+                    rooms[i, j] = (RoomType)x;
                 }
             }
         }
+    }
 
+    public void InstantiateRoom(Vector2Int roomPos)
+    {
+        RoomType roomType = rooms[roomPos.x, roomPos.y];
+        GameObject.Destroy(currentRoom);
+        switch (roomType)
+        {
+            case RoomType.Enemy:
+                currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.ennemyRoomDir));
+                currentRoomPos = roomPos;
+                currentRoom.GetComponent<GeneriqueRooms>().posInRoomM = roomPos;
+                SetDoors2(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
+                break;
+            case RoomType.Boss:
+                currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.ennemyRoomDir));
+                currentRoomPos = roomPos;
+                currentRoom.GetComponent<GeneriqueRooms>().posInRoomM = roomPos;
+                SetDoors2(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
+                break;
+            case RoomType.Shop:
+                currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.spawnRoomDir));
+                currentRoomPos = roomPos;
+                currentRoom.GetComponent<GeneriqueRooms>().posInRoomM = roomPos;
+                SetDoors2(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
+                break;
+            case RoomType.Spawn:
+                currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.spawnRoomDir));
+                currentRoomPos = roomPos;
+                currentRoom.GetComponent<GeneriqueRooms>().posInRoomM = roomPos;
+                SetDoors2(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
+                break;
+            case RoomType.None:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void SetDoors2(Vector2Int pos, GeneriqueRooms room)
+    {//Activate the existing doors
+        room.north.SetActive(false);
+        room.east.SetActive(false);
+        room.south.SetActive(false);
+        room.west.SetActive(false);
+
+        if (pos.x == 0)
+        {
+            room.west.SetActive(true);
+        }
+
+        if (pos.y == 0)
+        {
+            room.south.SetActive(true);
+        }
+
+        if (pos.x == 9)
+        {
+            room.north.SetActive(true);
+        }
+
+        if (pos.y == 9)
+        {
+            room.east.SetActive(true);
+        }
+
+    }
+
+    void ChangeRoom(Player player)
+    {
+        if (player.transform.position.x >= 21 && player.transform.position.x <= 23 && player.transform.position.y >= 22 && player.transform.position.y <= 25)
+        {//North Door Activated
+            if (!currentRoom.GetComponent<GeneriqueRooms>().north.activeSelf)
+            {
+                InstantiateRoom(currentRoomPos + new Vector2Int(0, 1));
+            }
+        }
+        if (player.transform.position.x >= 0.5f && player.transform.position.x <= 1 && player.transform.position.y >= 11 && player.transform.position.y <= 13)
+        {//West Door Activated
+            if (!currentRoom.GetComponent<GeneriqueRooms>().west.activeSelf)
+            {
+                InstantiateRoom(currentRoomPos - new Vector2Int(1, 0));
+            }
+        }
+        if (player.transform.position.x >= 21 && player.transform.position.x <= 23 && player.transform.position.y >= 0.5f && player.transform.position.y <= 2)
+        {//South Door Activated
+            if (!currentRoom.GetComponent<GeneriqueRooms>().south.activeSelf)
+            {
+                InstantiateRoom(currentRoomPos - new Vector2Int(0, 1));
+            }
+        }
+        if (player.transform.position.x >= 43 && player.transform.position.x <= 43.5f && player.transform.position.y >= 11 && player.transform.position.y <= 13)
+        {//East Door Activated
+            if (!currentRoom.GetComponent<GeneriqueRooms>().east.activeSelf)
+            {
+                InstantiateRoom(currentRoomPos + new Vector2Int(1, 0));
+            }
+        }
     }
 
     public RoomType RoomTypeOfDir(Vector2Int roomPos, Directions dir)

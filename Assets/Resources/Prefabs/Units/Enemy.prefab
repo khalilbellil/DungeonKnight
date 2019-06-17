@@ -375,12 +375,13 @@ MonoBehaviour:
   activeWeaponIndex: 0
   health: 100
   maxHealth: 0
-  speed: 85
+  speed: 4
   critChance: 1.2
   critMultipier: 1.5
   hitableLayer:
     serializedVersion: 2
     m_Bits: 0
+  speedMultiplier: 1
   rb: {fileID: 0}
 --- !u!1 &1296651201
 GameObject:

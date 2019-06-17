@@ -13338,7 +13338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7689938647081310040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 22, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1006948439941218030}
@@ -13376,6 +13376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5f2d338c90f514796e5b1f78e3cc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posInRoomM: {x: 0, y: 0}
+  isCleared: 0
+  roomType: 0
+  doors: 
   north: {fileID: 8420346500440402324}
   south: {fileID: 7098289978255816438}
   east: {fileID: 9141687421143823184}

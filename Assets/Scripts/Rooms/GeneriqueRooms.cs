@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public enum RoomType { Spawn, Enemy, Boss, Shop, None}
+public enum RoomType { Enemy, Boss, Shop, Spawn, None }
 public enum Directions { North,South,East,West}
 
 public class GeneriqueRooms : MonoBehaviour
 {
-    Vector2 posInRoomM;
+    public Vector2 posInRoomM;
 
     public bool isCleared = false;
 
@@ -39,10 +39,14 @@ public class GeneriqueRooms : MonoBehaviour
         lvl = _lvl;   
         doors = _doors;
         // roomType = _roomtype;
-        north.SetActive(doors[0] == RoomType.None);
-        east.SetActive(doors[1] == RoomType.None);
-        south.SetActive(doors[2] == RoomType.None);
-        west.SetActive(doors[3] == RoomType.None);
+
+        //north.SetActive(doors[0] == RoomType.None);
+        //east.SetActive(doors[1] == RoomType.None);
+        //south.SetActive(doors[2] == RoomType.None);
+        //west.SetActive(doors[3] == RoomType.None);
+
+        
+
         ColorDoor(doors[0], Directions.North);
         ColorDoor(doors[1], Directions.East);
         ColorDoor(doors[2], Directions.South);
@@ -54,7 +58,7 @@ public class GeneriqueRooms : MonoBehaviour
         {
             c.geometryType = CompositeCollider2D.GeometryType.Outlines;
         }
-        
+
 
         //doors[1]  east
         //doors[2]  south
@@ -69,6 +73,35 @@ public class GeneriqueRooms : MonoBehaviour
 
     public virtual void Close()
     {
+
+    }
+
+    public virtual void SetDoors(Vector2Int pos)
+    {//Activate the existing doors
+        north.SetActive(false);
+        east.SetActive(false);
+        south.SetActive(false);
+        west.SetActive(false);
+
+        if (pos.x == 0)
+        {
+            west.SetActive(true);
+        }
+
+        if (pos.y == 0)
+        {
+            south.SetActive(true);
+        }
+
+        if (pos.x == 9)
+        {
+            north.SetActive(true);
+        }
+
+        if (pos.y == 9)
+        {
+            east.SetActive(true);
+        }
 
     }
 

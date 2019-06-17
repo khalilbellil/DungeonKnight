@@ -10,8 +10,8 @@ public class GameFlow : Flow
 
         InputManager.Instance.Initialize();
         UIManager.Instance.Initialize();
-        RoomManager.Instance.Initialize();
         PlayerManager.Instance.Initialize();
+        RoomManager.Instance.Initialize();
         EnemyManager.Instance.Initialize();
         initialized = true;
     }
@@ -20,18 +20,17 @@ public class GameFlow : Flow
     {
         InputManager.Instance.UpdateManager();
         UIManager.Instance.UpdateManager();
-        RoomManager.Instance.UpdateManager();
         PlayerManager.Instance.UpdateManager(dt);
+        RoomManager.Instance.UpdateManager();
         EnemyManager.Instance.UpdateManager();
-
     }
 
     public override void FixedUpdate(float dt)
     {
         InputManager.Instance.FixedUpdateManager();
         UIManager.Instance.FixedUpdateManager();
-        RoomManager.Instance.FixedUpdateManager();
         PlayerManager.Instance.FixedUpdateManager(dt);
+        RoomManager.Instance.FixedUpdateManager();
         EnemyManager.Instance.FixedUpdateManager();
     }
 
@@ -39,8 +38,8 @@ public class GameFlow : Flow
     {
         InputManager.Instance.StopManager();
         UIManager.Instance.StopManager();
-        RoomManager.Instance.StopManager();
         PlayerManager.Instance.StopManager();
+        RoomManager.Instance.StopManager();
         EnemyManager.Instance.StopManager();
     }
 

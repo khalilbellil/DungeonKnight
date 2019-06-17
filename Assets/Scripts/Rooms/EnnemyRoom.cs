@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnnemyRoom : GeneriqueRooms
 {
     int roomSet;
+    public bool roomSetted = false;
 
     private void Start()
     {
@@ -17,7 +18,12 @@ public class EnnemyRoom : GeneriqueRooms
         roomType = RoomType.Enemy;
         base.Initialize(_lvl, _doors);
         //Choose the roomset using index of child
-        roomSet = Random.Range(0,transform.GetChild(8).childCount);
+        if (!roomSetted)
+        {
+            roomSet = Random.Range(0, transform.GetChild(8).childCount);
+            roomSetted = true;
+        }
+        
         transform.GetChild(8).GetChild(roomSet).gameObject.SetActive(true);
         if (!isCleared)
         {
