@@ -42,12 +42,10 @@ public class UIManager
 		uiLinks = GameObject.FindObjectOfType<UILinks>();
 		AddListenerToButtons();
 	}
-
+    
 	public void UpdateManager()
 	{
 		uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString();
-		// still have to do the arrow incrementation
-		// ------------ for the Demo Friday ------------//
 		if (Input.GetKeyDown(KeyCode.C))
 		{
 			PlayerManager.Instance.player.TakeDamage(10);
@@ -59,14 +57,6 @@ public class UIManager
 		Color lerpColor = Color.Lerp(Color.red, Color.green, a); 
 		uiLinks.healthBar.fillAmount = a;
 		uiLinks.healthBar.color = lerpColor;
-		//uiLinks.healthBar.fillAmount = .5f;
-		// --------------------------------------------//
-
-	//	if () {
-	//		uiLinks.currentWeapon =
-	//		
-	//	}
-		//uiLinks.active= 
 
 		OpenCloseInventory();
 

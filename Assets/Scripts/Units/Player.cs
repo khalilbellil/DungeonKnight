@@ -11,7 +11,7 @@ public class Player : BaseUnit
         //Debug.Log("player init");
         foreach(Weapon weapon in weaponList)
         {
-            weapon.Init(hitableLayer);
+            weapon.Init(hitableLayer, this);
         }
     }
 
@@ -52,7 +52,7 @@ public class Player : BaseUnit
 
 	override public void MovementAnimations()
     {
-        Debug.Log("player animation");
+        //Debug.Log("player animation");
         anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
 
     }

@@ -281,11 +281,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1c72d66a37d04418de4936224dff96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponList: []
   isAlive: 1
+  activeWeaponIndex: 0
   health: 100
-  speed: 5
+  maxHealth: 0
+  speed: 80
   critChance: 0.01
   critMultipier: 1.2
+  hitableLayer:
+    serializedVersion: 2
+    m_Bits: 0
   rb: {fileID: 0}
 --- !u!1 &1378934649952094
 GameObject:

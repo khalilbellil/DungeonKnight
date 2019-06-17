@@ -28,6 +28,7 @@ public class BaseUnit : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rb;
     protected Animator anim;
+
     // // //
 
     virtual public void Init()
@@ -79,7 +80,6 @@ public class BaseUnit : MonoBehaviour
 
         weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
         //Debug.Log("basic use weapon");
-        anim.SetTrigger("UseWeapon");
     }
 
     virtual public void UpdateMovement(Vector2 dir)
@@ -110,5 +110,11 @@ public class BaseUnit : MonoBehaviour
 			Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
 		}
     }
+
+    public void UseAttackAnim(string triggerName)
+    {
+        anim.SetTrigger(triggerName);
+    }
+
 
 }
