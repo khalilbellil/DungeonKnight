@@ -100,7 +100,7 @@ public class Grid
                 bool addNode = !IsWallAtLocation(gridLocToCheck);
                 if (!IsWallAtLocation(gridLocToCheck))
                 {
-                    double d = Mathf.Sqrt(gridLocToCheck.x * gridLocToCheck.x + gridLocToCheck.y * gridLocToCheck.y);
+                    double d = /*Mathf.Sqrt(*/gridLocToCheck.x * gridLocToCheck.x + gridLocToCheck.y * gridLocToCheck.y/*)*/;
                     result.Add(new Node(gridLocToCheck, n.gCost + (int)d, Hcost(gridLocToCheck, goal), n));
                 }
 
@@ -137,6 +137,7 @@ public class Grid
 
     public bool Astar(Transform position, Transform goal)
     {
+        FinalPath.Clear();
         List<Node> openList = new List<Node>();
         List<Node> closeList = new List<Node>();
         
@@ -149,7 +150,7 @@ public class Grid
             Node n = SearchNode(openList);
 
             //Debug.Log("openList not empty");
-            if (n.position == new Vector2(goal.position.x, goal.position.y))
+            if ((n.position.x >= (goal.position.x - 1) && n.position.y >= (goal.position.y - 1)) && (n.position.x <= (goal.position.x + 1) && n.position.y <= (goal.position.y + 1)))
             {
                // Debug.Log("Equals");
                 while (n.parent != null)
