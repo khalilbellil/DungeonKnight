@@ -5,19 +5,21 @@ using UnityEngine;
 public class EnnemyRoom : GeneriqueRooms
 {
     int roomSet;
-    bool isCleared = false;
+    public bool roomSetted = false;
 
-    private void Start()
-    {
-
-        Initialize(1, new RoomType[] { RoomType.Boss, RoomType.Enemy, RoomType.Shop,RoomType.None});
-    }
 
     public override void Initialize(int _lvl, RoomType[] _doors)
     {
+        roomType = RoomType.Enemy;
         base.Initialize(_lvl, _doors);
-        //Choose the roomset using index of child
+        if (!roomSetted)
+        {
+            roomSet = Random.Range(0, transform.GetChild(8).childCount);
+            roomSetted = true;
+        }
+        
         roomSet = Random.Range(0,transform.GetChild(8).childCount);
+
         transform.GetChild(8).GetChild(roomSet).gameObject.SetActive(true);
         if (!isCleared)
         {
