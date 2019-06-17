@@ -24,7 +24,7 @@ public class EnemySword : Enemy
         list1 = new List<Transition.MyDelegate>()
         {
             // attack ended
-            (enemy) => { return enemy.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, enemy.transform.position); }
+            (enemy) => { return enemy.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
         };
 
         list2 = new List<Transition.MyDelegate>()
@@ -34,7 +34,7 @@ public class EnemySword : Enemy
 
         list3 = new List<Transition.MyDelegate>()
         {
-            (enemy) => { return enemy.GetRange() >= Vector2.Distance(PlayerManager.Instance.player.transform.position, enemy.transform.position); }
+            (enemy) => { return enemy.GetRange() >= Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
             //(enemy) => { return enemy.GetRange() >= Vector2.Distance(new Vector2(1,1), new Vector2(9,9)); }
         };
 

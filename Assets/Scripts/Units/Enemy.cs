@@ -18,7 +18,7 @@ public class Enemy : BaseUnit
 
 	public int GetRange( )
     {
-        return 30;
+        return 3;
     }
 
     override public void Death()
@@ -60,9 +60,9 @@ public class Enemy : BaseUnit
 
     public void Move(Transform goal)
     {
-        return;
+        //return;
         grid.Astar(this.transform, goal);
-        Vector2 dir = (grid.GetPath()[0].position - (Vector2)transform.position).normalized;
+        Vector2 dir = (grid.GetPath()[0].position - (Vector2)this.transform.position/*(Vector2)transform.position*/).normalized;
         UpdateMovement(dir);
     }
 }
