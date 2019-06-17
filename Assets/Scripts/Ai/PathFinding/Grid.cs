@@ -97,10 +97,10 @@ public class Grid
             //int b = (int)(tempv2.y);
             try
             {
-                bool addNode = !IsWallAtLocation(gridLocToCheck);
+                //bool addNode = !IsWallAtLocation(gridLocToCheck);
                 if (!IsWallAtLocation(gridLocToCheck))
                 {
-                    double d = /*Mathf.Sqrt(*/gridLocToCheck.x * gridLocToCheck.x + gridLocToCheck.y * gridLocToCheck.y/*)*/;
+                    double d = Mathf.Sqrt(gridLocToCheck.x * gridLocToCheck.x + gridLocToCheck.y * gridLocToCheck.y);
                     result.Add(new Node(gridLocToCheck, n.gCost + (int)d, Hcost(gridLocToCheck, goal), n));
                 }
 
@@ -141,14 +141,14 @@ public class Grid
         List<Node> openList = new List<Node>();
         List<Node> closeList = new List<Node>();
         
-        bool PathFound = false;
+        //bool PathFound = false;
 
         openList.Add(new Node(new Vector2(position.position.x, position.position.y), 0, Hcost(position.position,goal), null));
 
         while (openList.Count > 0)
         {
             Node n = SearchNode(openList);
-
+            //int i = 0;
             //Debug.Log("openList not empty");
             if ((n.position.x >= (goal.position.x - 1) && n.position.y >= (goal.position.y - 1)) && (n.position.x <= (goal.position.x + 1) && n.position.y <= (goal.position.y + 1)))
             {
@@ -157,6 +157,9 @@ public class Grid
                 {
                     FinalPath.Add(n);
                     n = n.parent;
+                    /*GameObject obj = new GameObject();
+                    obj.transform.position = n.position;
+                    obj.name = "" + i++;*/
                 }
 
                 return true;
