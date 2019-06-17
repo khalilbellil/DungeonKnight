@@ -15,4 +15,8 @@ public class PrefabsDir
     public static string enemyDir = "Prefabs/Units/Enemy";
     public static string bossDir = "Prefabs/Enemies/Boss";
 
+
+    public static string ennemyRoomDir = "Prefabs/Room/EnnemiRooms/EnemyRoom";
+    public static string spawnRoomDir = "Prefabs/Room/Spawn/SpawnRoom";
+    public static string prototypeRoomDir = "Prefabs/Room/Prototype";
 }
