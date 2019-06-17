@@ -30,6 +30,7 @@ public class MoveState : BaseState
 
     public override void Exit()
     {
+        enemy.rb.velocity = new Vector2();
         //Debug.Log("MOVE EXIT");
         base.Exit();
     }

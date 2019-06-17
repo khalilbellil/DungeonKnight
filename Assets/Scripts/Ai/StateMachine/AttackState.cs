@@ -15,24 +15,24 @@ public class AttackState : BaseState
     {
        
         enemy.Attack();
-        Debug.Log("ATTACK ENTER");
+        //Debug.Log("ATTACK ENTER");
         base.Enter();
     }
 
     public override void Update()
     {
-        Debug.Log("ATTACK UPDATE");
+        //Debug.Log("ATTACK UPDATE");
         base.Update();
     }
 
     public override void FixedUpdate()
     {
-        Debug.Log("ATTACK FIXEDUPDATE");
+        //Debug.Log("ATTACK FIXEDUPDATE");
     }
 
     public override void Exit()
     {
-        Debug.Log("ATTACK EXIT");
+        //Debug.Log("ATTACK EXIT");
         base.Exit();
     }
 }

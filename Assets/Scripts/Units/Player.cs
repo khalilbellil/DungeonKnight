@@ -11,11 +11,13 @@ public class Player : BaseUnit
     {
         base.Init();
         //Debug.Log("player init");
+
         foreach(Weapon weapon in weaponList)
         {
             weapon.Init(hitableLayer, this);
         }
         maxArrowCount = 20;
+
     }
 
     public void PlayerUpdate(InputManager.InputPkg input, float dt)
@@ -30,9 +32,9 @@ public class Player : BaseUnit
         if (input.switchWeaponPressed)         
             SwitchWeapon();
 
-        weaponList[activeWeaponIndex].WeaponUpdate(dt);
+        
         MovementAnimations();
-        base.UnitUpdate();
+        base.UnitUpdate(dt);
     }
 
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
@@ -43,8 +45,6 @@ public class Player : BaseUnit
         UpdateMovement(input.dirPressed);
 
         base.UnitFixedUpdate();
-
-		//CharacterRotation(input.deltaMouse);
     }
 
     override public void Death()

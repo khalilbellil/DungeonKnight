@@ -140,53 +140,59 @@ public class Grid
         FinalPath.Clear();
         List<Node> openList = new List<Node>();
         List<Node> closeList = new List<Node>();
-        
-        //bool PathFound = false;
 
-        openList.Add(new Node(new Vector2(position.position.x, position.position.y), 0, Hcost(position.position,goal), null));
-
-        while (openList.Count > 0)
+        if (goal != null)
         {
-            Node n = SearchNode(openList);
-            //int i = 0;
-            //Debug.Log("openList not empty");
-            if ((n.position.x >= (goal.position.x - 1) && n.position.y >= (goal.position.y - 1)) && (n.position.x <= (goal.position.x + 1) && n.position.y <= (goal.position.y + 1)))
+            
+            //bool PathFound = false;
+
+            openList.Add(new Node(new Vector2(position.position.x + 0.5f, position.position.y + 0.5f), 0, Hcost(position.position,goal), null));
+
+            while (openList.Count > 0)
             {
-               // Debug.Log("Equals");
-                while (n.parent != null)
+                Node n = SearchNode(openList);
+                //int i = 0;
+                //Debug.Log("openList not empty");
+                if ((n.position.x >= (goal.position.x - 1) && n.position.y >= (goal.position.y - 1)) && (n.position.x <= (goal.position.x + 1) && n.position.y <= (goal.position.y + 1)))
                 {
-                    FinalPath.Add(n);
-                    n = n.parent;
-                    /*GameObject obj = new GameObject();
-                    obj.transform.position = n.position;
-                    obj.name = "" + i++;*/
-                }
-
-                return true;
-            }
-
-            closeList.Add(n);
-
-            List<Node> neighboors = SearchNeighboorNodes(n,goal);
-
-            foreach (Node no in neighboors)
-            {
-                int indexOpen = SearchInList(openList, no);
-
-                if (SearchInList(closeList, no) != -1)
-                {
-
-                }
-                else if (indexOpen != -1)
-                {
-                    if (openList[indexOpen].gCost > no.gCost)
+                   // Debug.Log("Equals");
+                    while (n.parent != null)
                     {
-                        openList[indexOpen] = no;
+
+                        FinalPath.Add(n);
+                        n = n.parent;
+                        /*GameObject obj = new GameObject();
+                        obj.transform.position = n.position;
+                        obj.name = "" + i++;*/
                     }
+
+                    return true;
                 }
-                else
+
+                closeList.Add(n);
+
+                List<Node> neighboors = SearchNeighboorNodes(n,goal);
+
+                foreach (Node no in neighboors)
                 {
-                    openList.Add(no);
+                    int indexOpen = SearchInList(openList, no);
+
+                    if (SearchInList(closeList, no) != -1)
+                    {
+
+                    }
+                    else if (indexOpen != -1)
+                    {
+                
+                        if (openList[indexOpen].gCost > no.gCost)
+                        {
+                            openList[indexOpen] = no;
+                        }
+                    }
+                    else
+                    {
+                        openList.Add(no);
+                    }
                 }
             }
         }

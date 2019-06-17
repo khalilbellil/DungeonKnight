@@ -44,29 +44,22 @@ public class BaseUnit : MonoBehaviour
         // Debug.Log("basic init");
 
         anim = GetComponent<Animator>();
+        foreach (Weapon weapon in weaponList)
+        {
+            weapon.Init(hitableLayer, this);
+        }
     }
     
-    virtual public void UnitUpdate()
+    virtual public void UnitUpdate(float dt)
     {
-      //  Debug.Log("basic update");
+        weaponList[activeWeaponIndex].WeaponUpdate(dt);
+        Debug.Log(Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position));
     }
 
     virtual public void UnitFixedUpdate()
     {
         //Debug.Log("basic fixedupdate");
     }
-
-	virtual public void CharacterRotation(Vector2 target)
-    {
-
-		Vector3 mousePosition = Input.mousePosition;
-		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-		target = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-
-		//transform.up = target;
-
-	}
 
 	virtual public void Death()
     {
@@ -82,14 +75,11 @@ public class BaseUnit : MonoBehaviour
     public void UseWeapon(Vector2 dir) {
 
         weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
-        //Debug.Log("basic use weapon");
     }
 
     virtual public void UpdateMovement(Vector2 dir)
     {
         rb.velocity = dir * speed * speedMultiplier;
-
-       // Debug.Log("Movement: " + dir);
     }
 
     public void ChangeSpeedMultiplier(float _speedMult)

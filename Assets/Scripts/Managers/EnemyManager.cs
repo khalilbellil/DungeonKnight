@@ -21,9 +21,9 @@ public class EnemyManager
     #endregion
 
 
-    public ArrayList enemiesAlive = new ArrayList();
+    public List<Enemy> enemiesAlive = new List<Enemy>();
     ArrayList coins = new ArrayList();
-    public EnemySword es;
+    //public EnemySword es;
 
     // // // 
 
@@ -33,20 +33,22 @@ public class EnemyManager
         {
             enemiesAlive[i].
         }*/
-        SpawnEnemy(1);
-        es.Init();
+        SpawnEnemy(1,new Vector2(41,12));
+        //es.Init();
         
     }
 
-    public void UpdateManager()
+    public void UpdateManager(float dt)
     {//Check if enemies are alive, if not call KillEnemy.
-        es.UnitUpdate();
+        foreach (Enemy es in enemiesAlive)
+            es.UnitUpdate(dt);
 
     }
 
-    public void FixedUpdateManager()
+    public void FixedUpdateManager(float dt)
     {
-        es.UnitFixedUpdate();
+        foreach (Enemy es in enemiesAlive)
+            es.UnitFixedUpdate();
     }
 
     public void StopManager()
@@ -56,9 +58,10 @@ public class EnemyManager
 
     // // // 
 
-    void SpawnEnemy(int roomLvl)
+    void SpawnEnemy(int roomLvl,Vector2 location)
     {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
-        es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir));
+        Enemy es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir)).GetComponent<Enemy>();
+        es.Init();
         AddEnemy(es);
     }
 
