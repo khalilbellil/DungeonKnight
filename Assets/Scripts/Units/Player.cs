@@ -40,8 +40,6 @@ public class Player : BaseUnit
         UpdateMovement(input.dirPressed);
 
         base.UnitFixedUpdate();
-
-		CharacterRotation(input.deltaMouse);
     }
 
     override public void Death()

@@ -8,6 +8,8 @@ public class PrefabsDir
 	public static string coinDir = "Prefabs/Items/Coin";
 	public static string arrowDir = "Prefabs/Items/Arrow";
 	public static string potionDir = "Prefabs/Items/Potion";
+	public static string bowDir = "Prefabs/Weapons/Bow";
+	public static string swordDir = "Prefabs/Weapons/Sword";
 
 	public static string uiDir = "Prefabs/UI/PlayerUI";
 
