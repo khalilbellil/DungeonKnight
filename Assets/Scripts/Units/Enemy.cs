@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : BaseUnit
 {
 
+    public int AstarTimer = 0;
+
 	//----Krina is Testing stuff----//
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -62,8 +64,18 @@ public class Enemy : BaseUnit
     {
         //return;
         grid.Astar(this.transform, goal);
-        Vector2 dir = (grid.GetPath()[0].position - (Vector2)this.transform.position/*(Vector2)transform.position*/).normalized;
-        UpdateMovement(dir);
+        if (grid.GetPath().Count == 0)
+        {
+
+            UpdateMovement(new Vector2());
+        }
+        else
+        {
+            Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position/*(Vector2)transform.position*/).normalized;
+            UpdateMovement(dir);
+        }
+        
+        
     }
 }
 
