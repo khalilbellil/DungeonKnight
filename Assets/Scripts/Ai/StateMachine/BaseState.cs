@@ -39,7 +39,7 @@ public class BaseState
     {
         foreach (Transition t in list)
         {
-            if (!t.Evluate())
+            if (t.Evluate())
                 return t.toState;
         }
         return state;

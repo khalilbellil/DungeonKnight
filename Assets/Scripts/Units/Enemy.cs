@@ -20,25 +20,36 @@ public class Enemy : BaseUnit
 
 	public int GetRange( )
     {
-        return 3;
+        return 2;
+    }
+
+    override public void UnitUpdate(float dt)
+    {
+        stateM.Update();
+        base.UnitUpdate(dt);
+    }
+
+    override public void UnitFixedUpdate()
+    {
+        stateM.FixedUpdate();
     }
 
     override public void Death()
     {
-        Debug.Log("enemy isDead");
+        //Debug.Log("enemy isDead");
         DropItem();
         isAlive = false;
     }
 
     override public void MovementAnimations()
     {
-        Debug.Log("enemy animation");
+        //Debug.Log("enemy animation");
     }
 
     public void MoveTo(Vector2 goalPos)
     {
         Vector2 dir = (goalPos - (Vector2)transform.position).normalized;
-        Debug.Log("enemy isMoving");
+        //Debug.Log("enemy isMoving");
         UpdateMovement(dir);
     }
 
@@ -46,7 +57,7 @@ public class Enemy : BaseUnit
 
     public void DropItem()
     {
-        Debug.Log("enemy Droped item");
+        //Debug.Log("enemy Droped item");
     }
 
     public void Dodge()
@@ -56,17 +67,15 @@ public class Enemy : BaseUnit
 
     public void Attack()
     {
-        Debug.Log("enemy Attacked");
-        //useWeapon();
+        UseWeapon((PlayerManager.Instance.player.transform.position - this.transform.position).normalized);
     }
 
     public void Move(Transform goal)
     {
         //return;
         grid.Astar(this.transform, goal);
-        if (grid.GetPath().Count == 0)
+        if (grid.GetPath() == null)
         {
-
             UpdateMovement(new Vector2());
         }
         else
@@ -74,8 +83,6 @@ public class Enemy : BaseUnit
             Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position/*(Vector2)transform.position*/).normalized;
             UpdateMovement(dir);
         }
-        
-        
     }
 }
 

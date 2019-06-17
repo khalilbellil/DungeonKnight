@@ -22,7 +22,7 @@ public class GameFlow : Flow
         UIManager.Instance.UpdateManager();
         PlayerManager.Instance.UpdateManager(dt);
         RoomManager.Instance.UpdateManager();
-        EnemyManager.Instance.UpdateManager();
+        EnemyManager.Instance.UpdateManager(dt);
     }
 
     public override void FixedUpdate(float dt)
@@ -31,7 +31,7 @@ public class GameFlow : Flow
         UIManager.Instance.FixedUpdateManager();
         PlayerManager.Instance.FixedUpdateManager(dt);
         RoomManager.Instance.FixedUpdateManager();
-        EnemyManager.Instance.FixedUpdateManager();
+        EnemyManager.Instance.FixedUpdateManager(dt);
     }
 
     public override void EndFlow()
