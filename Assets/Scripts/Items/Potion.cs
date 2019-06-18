@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potion : MonoBehaviour
+public class Potion : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public int regenValue = 20;
+    public override void Init()
     {
-        
+        base.Init();
+        itemType = AllItems.potion;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void CollidedWithPlayer(Player player)
     {
-        
+        //Heal applied to player
+        player.health = Mathf.Clamp(player.health + regenValue, 0, player.maxHealth);
+       
     }
 }

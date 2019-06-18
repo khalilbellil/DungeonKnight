@@ -37,9 +37,17 @@ public class UIManager
 	Image bowImage;
 	Image swordImage;
 	Renderer render;
+
 	public void Initialize()
 	{
 		//render = UI.GetComponent<Renderer>();
+
+
+		//------------Initializes the win screen------------//
+		//winScreen = GameObject.FindObjectOfType<WinScreen>();
+		//winScreen.Initialize(this);
+		//-------------------------------------------------//
+
 		CreateUI();
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();
@@ -87,6 +95,10 @@ public class UIManager
 		{
 			TryAgainButton();
 		}
+
+
+
+
 	}
 
 	public void FixedUpdateManager()
@@ -121,15 +133,21 @@ public class UIManager
 
 	}
 
+	//Call the win screen when you win the game//
+	public void CallWinScreen() {
+
+	}
+
+
 
 	//GameOver UI:
 	void BackToMainMenuButton()
 	{//Go back to Menu
 		mainEntry.GoToNextFlow(CurrentState.Game); //Switch to Menu Scene/Flow.
 	}
-	void TryAgainButton()
+	public void TryAgainButton()
 	{//Restart GameFlow
-		mainEntry.GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
+		mainEntry.GoToNextFlow(CurrentState.End);//Restart the current Scene/Flow.
 	}
 
 	void CreateUI()

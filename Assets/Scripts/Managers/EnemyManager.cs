@@ -33,7 +33,7 @@ public class EnemyManager
         {
             enemiesAlive[i].
         }*/
-        SpawnEnemy(1,new Vector2(41,12));
+        //SpawnEnemy(1,new Vector2(41,12));
         //es.Init();
         
     }
