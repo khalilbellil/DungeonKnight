@@ -45,6 +45,7 @@ public class RoomManager
     public void UpdateManager()
     {
         ChangeRoom(player);
+
     }
 
     public void FixedUpdateManager()

@@ -39,7 +39,7 @@ public class UIManager
 	Renderer render;
 	public void Initialize()
 	{
-		render = UI.GetComponent<Renderer>();
+		//render = UI.GetComponent<Renderer>();
 		CreateUI();
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();

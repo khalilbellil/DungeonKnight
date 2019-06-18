@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 { 
     #region Weapon Stats
     [Header("Weapon Stats:")]
-    [SerializeField] public int dammage;
+    [SerializeField] public float dammage;
     [SerializeField] public Vector2 hitBoxSize;
     [SerializeField] public float cdForNextAtk;
     protected LayerMask layerToHit;

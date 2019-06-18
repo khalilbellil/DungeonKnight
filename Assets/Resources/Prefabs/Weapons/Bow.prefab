@@ -95,6 +95,9 @@ MonoBehaviour:
   dammage: 0
   hitBoxSize: {x: 0, y: 0}
   cdForNextAtk: 0
-  arrowSpeed: 0
-  nbArrow: 0
+  arrowSpeed: 5
+  speedModifier: 1
   type: 0
+  maxDrawingTime: 0
+  arrowPrefab: {fileID: 8222678705221903874, guid: f9a2cdc5506b78f4db89efd275050b70,
+    type: 3}

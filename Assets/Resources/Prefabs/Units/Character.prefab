@@ -580,6 +580,8 @@ MonoBehaviour:
   - {fileID: 7284926517214609674}
   isAlive: 1
   activeWeaponIndex: 0
+  maxArrowCount: 0
+  arrowCount: 0
   health: 100
   maxHealth: 100
   speed: 5
@@ -813,6 +815,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: dammage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: hitBoxSize.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: hitBoxSize.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: cdForNextAtk
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: arrowSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: maxDrawingTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a20e8c5f449e8224eac9a1e82604451f, type: 3}

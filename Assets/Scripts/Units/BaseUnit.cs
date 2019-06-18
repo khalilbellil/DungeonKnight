@@ -19,8 +19,8 @@ public class BaseUnit : MonoBehaviour
     #region Unit Stats
     [Header("Unit Stats:")]
 
-    [SerializeField] public int health;
-	[SerializeField] public int maxHealth;
+    [SerializeField] public float health;
+	[SerializeField] public float maxHealth;
 	[SerializeField] protected int speed;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
@@ -93,7 +93,7 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("Dash");
     }
      
-    public void TakeDamage(int dmg)
+    public void TakeDamage(float dmg)
     {
 		if (isAlive)
 		{
