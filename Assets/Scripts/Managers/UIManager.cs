@@ -47,8 +47,6 @@ public class UIManager
 		//-------------------------------------------------//
 
 
-
-		//render = UI.GetComponent<Renderer>();
 		CreateUI();
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();
