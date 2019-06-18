@@ -8,7 +8,7 @@ public enum Directions { North,South,East,West}
 
 public class GeneriqueRooms : MonoBehaviour
 {
-    public Vector2 posInRoomM;
+    public Vector2Int posInRoomM;
 
     public bool isCleared = false;
 
@@ -33,7 +33,7 @@ public class GeneriqueRooms : MonoBehaviour
         { RoomType.None, new Color(.5f,.5f,.5f,0) }
     };
 
-    // Start is called before the first frame update
+    // Start is called before the   first frame update
     public virtual void Initialize(int _lvl, RoomType[] _doors)
     {
         lvl = _lvl;   

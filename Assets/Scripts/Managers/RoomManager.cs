@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+public struct RoomData
+{
+    public Vector2Int pos;
+    public RoomType roomType;
+    public int roomSet;
+    public bool isCleared;
+    public bool northDoor;
+    public bool westDoor;
+    public bool southDoor;
+    public bool eastDoor;
+}
+
 public class RoomManager
 {
     #region Singleton Pattern
@@ -21,7 +33,10 @@ public class RoomManager
     }
     #endregion
 
+    public RoomData[,] roomsArray = new RoomData[10,10];
+
     public RoomType[,] rooms = new RoomType[10,10]; //The RoomTypes will be generated "randomly"
+    public int[,] roomSet = new int[10, 10];
 
     public GameObject currentRoom; //The room where the player is.
     public Vector2Int currentRoomPos;
@@ -59,6 +74,25 @@ public class RoomManager
     }
 
     // // // 
+
+    void GenerateRooms2()
+    {//Room Generation Logic: -First room always has to be a SpawnRoom, -check every door(N,S,W,E) and generate a room in this direction after the actual room.
+        roomsArray[0, 0] = new RoomData { pos = new Vector2Int(0, 0), }; //First room always a Spawn Room
+
+        InstantiateRoom(new Vector2Int(0, 0));
+
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if (i != 0 && j != 0)
+                {
+                    int x = Random.Range(1, 3);
+                    rooms[i, j] = (RoomType)x;
+                }
+            }
+        }
+    }
 
     void GenerateRooms()
     {//Room Generation Logic: -First room always has to be a SpawnRoom, -check every door(N,S,W,E) and generate a room in this direction after the actual room.
