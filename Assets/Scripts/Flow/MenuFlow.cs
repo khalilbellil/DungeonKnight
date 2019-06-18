@@ -6,10 +6,14 @@ public class MenuFlow : Flow
     Canvas menuCanvas;
     Button playButton, optionsButton, exitButton;
     MainEntry mainEntry;
+	MainMenu menu;
 
     public override void Initialize()
     {
-        mainEntry = GameObject.FindObjectOfType<MainEntry>();
+
+		menu = GameObject.FindObjectOfType<MainMenu>();
+		menu.Initialize(this);
+		mainEntry = GameObject.FindObjectOfType<MainEntry>();
         InputManager.Instance.Initialize();
         initialized = true;
         Debug.Log("MenuFlow init");
@@ -37,7 +41,7 @@ public class MenuFlow : Flow
         InputManager.Instance.StopManager();
     }
 
-    void PlayButton()
+    public void PlayButton()
     {
         Debug.Log("PLAY");
         mainEntry.GoToNextFlow(CurrentState.Menu);//Switch to Game Scene/Flow.
@@ -48,7 +52,7 @@ public class MenuFlow : Flow
         Debug.Log("OPTIONS");
     }
 
-    void ExitButton()
+    public void ExitButton()
     {
         Application.Quit();
         Debug.Log("EXIT");

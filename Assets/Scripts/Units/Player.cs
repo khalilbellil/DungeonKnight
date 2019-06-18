@@ -4,8 +4,6 @@ public class Player : BaseUnit
 {
 
 	public int coins;
-    public int arrowCount;
-    public int maxArrowCount;
 
     override public void Init()
     {
