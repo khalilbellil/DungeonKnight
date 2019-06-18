@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowItem : MonoBehaviour
+public class ArrowItem : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public override void Init()
     {
-        
+        base.Init();
+        itemType = AllItems.arrow;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void CollidedWithPlayer(Player player)
     {
-        
+        player.arrowCount = player.maxArrowCount;
+
     }
 }
