@@ -14,10 +14,10 @@ public class Item : MonoBehaviour
 
 	//Vars
 	public AllItems itemType;
+        
 
-
-	// --- all initializes and updates --- //
-	virtual public void Init()
+    // --- all initializes and updates --- //
+    virtual public void Init()
 	{
 		//RandomItemSpawn(new Vector3());
 		Debug.Log("initialize item");
