@@ -68,8 +68,6 @@ public class EnemySword : Enemy
             { eUnitState.MOVE, new MoveState(this,transList3) }
         };
 
-        
-
         grid = new Grid();
 
         stateM = new StateMachine(eUnitState.MOVE, stateDict);

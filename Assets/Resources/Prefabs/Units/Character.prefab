@@ -585,8 +585,8 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   speed: 5
-  critChance: 0
-  critMultipier: 0
+  critChance: 0.1
+  critMultipier: 1.5
   hitableLayer:
     serializedVersion: 2
     m_Bits: 4096

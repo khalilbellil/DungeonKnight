@@ -48,10 +48,11 @@ public class EnnemyRoom : GeneriqueRooms
 
     void Spawn()
     {
+        int numOfEnemies = Mathf.Clamp(lvl / 3, 2, 10);
         int x;
         int y;
 
-        foreach(Enemy e in EnemyManager.Instance.enemiesAlive)
+        for(int i = 0; i < numOfEnemies; i++)
         {
             x = Random.Range(1, 43);
             y = Random.Range(2, 22);
@@ -60,7 +61,8 @@ public class EnnemyRoom : GeneriqueRooms
                 x = Random.Range(1, 43);
                 y = Random.Range(2, 22);
             }
-            e.transform.position = new Vector3(x, y, 0);
+
+            EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y));
         }
     }
 }

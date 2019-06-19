@@ -53,7 +53,7 @@ public class BaseUnit : MonoBehaviour
     virtual public void UnitUpdate(float dt)
     {
         weaponList[activeWeaponIndex].WeaponUpdate(dt);
-        Debug.Log(Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position));
+        //Debug.Log(Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position));
     }
 
     virtual public void UnitFixedUpdate()

@@ -52,39 +52,47 @@ public class Grid
         return -1;
     }
 
+    public Node SearchInList(HashSet<Node> l, Node n)
+    {
+        Node node = null;
+
+        if (l.Contains(n))
+        {
+            node = n;
+        }
+
+        return node;
+    }
+
     public int Hcost(Vector2 position, Transform goal)
     {
         int Row = (int)((goal.position.x) - (position.x));
         int Col = (int)((goal.position.y) - (position.y));
 
-        return (int)(Mathf.Sqrt(Row * Row + Col * Col));
+        return (int)(Row * Row + Col * Col);
     }
 
-    public Node SearchNode(List<Node> list)
+    public Node SearchNode(HashSet<Node> list)
     {
-        Node result = list[0];
-        int minIndex = 0;
-
-        for (int i = 1; i < list.Count; i++)
+        Node result = new Node(new Vector2(0, 0), 10, 100000, null);
+        foreach (Node n in list)
         {
-            if (list[i].fCost < result.fCost)
+            if (n.fCost < result.fCost)
             {
-                result = list[i];
-                minIndex = i;
+                result = n;
             }
         }
 
-        list[minIndex] = list[list.Count - 1];
-        list.Remove(list[list.Count - 1]);
+        list.Remove(result);
 
         return result;
     }
 
-    public List<Node> SearchNeighboorNodes(Node n, Transform goal)
+    public HashSet<Node> SearchNeighboorNodes(Node n, Transform goal)
     {
-        List<Node> result = new List<Node>();
+        HashSet<Node> result = new HashSet<Node>();
 
-        int[,] v = new int[,] { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 }, { 1, 1 }, { -1, 1 }, { -1, -1 }, { 1, -1 } };
+        int[,] v = new int[,] { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 } };
 
         for (int i = 0; i < 8; i++)
         {
@@ -93,105 +101,103 @@ public class Grid
             gridLocToCheck.x += v[i, 0];
             gridLocToCheck.y += v[i, 1];
 
-            //int a = (int)(tempv2.x);
-            //int b = (int)(tempv2.y);
             try
             {
-                //bool addNode = !IsWallAtLocation(gridLocToCheck);
                 if (!IsWallAtLocation(gridLocToCheck))
                 {
-                    double d = Mathf.Sqrt(gridLocToCheck.x * gridLocToCheck.x + gridLocToCheck.y * gridLocToCheck.y);
+                    float d = Mathf.Sqrt((n.gridLoc.x - gridLocToCheck.x) * (n.gridLoc.x - gridLocToCheck.x) + (n.gridLoc.y - gridLocToCheck.y) * (n.gridLoc.y - gridLocToCheck.y));
                     result.Add(new Node(gridLocToCheck, n.gCost + (int)d, Hcost(gridLocToCheck, goal), n));
                 }
-
             }
             catch
             {
                 Debug.LogError("");
             }
 
-
         }
 
         return result;
-
     }
+
     private bool IsWallAtLocation(Vector2Int locToCheck)
     {
         if ((locToCheck.x < 0 || locToCheck.x > 43) || (locToCheck.y < 0 || locToCheck.y > 23))//y...
         {
             return true;
         }
-        return gridColiders[(int)(locToCheck.x), (int)(locToCheck.y)];
+        return gridColiders[(locToCheck.x), (locToCheck.y)];
     }
 
-    //private Vector2Int WorldPosToGridLoc(Vector2 v2)
-    //{
-    //    return 
-    //}
-    //
-    //private Vector2 GridLocToWorld(Vector2Int v2)
-    //{
-    //
-    //}
+    private int CalcGCost(Vector2 goalPos, Vector2Int gridLoc) { return 0; }
 
     public bool Astar(Transform position, Transform goal)
     {
         FinalPath.Clear();
-        List<Node> openList = new List<Node>();
-        List<Node> closeList = new List<Node>();
+        HashSet<Node> openListH = new HashSet<Node>();
+        HashSet<Node> closeListH = new HashSet<Node>();
 
         if (goal != null)
         {
             
-            //bool PathFound = false;
+            openListH.Add(new Node(new Vector2(position.position.x + 0.5f, position.position.y + 0.5f), 0, Hcost(position.position, goal), null));
 
-            openList.Add(new Node(new Vector2(position.position.x + 0.5f, position.position.y + 0.5f), 0, Hcost(position.position,goal), null));
-
-            while (openList.Count > 0)
+            while (openListH.Count > 0)
             {
-                Node n = SearchNode(openList);
-                //int i = 0;
-                //Debug.Log("openList not empty");
+                Node n = SearchNode(openListH);
                 if ((n.position.x >= (goal.position.x - 1) && n.position.y >= (goal.position.y - 1)) && (n.position.x <= (goal.position.x + 1) && n.position.y <= (goal.position.y + 1)))
                 {
-                   // Debug.Log("Equals");
                     while (n.parent != null)
                     {
-
                         FinalPath.Add(n);
                         n = n.parent;
-                        /*GameObject obj = new GameObject();
-                        obj.transform.position = n.position;
-                        obj.name = "" + i++;*/
                     }
 
                     return true;
                 }
 
-                closeList.Add(n);
+                closeListH.Add(n);
 
-                List<Node> neighboors = SearchNeighboorNodes(n,goal);
+                HashSet<Node> neighboors = SearchNeighboorNodes(n, goal);
 
+                Node optimalNeighbor;
+                int lowestCost = int.MaxValue;
                 foreach (Node no in neighboors)
                 {
-                    int indexOpen = SearchInList(openList, no);
+                    /*if(!closeListH.Contains(no))
+                    {
+                        int currentCost = CalcGCost(goal.position, no.gridLoc);
+                        if(currentCost < lowestCost)
+                        {
+                            optimalNeighbor = no;
+                            lowestCost = currentCost;
+                        }
 
-                    if (SearchInList(closeList, no) != -1)
+                    }
+
+                    if(openListH.Contains(no))
+                    {
+
+                        //
+                    }*/
+                    
+
+                    Node node = SearchInList(openListH, no);
+                    
+
+                    if (SearchInList(closeListH, no) != null)
                     {
 
                     }
-                    else if (indexOpen != -1)
+                    else if (node != null)
                     {
-                
-                        if (openList[indexOpen].gCost > no.gCost)
+                        if (node.gCost > no.gCost)
                         {
-                            openList[indexOpen] = no;
+                            node = no;
                         }
                     }
                     else
                     {
-                        openList.Add(no);
+                        openListH.Add(no);
                     }
                 }
             }

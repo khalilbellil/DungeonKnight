@@ -17,7 +17,7 @@ public class BaseState
 
     virtual public void Enter()
     {
-        Debug.Log("BASE ENTER");
+        //Debug.Log("BASE ENTER");
     }
     
     virtual public void Update()
@@ -27,12 +27,12 @@ public class BaseState
 
     virtual public void FixedUpdate()
     {
-        Debug.Log("BASE FIXEDUPDATE");
+        //Debug.Log("BASE FIXEDUPDATE");
     }
 
     virtual public void Exit()
     {
-        Debug.Log("BASE EXIT");
+        //Debug.Log("BASE EXIT");
     }
 
     public eUnitState Evaluate()
