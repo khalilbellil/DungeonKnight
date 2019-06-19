@@ -47,7 +47,7 @@ public class UIManager
 		//winScreen = GameObject.FindObjectOfType<WinScreen>();
 		//winScreen.Initialize(this);
 		//-------------------------------------------------//
-
+        
 		CreateUI();
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();

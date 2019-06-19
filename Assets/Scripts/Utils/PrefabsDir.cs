@@ -15,7 +15,7 @@ public class PrefabsDir
     public static string uiVictDir = "Prefabs/UI/WinUI";
 
     public static string playerDir = "Prefabs/Units/Character";
-    public static string enemyDir = "Prefabs/Units/Enemy";
+    public static string enemyDir = "Prefabs/Units/EnemySword";
     public static string bossDir = "Prefabs/Enemies/Boss";
 
 

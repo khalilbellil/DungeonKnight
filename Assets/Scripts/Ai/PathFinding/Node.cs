@@ -26,4 +26,16 @@ public class Node
         this.fCost = gCost + hCost;
         this.parent = parent;
     }
+
+    public override int GetHashCode()
+    {
+        return gridLoc.GetHashCode() ;
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (typeof(Node) == obj.GetType())
+            return gridLoc == ((Node)obj).gridLoc;
+        return false;
+    }
 }
