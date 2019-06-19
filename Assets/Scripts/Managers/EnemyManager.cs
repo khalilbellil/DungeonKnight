@@ -58,11 +58,20 @@ public class EnemyManager
 
     // // // 
 
-    void SpawnEnemy(int roomLvl,Vector2 location)
+    public void SpawnEnemy(int roomLvl,Vector2 location)
     {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
         Enemy es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir)).GetComponent<Enemy>();
+        es.transform.position = location;
         es.Init();
         AddEnemy(es);
+    }
+
+    public void SpawnBoss(Vector2 location)
+    {
+        Boss boss = GameObject.Instantiate(Resources.Load<Boss>(PrefabsDir.enemyDir)).GetComponent<Boss>();
+        boss.transform.position = location;
+        boss.Init();
+        AddEnemy(boss);
     }
 
     void KillEnemy(Enemy killedEnemy)
@@ -71,7 +80,7 @@ public class EnemyManager
         RemoveEnemy(killedEnemy);
     }
 
-    void AddEnemy(Enemy enemyToAdd)
+    public void AddEnemy(Enemy enemyToAdd)
     {//add enemy to the collection
         enemiesAlive.Add(enemyToAdd);
     }
