@@ -11,10 +11,14 @@ public class BaseUnit : MonoBehaviour
 
     #region VARIABLES
     public bool isAlive;
-    public int activeWeaponIndex;  //  0 = Sword, 1 = Bow (not implemented yet)
+    public bool isDashing;
+    public int activeWeaponIndex;
     public int maxArrowCount;
     public int arrowCount;
     protected bool isHolding;
+    private float dashTime;
+
+
     #endregion
 
     #region Unit Stats
@@ -23,10 +27,12 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] public float health;
 	[SerializeField] public float maxHealth;
 	[SerializeField] protected int speed;
+    [SerializeField] private float dashingSpeed;
+    [SerializeField] private float dashTimer;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;
-    [HideInInspector] public float speedMultiplier = 1; 
+    [HideInInspector] public float speedMultiplier = 1;
     #endregion
 
     [HideInInspector] public Rigidbody2D rb;
@@ -49,8 +55,9 @@ public class BaseUnit : MonoBehaviour
         {
             weapon.Init(hitableLayer, this);
         }
-
+        
         isHolding = false;
+        dashTime = dashTimer;
     }
     
     virtual public void UnitUpdate(float dt, Vector2 dir)
@@ -82,7 +89,10 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void UpdateMovement(Vector2 dir)
     {
-        rb.velocity = dir * speed * speedMultiplier;
+        if (!isDashing)
+            rb.velocity = dir * speed * speedMultiplier;
+        else
+            UseDash(dir);
     }
 
     public void ChangeSpeedMultiplier(float _speedMult)
@@ -93,12 +103,21 @@ public class BaseUnit : MonoBehaviour
 
     public void UseDash(Vector2 dir)
     {
-        Debug.Log("Dash");
+        isDashing = true;
+        dashTime -= Time.deltaTime;
+        if (dashTime <= 0)
+        {
+            isDashing = false;
+            dashTime = dashTimer;
+        }
+        rb.velocity = dir * dashingSpeed;
+
+        //Debug.Log("Dash");
     }
      
     public virtual void TakeDamage(float dmg)
     {
-		if (isAlive)
+		if (isAlive && !isDashing)      //will only take damage if he is alive and is not invincible from dashing
 		{
 			health -= dmg;
 			if (health <= 0) {

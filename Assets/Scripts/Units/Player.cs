@@ -39,10 +39,11 @@ public class Player : BaseUnit
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
     {
         if (input.jumpPressed)
-            UseDash(input.dirPressed);
+            isDashing = true;
 
         UpdateMovement(input.dirPressed);
         //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity);
+
         base.UnitFixedUpdate();
     }
 
