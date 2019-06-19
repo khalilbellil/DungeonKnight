@@ -29,12 +29,8 @@ public class EnemyManager
 
     public void Initialize()
     {
-        /*for (int i = 0; i < enemiesAlive.Count; i++)
-        {
-            enemiesAlive[i].
-        }*/
+        
         SpawnEnemy(1,new Vector2(41,12));
-        //es.Init();
         
     }
 

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Enemy : BaseUnit
 {
+    private float time = 0.05f;
+    public float interpolationPeriod = 0.05f;
+    public int Range;
 
-    public int AstarTimer = 0;
+    public Vector2 Target;
 
 	//----Krina is Testing stuff----//
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -20,7 +23,7 @@ public class Enemy : BaseUnit
 
 	public int GetRange( )
     {
-        return 2;
+        return Range;
     }
 
     override public void UnitUpdate(float dt)
@@ -53,8 +56,6 @@ public class Enemy : BaseUnit
         UpdateMovement(dir);
     }
 
-    //public void CalculatedD
-
     public void DropItem()
     {
         //Debug.Log("enemy Droped item");
@@ -73,14 +74,20 @@ public class Enemy : BaseUnit
     public void Move(Transform goal)
     {
         //return;
-        grid.Astar(this.transform, goal);
+        time += Time.fixedDeltaTime;
+
+        if (time >= interpolationPeriod)
+        {
+            time = 0.0f;
+            grid.Astar(this.transform, goal);
+        }
         if (grid.GetPath() == null)
         {
             UpdateMovement(new Vector2());
         }
         else
         {
-            Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position/*(Vector2)transform.position*/).normalized;
+            Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position).normalized;
             UpdateMovement(dir);
         }
     }
