@@ -27,6 +27,8 @@ public class Bow : Weapon
     private float timeDrawingBow;
     private bool isHolding;
 
+    private Arrow arrowGo;
+
     BowPkg arrowStats;
 
     override public void Init(LayerMask hitableLayer, BaseUnit _owner)
@@ -43,6 +45,8 @@ public class Bow : Weapon
         arrowStats.layerToHit = this.layerToHit;
         arrowStats.owner = this.owner;
 
+        arrowGo = Resources.Load<Arrow>("Prefabs/Weapons/Arrow");
+        arrowStats.arrowGo = this.arrowGo;
         isHolding = false;
         base.Init(hitableLayer, _owner);
 
@@ -96,6 +100,7 @@ public class Bow : Weapon
         public LayerMask layerToHit;
         public BaseUnit owner;
         public Vector2 dir;
+        public Arrow arrowGo;
     }
 }
 

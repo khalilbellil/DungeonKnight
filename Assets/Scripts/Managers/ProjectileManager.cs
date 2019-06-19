@@ -50,6 +50,7 @@ public class ProjectileManager
     public void CreateArrow(Bow.BowPkg bowPkg)
     {
         arrowCount++;
+        arrowList.Add(new Arrow());
         arrowList[arrowCount - 1].Init(bowPkg);
     }
 

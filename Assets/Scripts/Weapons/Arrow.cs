@@ -15,9 +15,11 @@ public class Arrow : MonoBehaviour
     {
 
         arrowStats = bowPkg;
+        go = arrowStats.arrowGo.gameObject;
         SpawnArrow();
         isTravelling = true;
-        rb = GetComponent<Rigidbody2D>();
+        
+        rb = go.GetComponent<Rigidbody2D>();
 
 
     }
@@ -35,7 +37,7 @@ public class Arrow : MonoBehaviour
     
     public void SpawnArrow()
     {
-        Instantiate(go, arrowStats.owner.transform);
+        Instantiate(go, arrowStats.owner.transform.position, Quaternion.identity);
         ProjectileManager.Instance.arrowList.Add(this);
         Debug.Log("Spawn Arrow");
     }
