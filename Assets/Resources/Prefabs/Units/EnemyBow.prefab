@@ -95,10 +95,12 @@ MonoBehaviour:
   dammage: 0
   hitBoxSize: {x: 0, y: 0}
   cdForNextAtk: 0
+  attackAvailable: 0
   arrowSpeed: 0
-  nbArrow: 0
-  maxNbArrow: 0
+  speedModifier: 0
   type: 0
+  maxDrawingTime: 0
+  arrowPrefab: {fileID: 0}
 --- !u!1 &1414893367762131624
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,10 +110,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5093598404596243880}
-  - component: {fileID: 603501031708531331}
   - component: {fileID: 7935898152275718371}
   - component: {fileID: 5547791960017496570}
   - component: {fileID: 654982181270248123}
+  - component: {fileID: 5207247633326150904}
   m_Layer: 12
   m_Name: EnemyBow
   m_TagString: Enemy
@@ -139,32 +141,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &603501031708531331
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414893367762131624}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.11918521, y: 0.3822589}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1283531, y: 1.7645178}
-  m_EdgeRadius: 0
 --- !u!50 &7935898152275718371
 Rigidbody2D:
   serializedVersion: 4
@@ -233,7 +209,25 @@ MonoBehaviour:
     m_Bits: 0
   speedMultiplier: 1
   rb: {fileID: 0}
+  interpolationPeriod: 0.05
   Range: 10
+  Target: {x: 0, y: 0}
+--- !u!58 &5207247633326150904
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414893367762131624}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0773617, y: 0.32165885}
+  serializedVersion: 2
+  m_Radius: 0.41857588
 --- !u!1 &1967330515911410519
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +482,7 @@ MonoBehaviour:
   dammage: 25
   hitBoxSize: {x: 1.5, y: 1.5}
   cdForNextAtk: 0.5
+  attackAvailable: 0
 --- !u!1 &5705495553406359496
 GameObject:
   m_ObjectHideFlags: 0

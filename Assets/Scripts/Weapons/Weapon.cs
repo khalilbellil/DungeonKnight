@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public Vector2 hitBoxSize;
     [SerializeField] public float cdForNextAtk;
     protected LayerMask layerToHit;
-    protected bool attackAvailable;
+    public bool attackAvailable;
     protected float currentCdTimer;
     protected BaseUnit owner;
     protected string animTrigger;

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum eUnitState { ATTACK, MOVE, DODGE }
+
 public class Enemy : BaseUnit
 {
     private float time = 0.05f;
@@ -75,21 +77,28 @@ public class Enemy : BaseUnit
     {
         //return;
         time += Time.fixedDeltaTime;
-
-        if (time >= interpolationPeriod)
+        if (goal != null)
         {
-            time = 0.0f;
-            grid.Astar(this.transform, goal);
-        }
-        if (grid.GetPath() == null)
-        {
-            UpdateMovement(new Vector2());
+            if (time >= interpolationPeriod)
+            {
+                time = 0.0f;
+                grid.Astar(this.transform, goal);
+            }
+            if (grid.GetPath() == null)
+            {
+                UpdateMovement(new Vector2());
+            }
+            else
+            {
+                Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position).normalized;
+                UpdateMovement(dir);
+            }
         }
         else
         {
-            Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position).normalized;
-            UpdateMovement(dir);
+            UpdateMovement(new Vector2());
         }
+        
     }
 }
 

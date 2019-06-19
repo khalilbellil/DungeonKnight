@@ -30,7 +30,7 @@ public class Grid
         {
             for (int j = 0; j < 25; j++)
             {
-                gridColiders[i, j] = Physics2D.OverlapPoint(realGrid[i, j] + new Vector2(.5f,.5f), LayerMask.GetMask("Objects", "Walls", "RoomSet", "Doors"), -Mathf.Infinity, +Mathf.Infinity);
+                gridColiders[i, j] = Physics2D.OverlapPoint(realGrid[i, j] + new Vector2(.5f, .5f), LayerMask.GetMask("Objects", "Walls", "RoomSet", "Doors"), -Mathf.Infinity, +Mathf.Infinity);
             }
         }
     }

@@ -42,8 +42,8 @@ public class Sword : Weapon
 
             Collider2D[] targetsHit = Physics2D.OverlapBoxAll(hitBoxLocation, hitBoxSize * range, angle, layerToHit);      //Creates a box and returns all colliders with Layer named "Enemy" inside it 
 
-          //  Debug.Log("Angle: " + angle);
-           // Debug.Log("Direction : " + dir);
+            //Debug.Log("Angle: " + angle);
+            //Debug.Log("Direction : " + dir);
 
             foreach (Collider2D target in targetsHit)
             {

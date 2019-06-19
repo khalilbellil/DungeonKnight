@@ -95,6 +95,7 @@ MonoBehaviour:
   dammage: 25
   hitBoxSize: {x: 1.5, y: 1.5}
   cdForNextAtk: 0.5
+  attackAvailable: 0
 --- !u!1 &279844973
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,10 +191,12 @@ MonoBehaviour:
   dammage: 0
   hitBoxSize: {x: 0, y: 0}
   cdForNextAtk: 0
+  attackAvailable: 0
   arrowSpeed: 0
-  nbArrow: 0
-  maxNbArrow: 0
+  speedModifier: 0
   type: 0
+  maxDrawingTime: 0
+  arrowPrefab: {fileID: 0}
 --- !u!1 &532366635
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,10 +285,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975230480}
-  - component: {fileID: 975230479}
   - component: {fileID: 975230478}
   - component: {fileID: 975230477}
   - component: {fileID: 5483599597114115623}
+  - component: {fileID: 7979281147664699863}
   m_Layer: 12
   m_Name: EnemySword
   m_TagString: Enemy
@@ -313,32 +316,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &975230479
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975230476}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.11918521, y: 0.3822589}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1283531, y: 1.7645178}
-  m_EdgeRadius: 0
 --- !u!50 &975230478
 Rigidbody2D:
   serializedVersion: 4
@@ -380,7 +357,7 @@ MonoBehaviour:
   arrowCount: 0
   health: 100
   maxHealth: 0
-  speed: 4
+  speed: 7
   critChance: 0.05
   critMultipier: 2.5
   hitableLayer:
@@ -388,7 +365,9 @@ MonoBehaviour:
     m_Bits: 0
   speedMultiplier: 1
   rb: {fileID: 0}
+  interpolationPeriod: 0.05
   Range: 2
+  Target: {x: 0, y: 0}
 --- !u!95 &5483599597114115623
 Animator:
   serializedVersion: 3
@@ -408,6 +387,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &7979281147664699863
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975230476}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0773617, y: 0.32165885}
+  serializedVersion: 2
+  m_Radius: 0.41857588
 --- !u!1 &1296651201
 GameObject:
   m_ObjectHideFlags: 0

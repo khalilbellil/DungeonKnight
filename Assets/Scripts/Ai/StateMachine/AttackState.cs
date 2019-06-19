@@ -14,13 +14,14 @@ public class AttackState : BaseState
     public override void Enter()
     {
        
-        enemy.Attack();
+        
         //Debug.Log("ATTACK ENTER");
         base.Enter();
     }
 
     public override void Update()
     {
+        enemy.Attack();
         //Debug.Log("ATTACK UPDATE");
         base.Update();
     }
