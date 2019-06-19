@@ -21,6 +21,8 @@ public class Boss : Enemy
     {
         base.Init();
 
+        target = PlayerManager.Instance.player.transform;
+
         list1 = new List<Transition.MyDelegate>()
         {
             // attack ended
@@ -74,9 +76,16 @@ public class Boss : Enemy
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        //inAir = false;
+
+    }
+
     void LaunchSlime()
     {
-        YeetSlime yS = GameObject.Instantiate(Resources.Load<YeetSlime>(PrefabsDir.enemyDir)).GetComponent<YeetSlime>();
+        YeetSlime yS = GameObject.Instantiate(Resources.Load<YeetSlime>(PrefabsDir.slimeDir)).GetComponent<YeetSlime>();
         yS.gameObject.GetComponent<Rigidbody2D>().AddForce((transform.position + new Vector3(transform.position.x,transform.position.y-1,0).normalized));
             
     }

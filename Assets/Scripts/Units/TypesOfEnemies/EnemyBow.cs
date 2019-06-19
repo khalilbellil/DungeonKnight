@@ -19,6 +19,8 @@ public class EnemyBow : Enemy
     {
         base.Init();
 
+        target = PlayerManager.Instance.player.transform;
+
         list1 = new List<Transition.MyDelegate>()
         {
             // attack ended

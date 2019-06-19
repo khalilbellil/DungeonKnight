@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eUnitState { ATTACK, MOVE, DODGE }
+public enum eUnitState { ATTACK, MOVE, DODGE, IDLE }
 
 public class Enemy : BaseUnit
 {
     private float time = 0.05f;
     public float interpolationPeriod = 0.05f;
     public int Range;
+    public Transform target;
 
     public Vector2 Target;
 

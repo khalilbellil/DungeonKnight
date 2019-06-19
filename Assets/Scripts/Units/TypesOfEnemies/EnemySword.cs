@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemySword : Enemy
 {
+
     List<Transition.MyDelegate> list1;
     List<Transition.MyDelegate> list2;
     List<Transition.MyDelegate> list3;
@@ -20,6 +21,8 @@ public class EnemySword : Enemy
     override public void Init()
     {
         base.Init();
+
+        target = PlayerManager.Instance.player.transform;
 
         list1 = new List<Transition.MyDelegate>()
         {

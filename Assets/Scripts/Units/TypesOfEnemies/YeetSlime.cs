@@ -22,26 +22,16 @@ public class YeetSlime : Enemy
     {
         base.Init();
 
+        target = PlayerManager.Instance.player.transform;
+
         list1 = new List<Transition.MyDelegate>()
         {
-            // attack ended
-            (enemy) => { return this.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
+            (enemy) => { return !this.inAir; }
         };
 
         list2 = new List<Transition.MyDelegate>()
         {
-            // ?
-        };
-
-        list3 = new List<Transition.MyDelegate>()
-        {
-            (enemy) => { return this.GetRange() >= Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
-            //(enemy) => { return enemy.GetRange() >= Vector2.Distance(new Vector2(1,1), new Vector2(9,9)); }
-        };
-
-        list4 = new List<Transition.MyDelegate>()
-        {
-            // Player Uses Bow / raycast it enemy, 50% chance, dodge isnt on cooldown
+            
         };
 
         transList1 = new List<Transition>()
@@ -52,26 +42,17 @@ public class YeetSlime : Enemy
 
         transList2 = new List<Transition>()
         {
-            new Transition(eUnitState.MOVE, list2, this),
-
-        };
-
-        transList3 = new List<Transition>()
-        {
-            new Transition(eUnitState.ATTACK, list3, this),
-            new Transition(eUnitState.DODGE, list4, this),
-
+            new Transition(eUnitState.IDLE, list2, this)
         };
 
         stateDict = new Dictionary<eUnitState, BaseState> {
-            { eUnitState.ATTACK, new AttackState(this, transList1) },
-            { eUnitState.DODGE, new DodgeState(this, transList2) },
-            { eUnitState.MOVE, new MoveState(this,transList3) }
+            { eUnitState.IDLE, new IdleState(this, transList1) },
+            { eUnitState.MOVE, new MoveState(this,transList2) }
         };
 
         grid = new Grid();
 
-        stateM = new StateMachine(eUnitState.MOVE, stateDict);
+        stateM = new StateMachine(eUnitState.IDLE, stateDict);
 
     }
 
@@ -79,24 +60,6 @@ public class YeetSlime : Enemy
     {
         rb.AddForce(dir.normalized * yeetForce,ForceMode2D.Impulse);
         inAir = true;
-    }
-
-    public override void UnitUpdate(float dt)
-    {
-        if (!inAir)
-        {
-            base.UnitUpdate(dt);
-        }
-            
-    }
-
-    public override void UnitFixedUpdate()
-    {
-        if (!inAir)
-        {
-            base.UnitFixedUpdate();
-        }
-        
     }
 
     private void OnCollisionEnter(Collision collision)
