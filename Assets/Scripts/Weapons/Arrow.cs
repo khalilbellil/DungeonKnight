@@ -2,56 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : Bow
+public class Arrow : MonoBehaviour
 {
-    private Vector2 startingPos;
-    private Vector2 dir;
+    private Bow.BowPkg arrowStats;
     private bool isTravelling;
     private float distanceToCheck;      //distance to check with raycast in front of the arrow 
-    private LayerMask hitableLayer;
+    private Collider2D target;
+    private Rigidbody2D rb;
+    public  GameObject go;
 
-    public void Init(Vector2 _startingPos, Vector2 _dir, LayerMask _hitableLayer)
+    public void Init(Bow.BowPkg bowPkg)
     {
-        startingPos = _startingPos;
-        dir = _dir;
-        isTravelling = true;
-        hitableLayer = _hitableLayer;
+
+        arrowStats = bowPkg;
         SpawnArrow();
+        isTravelling = true;
+        rb = GetComponent<Rigidbody2D>();
+
+
     }
 
-    public void UpdateArrow()
+    public void UpdateArrow(float dt)
     {
         if (isTravelling)
         {
-            
+            distanceToCheck = arrowStats.arrowSpeed * arrowStats.dir.magnitude * dt;
+            Attack();
+
+            Move();
         }
     }
     
     public void SpawnArrow()
     {
-
+        Instantiate(go, arrowStats.owner.transform);
+        ProjectileManager.Instance.arrowList.Add(this);
+        Debug.Log("Spawn Arrow");
     }
 
     public void Move()
     {
-        this.transform.position = new Vector3(dir.x * arrowSpeed, dir.y * arrowSpeed);
+        rb.velocity = arrowStats.dir * arrowStats.arrowSpeed * arrowStats.speedModifier;
     }
 
-    public Collider2D CheckForCollision()
+    public void Attack()
     {
-        Collider2D targetHit;
-        RaycastHit2D rcHit = Physics2D.Raycast(transform.position, dir, distanceToCheck, hitableLayer); ;
 
-        targetHit = rcHit.collider;
+        target = Physics2D.Raycast(arrowStats.owner.transform.position, arrowStats.dir, distanceToCheck, arrowStats.layerToHit).collider;       //returns the collider of the RayCastHit2D from the layer given
 
-        return targetHit;
+        if (target != null)
+        {
+            target.GetComponent<BaseUnit>().TakeDamage(arrowStats.dammage);
+            isTravelling = false;
+
+
+            Debug.Log("Hit a target ! : " + target.name);
+
+
+            RemoveArrow();
+        }
     }
-
-    public override void Attack(Vector2 dir, Vector2 casterLocation)
+    
+    public void RemoveArrow()
     {
+        ProjectileManager.Instance.arrowCount--;
 
-        CheckForCollision();
-
-        base.Attack(dir, casterLocation);
+        ProjectileManager.Instance.arrowList.Remove(this);
     }
 }

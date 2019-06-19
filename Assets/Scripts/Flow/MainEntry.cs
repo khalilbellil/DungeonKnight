@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum CurrentState { Game, Menu }
+public enum CurrentState { Game, Menu, End }
 
 public class MainEntry : MonoBehaviour
 {
@@ -59,8 +59,11 @@ public class MainEntry : MonoBehaviour
             case CurrentState.Menu:
                 newFlow = new MenuFlow();
                 break;
-            default:
-                Debug.Log("Flow could not be loaded " + flowType);
+				case CurrentState.End:
+				newFlow = new MenuFlow();
+				break;
+			default:
+				Debug.Log("Flow could not be loaded " + flowType);
                 return null;
         }
 

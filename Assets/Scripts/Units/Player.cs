@@ -41,7 +41,7 @@ public class Player : BaseUnit
             UseDash(input.dirPressed);
 
         UpdateMovement(input.dirPressed);
-
+        //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity);
         base.UnitFixedUpdate();
     }
 

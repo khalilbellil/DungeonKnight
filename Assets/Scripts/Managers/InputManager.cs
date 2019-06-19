@@ -37,6 +37,7 @@ public class InputManager
         inputPressed.mousePosToRay = inputPressed.MousePosToRay(Input.mousePosition);
         inputPressed.aimingDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - PlayerManager.Instance.player.transform.position).normalized;
         inputPressed.leftMouseButtonPressed = Input.GetMouseButtonDown(0);
+        inputPressed.leftMouseButtonReleased = Input.GetMouseButtonUp(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButtonDown(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButtonDown(2);
         
@@ -59,6 +60,7 @@ public class InputManager
         inputPressed.aimingDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - PlayerManager.Instance.player.transform.position).normalized;
         //Debug.Log(string.Format("AimDir:{0},WP:{1},MP:{2}", inputPressed.aimingDirection.normalized, Camera.main.ScreenToWorldPoint(Input.mousePosition), Input.mousePosition));
         inputPressed.leftMouseButtonPressed = Input.GetMouseButtonDown(0);
+        inputPressed.leftMouseButtonReleased = Input.GetMouseButtonUp(0);
         inputPressed.rightMouseButtonPressed = Input.GetMouseButtonDown(1);
         inputPressed.middleMouseButtonPressed = Input.GetMouseButtonDown(2);
         
@@ -85,6 +87,7 @@ public class InputManager
         public Vector2 aimingDirection;
         public Ray mousePosToRay;
         public bool leftMouseButtonPressed;
+        public bool leftMouseButtonReleased;
         public bool rightMouseButtonPressed;
         public bool middleMouseButtonPressed;
         public bool jumpPressed;  //If jump was pressed this frame
