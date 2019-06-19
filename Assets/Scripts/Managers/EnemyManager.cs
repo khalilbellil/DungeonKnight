@@ -29,8 +29,6 @@ public class EnemyManager
 
     public void Initialize()
     {
-        
-        SpawnEnemy(1,new Vector2(41,12));
         /*for (int i = 0; i < enemiesAlive.Count; i++)
         {
             enemiesAlive[i].
@@ -42,8 +40,9 @@ public class EnemyManager
 
     public void UpdateManager(float dt)
     {//Check if enemies are alive, if not call KillEnemy.
-        foreach (Enemy es in enemiesAlive)
-            es.UnitUpdate(dt);
+
+		foreach (Enemy es in enemiesAlive)
+			es.UnitUpdate(dt);
 
     }
 
@@ -63,31 +62,25 @@ public class EnemyManager
     public void SpawnEnemy(int roomLvl,Vector2 location)
     {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
         Enemy es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir)).GetComponent<Enemy>();
-        es.transform.position = location;
         es.Init();
         AddEnemy(es);
     }
 
-    public void SpawnBoss(Vector2 location)
-    {
-        Boss boss = GameObject.Instantiate(Resources.Load<Boss>(PrefabsDir.enemyDir)).GetComponent<Boss>();
-        boss.transform.position = location;
-        boss.Init();
-        AddEnemy(boss);
-    }
+	public void SpawnBoss(Vector2 location)
+	{
+		Boss boss = GameObject.Instantiate(Resources.Load<Boss>(PrefabsDir.enemyDir)).GetComponent<Boss>();
+		boss.transform.position = location;
+		boss.Init();
+		AddEnemy(boss);
+	}
 
-    void KillEnemy(Enemy killedEnemy)
-    {//Remove the enemy from the collection, then add effects(spawn coin at his last position, sounds, update the player score)
-        SpawnCoin(killedEnemy.transform.position);
-        RemoveEnemy(killedEnemy);
-    }
 
-    public void AddEnemy(Enemy enemyToAdd)
+	void AddEnemy(Enemy enemyToAdd)
     {//add enemy to the collection
         enemiesAlive.Add(enemyToAdd);
     }
 
-    void RemoveEnemy(Enemy enemyToRemove)
+    public void RemoveEnemy(Enemy enemyToRemove)
     {//remove enemy from the collection
         enemiesAlive.Remove(enemyToRemove);
     }

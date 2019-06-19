@@ -19,7 +19,6 @@ public class PlayerManager
     #endregion
 
     public Player player;
-    bool gameOverDone = false;
 
     public void Initialize()
     {
@@ -35,15 +34,9 @@ public class PlayerManager
     public void UpdateManager(float dt)
     {
 		//input.UpdateActions(InputManager.Instance.inputPressed.dirPressed, player);
-		if (player != null)
+		if (player != null && player.isAlive)
 		{
 			player.PlayerUpdate(InputManager.Instance.inputPressed, dt);
-			if (!player.isAlive && !gameOverDone)
-			{
-				gameOverDone = true;
-				GameOver();
-
-			}
 		}
     }
 
