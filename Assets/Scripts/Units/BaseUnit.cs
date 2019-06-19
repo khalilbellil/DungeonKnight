@@ -17,7 +17,8 @@ public class BaseUnit : MonoBehaviour
     public int arrowCount;
     protected bool isHolding;
     private float dashTime;
-
+    private float dashCDTime;
+    protected bool dashAvailable;
 
     #endregion
 
@@ -29,6 +30,7 @@ public class BaseUnit : MonoBehaviour
 	[SerializeField] protected int speed;
     [SerializeField] private float dashingSpeed;
     [SerializeField] private float dashTimer;
+    [SerializeField] private float dashCDTimer;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;
@@ -57,11 +59,21 @@ public class BaseUnit : MonoBehaviour
         }
         
         isHolding = false;
+        dashAvailable = true;
         dashTime = dashTimer;
     }
     
     virtual public void UnitUpdate(float dt, Vector2 dir)
     {
+        if (!dashAvailable)
+        {
+            dashCDTime -= Time.deltaTime;
+            if(dashCDTime <= 0)
+            {
+                dashCDTime = dashCDTimer;
+                dashAvailable = true;
+            }
+        }
 
         weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir ,this.transform.position);
     }
@@ -109,6 +121,8 @@ public class BaseUnit : MonoBehaviour
         {
             isDashing = false;
             dashTime = dashTimer;
+
+            dashAvailable = false;
         }
         rb.velocity = dir * dashingSpeed;
 

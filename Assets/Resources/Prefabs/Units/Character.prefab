@@ -588,6 +588,7 @@ MonoBehaviour:
   speed: 5
   dashingSpeed: 50
   dashTimer: 0.1
+  dashCDTimer: 1.5
   critChance: 0.1
   critMultipier: 1.5
   hitableLayer:
@@ -622,10 +623,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2920689651722798807}
     m_Modifications:
-    - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
+    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
-      propertyPath: attackAvailable
-      value: 0
+      propertyPath: m_Name
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3151011620313453921, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
@@ -682,21 +693,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 83.97
       objectReference: {fileID: 0}
-    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
-        type: 3}
-      propertyPath: m_Name
-      value: Sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337358215053868229, guid: 0300c1543c927354ca26346ec8c2a90f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 2053142545729261402, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
       propertyPath: m_SortingOrder
@@ -711,6 +707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
+        type: 3}
+      propertyPath: attackAvailable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0300c1543c927354ca26346ec8c2a90f, type: 3}
