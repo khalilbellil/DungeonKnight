@@ -93,13 +93,15 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("Dash");
     }
      
-    public void TakeDamage(float dmg)
+    public virtual void TakeDamage(float dmg)
     {
 		if (isAlive)
 		{
 			health -= dmg;
-			if (health <= 0)
+			if (health <= 0) {
 				isAlive = false;
+				Death();
+			}
 			Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
 		}
     }

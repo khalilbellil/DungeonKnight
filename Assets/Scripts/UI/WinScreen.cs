@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class WinScreen : MonoBehaviour
 {
-	WinFlow winFlow;
+	//WinFlow winFlow;
+	UIManager uiManager;
 
-	public void Initialize(WinFlow _winFlow)
+
+	public void Initialize(UIManager _uiManager)
 	{
 		//string s = Time.time.ToString("00:00")
-		winFlow= _winFlow;
+		uiManager = _uiManager;
 	}
 
 	public void PlayAgain() {
