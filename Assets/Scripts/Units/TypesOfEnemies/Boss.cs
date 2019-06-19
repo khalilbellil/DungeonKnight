@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBow : Enemy
+//public enum eUnitState { ATTACK, MOVE, DODGE }
+
+public class Boss : Enemy
 {
     List<Transition.MyDelegate> list1;
     List<Transition.MyDelegate> list2;
@@ -72,5 +74,11 @@ public class EnemyBow : Enemy
 
     }
 
+    void LaunchSlime()
+    {
+        YeetSlime yS = GameObject.Instantiate(Resources.Load<YeetSlime>(PrefabsDir.enemyDir)).GetComponent<YeetSlime>();
+        yS.gameObject.GetComponent<Rigidbody2D>().AddForce((transform.position + new Vector3(transform.position.x,transform.position.y-1,0).normalized));
+            
+    }
 
 }

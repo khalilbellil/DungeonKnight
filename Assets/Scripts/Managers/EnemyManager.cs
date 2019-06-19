@@ -58,25 +58,28 @@ public class EnemyManager
 
     // // // 
 
-    void SpawnEnemy(int roomLvl,Vector2 location)
+    public void SpawnEnemy(int roomLvl,Vector2 location)
     {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
         Enemy es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir)).GetComponent<Enemy>();
         es.Init();
         AddEnemy(es);
     }
 
-    void KillEnemy(Enemy killedEnemy)
-    {//Remove the enemy from the collection, then add effects(spawn coin at his last position, sounds, update the player score)
-        SpawnCoin(killedEnemy.transform.position);
-        RemoveEnemy(killedEnemy);
-    }
+	public void SpawnBoss(Vector2 location)
+	{
+		Boss boss = GameObject.Instantiate(Resources.Load<Boss>(PrefabsDir.enemyDir)).GetComponent<Boss>();
+		boss.transform.position = location;
+		boss.Init();
+		AddEnemy(boss);
+	}
 
-    void AddEnemy(Enemy enemyToAdd)
+
+	void AddEnemy(Enemy enemyToAdd)
     {//add enemy to the collection
         enemiesAlive.Add(enemyToAdd);
     }
 
-    void RemoveEnemy(Enemy enemyToRemove)
+    public void RemoveEnemy(Enemy enemyToRemove)
     {//remove enemy from the collection
         enemiesAlive.Remove(enemyToRemove);
     }

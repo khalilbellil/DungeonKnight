@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class BossRoom : GeneriqueRooms
 {
+
     public override void Initialize(int _lvl, RoomType[] _doors)
     {
         roomType = RoomType.Boss;
@@ -35,14 +36,12 @@ public class BossRoom : GeneriqueRooms
 
     void Spawn()
     {
-        foreach (Enemy e in EnemyManager.Instance.enemiesAlive)
-        {
-            e.transform.position = new Vector3(22, 12, 0);
-        }
+        EnemyManager.Instance.SpawnBoss(new Vector2(22,12));
     }
 
     public void TrapTriggerEntered(Transform thingEnteredDoor)
     {
-        GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);
+        GameFlow.isGame = false;
+        UIManager.Instance.CallWinScreen();
     }
 }

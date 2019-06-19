@@ -109,8 +109,11 @@ public class MainEntry : MonoBehaviour
 
     public void GoToNextFlow(CurrentState cs)
     {
-        if (curFlow != null)
-            curFlow.EndFlow();
+		if (curFlow != null)
+		{
+			curFlow.EndFlow();
+			flowInitialized = false;
+		}
         //Assume Flow called Clean already
         //Load the next scene        
         switch (cs)

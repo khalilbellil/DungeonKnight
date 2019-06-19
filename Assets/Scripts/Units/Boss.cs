@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBow : Enemy
+public class Boss : Enemy
 {
     List<Transition.MyDelegate> list1;
     List<Transition.MyDelegate> list2;
@@ -22,7 +22,7 @@ public class EnemyBow : Enemy
         list1 = new List<Transition.MyDelegate>()
         {
             // attack ended
-            (enemy) => { return this.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
+            (enemy) => { return this.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position)/*this.weaponList[0].attackAvailable*/; }
         };
 
         list2 = new List<Transition.MyDelegate>()
@@ -71,6 +71,4 @@ public class EnemyBow : Enemy
         stateM = new StateMachine(eUnitState.MOVE, stateDict);
 
     }
-
-
 }

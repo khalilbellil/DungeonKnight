@@ -28,7 +28,7 @@ public class MenuFlow : Flow
             PlayButton();
         }
 
-        Debug.Log("MENUFLOW");
+        //Debug.Log("MENUFLOW");
     }
 
     public override void FixedUpdate(float dt)

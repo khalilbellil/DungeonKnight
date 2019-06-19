@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eUnitState { ATTACK, MOVE, DODGE }
+
 
 public class EnemySword : Enemy
 {
@@ -24,7 +24,7 @@ public class EnemySword : Enemy
         list1 = new List<Transition.MyDelegate>()
         {
             // attack ended
-            (enemy) => { return this.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
+            (enemy) => { return this.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position)/*this.weaponList[0].attackAvailable*/; }
         };
 
         list2 = new List<Transition.MyDelegate>()
@@ -67,8 +67,6 @@ public class EnemySword : Enemy
             { eUnitState.DODGE, new DodgeState(this, transList2) },
             { eUnitState.MOVE, new MoveState(this,transList3) }
         };
-
-        
 
         grid = new Grid();
 

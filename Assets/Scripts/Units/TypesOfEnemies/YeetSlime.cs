@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBow : Enemy
+public class YeetSlime : Enemy
 {
+    bool inAir;
+    public int yeetForce;
+
     List<Transition.MyDelegate> list1;
     List<Transition.MyDelegate> list2;
     List<Transition.MyDelegate> list3;
@@ -72,5 +75,43 @@ public class EnemyBow : Enemy
 
     }
 
+    public void Launched(Vector2 dir)
+    {
+        rb.AddForce(dir.normalized * yeetForce,ForceMode2D.Impulse);
+        inAir = true;
+    }
 
+    public override void UnitUpdate(float dt)
+    {
+        if (!inAir)
+        {
+            base.UnitUpdate(dt);
+        }
+            
+    }
+
+    public override void UnitFixedUpdate()
+    {
+        if (!inAir)
+        {
+            base.UnitFixedUpdate();
+        }
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            PlayerManager.Instance.player.TakeDamage(1);
+        }
+       
+        inAir = false;
+        
+    }
+
+    public bool getInAir()
+    {
+        return inAir;
+    }
 }

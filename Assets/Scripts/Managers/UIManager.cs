@@ -47,7 +47,7 @@ public class UIManager
 		//winScreen = GameObject.FindObjectOfType<WinScreen>();
 		//winScreen.Initialize(this);
 		//-------------------------------------------------//
-
+        
 		CreateUI();
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();
@@ -135,8 +135,8 @@ public class UIManager
 
 	//Call the win screen when you win the game//
 	public void CallWinScreen() {
-
-	}
+        UI = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.uiVictDir));
+    }
 
 
 

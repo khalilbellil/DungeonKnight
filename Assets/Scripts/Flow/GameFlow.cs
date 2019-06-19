@@ -4,6 +4,8 @@ public class GameFlow : Flow
 {
     MainEntry mainEntry;
 
+    public static bool isGame;
+
     public override void Initialize()
     {
         mainEntry = GameObject.FindObjectOfType<MainEntry>();
@@ -15,26 +17,35 @@ public class GameFlow : Flow
         EnemyManager.Instance.Initialize();
         ProjectileManager.Instance.Initialize();
         initialized = true;
+        isGame = true;
     }
 
     public override void Update(float dt)
     {
-        InputManager.Instance.UpdateManager();
         UIManager.Instance.UpdateManager();
-        PlayerManager.Instance.UpdateManager(dt);
-        RoomManager.Instance.UpdateManager();
-        EnemyManager.Instance.UpdateManager(dt);
-        ProjectileManager.Instance.UpdateManager(dt);
+        if (isGame)
+        {
+            InputManager.Instance.UpdateManager();
+            PlayerManager.Instance.UpdateManager(dt);
+            RoomManager.Instance.UpdateManager();
+            EnemyManager.Instance.UpdateManager(dt);
+            ProjectileManager.Instance.UpdateManager(dt);
+        }
+        
     }
 
     public override void FixedUpdate(float dt)
     {
-        InputManager.Instance.FixedUpdateManager();
         UIManager.Instance.FixedUpdateManager();
-        PlayerManager.Instance.FixedUpdateManager(dt);
-        RoomManager.Instance.FixedUpdateManager();
-        EnemyManager.Instance.FixedUpdateManager(dt);
-        ProjectileManager.Instance.FixedUpdateManager(dt);
+        if (isGame)
+        {
+            InputManager.Instance.FixedUpdateManager();
+            PlayerManager.Instance.FixedUpdateManager(dt);
+            RoomManager.Instance.FixedUpdateManager();
+            EnemyManager.Instance.FixedUpdateManager(dt);
+            ProjectileManager.Instance.FixedUpdateManager(dt);
+        }
+        
     }
 
     public override void EndFlow()

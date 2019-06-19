@@ -81,7 +81,7 @@ public class Item : MonoBehaviour
 				newItem = (GameObject)Resources.Load("Prefabs/Items/Potion");
 				break;
 			case AllItems.arrow:
-				newItem = (GameObject)Resources.Load("Prefabs/Items/arrowItem");
+				newItem = (GameObject)Resources.Load("Prefabs/Items/ArrowItem");
 				break;
 			default:
 				Debug.LogError("Unhandled switch case: " + randomValue);				
@@ -93,7 +93,4 @@ public class Item : MonoBehaviour
 		return itemToReturn;
 
 	}
-
-
-
 }

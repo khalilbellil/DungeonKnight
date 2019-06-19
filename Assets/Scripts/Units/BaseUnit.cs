@@ -55,8 +55,8 @@ public class BaseUnit : MonoBehaviour
     
     virtual public void UnitUpdate(float dt, Vector2 dir)
     {
+
         weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir ,this.transform.position);
-        //Debug.Log(Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position));
     }
 
     virtual public void UnitFixedUpdate()
@@ -96,13 +96,15 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("Dash");
     }
      
-    public void TakeDamage(float dmg)
+    public virtual void TakeDamage(float dmg)
     {
 		if (isAlive)
 		{
 			health -= dmg;
-			if (health <= 0)
+			if (health <= 0) {
 				isAlive = false;
+				Death();
+			}
 			Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
 		}
     }
