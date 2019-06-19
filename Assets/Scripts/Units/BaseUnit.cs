@@ -14,6 +14,7 @@ public class BaseUnit : MonoBehaviour
     public int activeWeaponIndex;  //  0 = Sword, 1 = Bow (not implemented yet)
     public int maxArrowCount;
     public int arrowCount;
+    protected bool isHolding;
     #endregion
 
     #region Unit Stats
@@ -48,12 +49,14 @@ public class BaseUnit : MonoBehaviour
         {
             weapon.Init(hitableLayer, this);
         }
+
+        isHolding = false;
     }
     
-    virtual public void UnitUpdate(float dt)
+    virtual public void UnitUpdate(float dt, Vector2 dir)
     {
-        weaponList[activeWeaponIndex].WeaponUpdate(dt);
-        //Debug.Log(Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position));
+
+        weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir ,this.transform.position);
     }
 
     virtual public void UnitFixedUpdate()
