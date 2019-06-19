@@ -16,7 +16,8 @@ public class PrefabsDir
 
     public static string playerDir = "Prefabs/Units/Character";
     public static string enemyDir = "Prefabs/Units/EnemySword";
-    public static string bossDir = "Prefabs/Enemies/Boss";
+    public static string bossDir = "Prefabs/Units/KingSlime";
+    public static string slimeDir = "Prefabs/Units/Slime";
 
 
     public static string ennemyRoomDir = "Prefabs/Room/EnnemiRooms/EnemyRoom";
