@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     [Header("Weapon Stats:")]
     [SerializeField] public float dammage;
     [SerializeField] public Vector2 hitBoxSize;
-    [SerializeField] public float cdForNextAtk;
+    public float cdForNextAtk;
     protected LayerMask layerToHit;
     protected bool attackAvailable;
     protected float currentCdTimer;
@@ -19,12 +19,13 @@ public class Weapon : MonoBehaviour
     virtual public void Init(LayerMask hitableLayer, BaseUnit _owner)
     {
         currentCdTimer = 0;
+        cdForNextAtk = 1;
         layerToHit = hitableLayer;
         attackAvailable = true;
         owner = _owner;
     }
 
-    virtual public void WeaponUpdate(float dt)
+    virtual public void WeaponUpdate(float dt, bool isHolding, Vector2 dir, Vector2 casterLocation)
     {
         if (!attackAvailable)
         {
@@ -33,6 +34,7 @@ public class Weapon : MonoBehaviour
             {
                 attackAvailable = true;
                 currentCdTimer = 0;
+                Debug.Log("Attack available");
             }
         }
     }

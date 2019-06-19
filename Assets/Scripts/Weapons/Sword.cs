@@ -14,9 +14,12 @@ public class Sword : Weapon
         animTrigger = "UseSword";
     }
 
-    public override void WeaponUpdate(float dt)
+    public override void WeaponUpdate(float dt, bool isHolding, Vector2 dir, Vector2 casterLocation)
     {
-        base.WeaponUpdate(dt);
+
+        base.WeaponUpdate(dt, isHolding, dir, casterLocation);
+        if(isHolding)
+            Attack(dir, casterLocation);
     }
 
     public override void WeaponFixedUpdate()
@@ -44,9 +47,10 @@ public class Sword : Weapon
 
           //  Debug.Log("Angle: " + angle);
            // Debug.Log("Direction : " + dir);
-
+           
             foreach (Collider2D target in targetsHit)
             {
+                
                 target.gameObject.GetComponent<BaseUnit>()?.TakeDamage(dammage);
             }
             base.Attack(dir, casterLocation);

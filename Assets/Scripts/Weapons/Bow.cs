@@ -25,9 +25,9 @@ public class Bow : Weapon
     private float timerStart;
     private float timerEnd;
     private float timeDrawingBow;
-    private bool isHolding;
+    private bool chargingAtk;
 
-    private Arrow arrowGo;
+    public static Arrow arrowGo;
 
     BowPkg arrowStats;
 
@@ -36,8 +36,9 @@ public class Bow : Weapon
         arrowStats = new BowPkg();
 
         type = ArrowType.DEFAULT;
-
+        dammage = 15;
         arrowSpeed = 5;        //to test
+        maxDrawingTime = 3;
         arrowStats.arrowSpeed = this.arrowSpeed;
         this.speedModifier = 1;
         arrowStats.speedModifier = this.speedModifier;
@@ -45,31 +46,42 @@ public class Bow : Weapon
         arrowStats.layerToHit = this.layerToHit;
         arrowStats.owner = this.owner;
 
-        arrowGo = Resources.Load<Arrow>("Prefabs/Weapons/Arrow");
-        arrowStats.arrowGo = this.arrowGo;
-        isHolding = false;
+        arrowGo = Resources.Load<Arrow>(PrefabsDir.arrowWeaponDir);
+        arrowStats.arrowGo = arrowGo;
+
         base.Init(hitableLayer, _owner);
 
 
     }
 
-    override public void WeaponUpdate(float dt)
+    override public void WeaponUpdate(float dt, bool isHolding, Vector2 dir, Vector2 casterLocation)
     {
-        if (InputManager.Instance.inputPressed.leftMouseButtonPressed && !isHolding)
+        base.WeaponUpdate(dt, isHolding, dir, casterLocation);
+        if (isHolding && !chargingAtk && attackAvailable)
         {
-            isHolding = true;
+            attackAvailable = false;
+            Debug.Log("Attack not available");
             timerStart = Time.time;
+            chargingAtk = true;
         }
 
-        if(InputManager.Instance.inputPressed.leftMouseButtonReleased && isHolding)
+        if(!isHolding && chargingAtk && owner.arrowCount > 0)
         {
-            isHolding = false;
-            timerEnd = Time.time;
 
-            AddPower();
+            chargingAtk = false;
+            timerEnd = Time.time;
+            timeDrawingBow = timerEnd - timerStart;
+
+            power = Mathf.Clamp((timeDrawingBow / maxDrawingTime), 0.1f, 1);
+            arrowStats.dammage = this.dammage * power;
+
+            Attack(dir, casterLocation);
+
+            owner.arrowCount--;
 
             ProjectileManager.Instance.CreateArrow(arrowStats);
         }
+
     }
 
     override public void WeaponFixedUpdate()
@@ -77,18 +89,11 @@ public class Bow : Weapon
         
     }
 
-    public override void Attack(Vector2 dir, Vector2 casterLocation)
+    public override void Attack(Vector2 dir, Vector2 casterLocation)        //this only sets the direction of the arrow
     {
-//        arrowList[arrowList.Count].Init(dir, );
-
+        arrowStats.dir = dir.normalized;
+        //Debug.Log("Dir: " + arrowStats.dir);
         base.Attack(dir, casterLocation);
-    }
-
-    private void AddPower()
-    {
-        power = Mathf.Clamp01(timeDrawingBow / maxDrawingTime);
-        dammage *= power;
-        arrowStats.dammage = this.dammage;
     }
 
     public class BowPkg

@@ -23,6 +23,7 @@ public class ProjectileManager
     public List<Arrow> arrowList;
     public int arrowCount;
 
+
     public void Initialize()
     {
         arrowList = new List<Arrow>();
@@ -31,9 +32,9 @@ public class ProjectileManager
 
     public void UpdateManager(float dt)
     {
-        foreach(Arrow a in arrowList)
+        for(int i = arrowCount - 1; i >= 0; i--)
         {
-            a.UpdateArrow(dt);
+            arrowList[i].UpdateArrow(dt);
         }
     }
 
@@ -50,8 +51,15 @@ public class ProjectileManager
     public void CreateArrow(Bow.BowPkg bowPkg)
     {
         arrowCount++;
-        arrowList.Add(new Arrow());
-        arrowList[arrowCount - 1].Init(bowPkg);
+        Arrow go = GameObject.Instantiate(Bow.arrowGo).GetComponent<Arrow>();
+        arrowList.Add(go);
+        go.Init(bowPkg);
     }
 
+    public void RemoveProjectile(Arrow arrow)
+    {
+        arrowCount--;
+        arrowList.Remove(arrow);
+        GameObject.Destroy(arrow.gameObject);
+    }
 }

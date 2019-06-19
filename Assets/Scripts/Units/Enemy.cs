@@ -10,7 +10,7 @@ public class Enemy : BaseUnit
 	//----Krina is Testing stuff----//
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log("gotcha");
+		//Debug.Log("gotcha");
 		HealthBar.health -= 10f;
 	}
     public StateMachine stateM;
@@ -23,10 +23,10 @@ public class Enemy : BaseUnit
         return 2;
     }
 
-    override public void UnitUpdate(float dt)
+    override public void UnitUpdate(float dt, Vector2 dir)
     {
         stateM.Update();
-        base.UnitUpdate(dt);
+        base.UnitUpdate(dt, dir);
     }
 
     override public void UnitFixedUpdate()

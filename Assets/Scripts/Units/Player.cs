@@ -5,6 +5,7 @@ public class Player : BaseUnit
 
 	public int coins;
 
+
     override public void Init()
     {
         base.Init();
@@ -16,13 +17,13 @@ public class Player : BaseUnit
         }
         maxArrowCount = 20;
 
+        isHolding = false;
     }
 
     public void PlayerUpdate(InputManager.InputPkg input, float dt)
     {
 
-        if(input.leftMouseButtonPressed)
-            UseWeapon(input.aimingDirection);
+        isHolding = input.leftMouseButtonHeld;
 
         if(input.interactPressed)
             Interact();
@@ -30,9 +31,9 @@ public class Player : BaseUnit
         if (input.switchWeaponPressed)         
             SwitchWeapon();
 
-        
+        base.UnitUpdate(dt, input.aimingDirection);
         MovementAnimations();
-        base.UnitUpdate(dt);
+
     }
 
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)

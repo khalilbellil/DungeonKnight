@@ -41,7 +41,7 @@ public class EnemyManager
     public void UpdateManager(float dt)
     {//Check if enemies are alive, if not call KillEnemy.
         foreach (Enemy es in enemiesAlive)
-            es.UnitUpdate(dt);
+            es.UnitUpdate(dt, (PlayerManager.Instance.player.transform.position - es.transform.position).normalized);
 
     }
 

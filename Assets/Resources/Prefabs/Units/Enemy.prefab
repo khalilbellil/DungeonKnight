@@ -191,9 +191,10 @@ MonoBehaviour:
   hitBoxSize: {x: 0, y: 0}
   cdForNextAtk: 0
   arrowSpeed: 0
-  nbArrow: 0
-  maxNbArrow: 0
+  speedModifier: 0
   type: 0
+  maxDrawingTime: 0
+  arrowPrefab: {fileID: 0}
 --- !u!1 &532366635
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ MonoBehaviour:
   critMultipier: 1.5
   hitableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3840
   speedMultiplier: 1
   rb: {fileID: 0}
   AstarTimer: 0

@@ -9,19 +9,19 @@ public class Arrow : MonoBehaviour
     private float distanceToCheck;      //distance to check with raycast in front of the arrow 
     private Collider2D target;
     private Rigidbody2D rb;
-    public  GameObject go;
 
     public void Init(Bow.BowPkg bowPkg)
     {
 
         arrowStats = bowPkg;
-        go = arrowStats.arrowGo.gameObject;
-        SpawnArrow();
         isTravelling = true;
         
-        rb = go.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = arrowStats.dir * arrowStats.arrowSpeed * arrowStats.speedModifier;
 
-
+        transform.position = arrowStats.owner.transform.position;
+        transform.eulerAngles = new Vector3(0, 0, arrowStats.dir.ToAngle());
+        //Debug.Log("Ang: " + arrowStats.dir.ToAngle());
     }
 
     public void UpdateArrow(float dt)
@@ -30,31 +30,20 @@ public class Arrow : MonoBehaviour
         {
             distanceToCheck = arrowStats.arrowSpeed * arrowStats.dir.magnitude * dt;
             Attack();
-
-            Move();
         }
-    }
-    
-    public void SpawnArrow()
-    {
-        Instantiate(go, arrowStats.owner.transform.position, Quaternion.identity);
-        ProjectileManager.Instance.arrowList.Add(this);
-        Debug.Log("Spawn Arrow");
-    }
-
-    public void Move()
-    {
-        rb.velocity = arrowStats.dir * arrowStats.arrowSpeed * arrowStats.speedModifier;
     }
 
     public void Attack()
     {
 
-        target = Physics2D.Raycast(arrowStats.owner.transform.position, arrowStats.dir, distanceToCheck, arrowStats.layerToHit).collider;       //returns the collider of the RayCastHit2D from the layer given
+        target = Physics2D.Raycast(transform.position, arrowStats.dir, distanceToCheck, arrowStats.layerToHit).collider;       //returns the collider of the RayCastHit2D from the layer given
 
         if (target != null)
         {
-            target.GetComponent<BaseUnit>().TakeDamage(arrowStats.dammage);
+    //need to change so it is not only enemy that can hit (testing purposes)
+                target.GetComponent<BaseUnit>().TakeDamage(arrowStats.dammage);
+                Debug.Log("Target hp : " + target.GetComponent<BaseUnit>().health);
+
             isTravelling = false;
 
 
@@ -67,8 +56,6 @@ public class Arrow : MonoBehaviour
     
     public void RemoveArrow()
     {
-        ProjectileManager.Instance.arrowCount--;
-
-        ProjectileManager.Instance.arrowList.Remove(this);
+        ProjectileManager.Instance.RemoveProjectile(this);
     }
 }
