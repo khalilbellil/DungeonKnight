@@ -26,7 +26,7 @@ public class Enemy : BaseUnit
         return Range;
     }
 
-    override public void UnitUpdate(float dt)
+	override public void UnitUpdate(float dt)
     {
         stateM.Update();
         base.UnitUpdate(dt);
@@ -39,9 +39,10 @@ public class Enemy : BaseUnit
 
     override public void Death()
     {
-        //Debug.Log("enemy isDead");
-        DropItem();
-        isAlive = false;
+		//Debug.Log("enemy isDead");
+		base.Death();
+		DropItem();
+		EnemyManager.Instance.RemoveEnemy(this);
     }
 
     override public void MovementAnimations()
@@ -58,6 +59,8 @@ public class Enemy : BaseUnit
 
     public void DropItem()
     {
+		Item.RandomItemSpawn(gameObject.transform.position);
+		
         //Debug.Log("enemy Droped item");
     }
 
