@@ -14,10 +14,10 @@ public class Item : MonoBehaviour
 
 	//Vars
 	public AllItems itemType;
+        
 
-
-	// --- all initializes and updates --- //
-	virtual public void Init()
+    // --- all initializes and updates --- //
+    virtual public void Init()
 	{
 		//RandomItemSpawn(new Vector3());
 		Debug.Log("initialize item");
@@ -81,7 +81,7 @@ public class Item : MonoBehaviour
 				newItem = (GameObject)Resources.Load("Prefabs/Items/Potion");
 				break;
 			case AllItems.arrow:
-				newItem = (GameObject)Resources.Load("Prefabs/Items/Arrow");
+				newItem = (GameObject)Resources.Load("Prefabs/Items/ArrowItem");
 				break;
 			default:
 				Debug.LogError("Unhandled switch case: " + randomValue);				
@@ -93,7 +93,4 @@ public class Item : MonoBehaviour
 		return itemToReturn;
 
 	}
-
-
-
 }

@@ -24,12 +24,13 @@ public class MoveState : BaseState
 
     public override void FixedUpdate()
     {
-        enemy.Move(PlayerManager.Instance.player.transform);
+        enemy.Move(enemy.target);
         //Debug.Log("MOVE FIXEDUPDATE");
     }
 
     public override void Exit()
     {
+        enemy.rb.velocity = new Vector2();
         //Debug.Log("MOVE EXIT");
         base.Exit();
     }

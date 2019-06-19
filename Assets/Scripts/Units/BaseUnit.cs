@@ -12,13 +12,16 @@ public class BaseUnit : MonoBehaviour
     #region VARIABLES
     public bool isAlive;
     public int activeWeaponIndex;  //  0 = Sword, 1 = Bow (not implemented yet)
+    public int maxArrowCount;
+    public int arrowCount;
+    protected bool isHolding;
     #endregion
 
     #region Unit Stats
     [Header("Unit Stats:")]
 
-    [SerializeField] public int health;
-	[SerializeField] public int maxHealth;
+    [SerializeField] public float health;
+	[SerializeField] public float maxHealth;
 	[SerializeField] protected int speed;
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
@@ -42,28 +45,24 @@ public class BaseUnit : MonoBehaviour
         // Debug.Log("basic init");
 
         anim = GetComponent<Animator>();
+        foreach (Weapon weapon in weaponList)
+        {
+            weapon.Init(hitableLayer, this);
+        }
+
+        isHolding = false;
     }
     
-    virtual public void UnitUpdate()
+    virtual public void UnitUpdate(float dt, Vector2 dir)
     {
-      //  Debug.Log("basic update");
+
+        weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir ,this.transform.position);
     }
 
     virtual public void UnitFixedUpdate()
     {
         //Debug.Log("basic fixedupdate");
     }
-
-	virtual public void CharacterRotation(Vector2 target)
-    {
-		Vector3 mousePosition = Input.mousePosition;
-		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-		target = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-
-		//transform.up = target;
-
-	}
 
 	virtual public void Death()
     {
@@ -79,14 +78,11 @@ public class BaseUnit : MonoBehaviour
     public void UseWeapon(Vector2 dir) {
 
         weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
-        //Debug.Log("basic use weapon");
     }
 
     virtual public void UpdateMovement(Vector2 dir)
     {
         rb.velocity = dir * speed * speedMultiplier;
-
-       // Debug.Log("Movement: " + dir);
     }
 
     public void ChangeSpeedMultiplier(float _speedMult)
@@ -100,13 +96,15 @@ public class BaseUnit : MonoBehaviour
         Debug.Log("Dash");
     }
      
-    public void TakeDamage(int dmg)
+    public virtual void TakeDamage(float dmg)
     {
 		if (isAlive)
 		{
 			health -= dmg;
-			if (health <= 0)
+			if (health <= 0) {
 				isAlive = false;
+				Death();
+			}
 			Debug.Log("basic takedamage " + dmg + " Remaining health : " + health + " Name : " + name);
 		}
     }

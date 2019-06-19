@@ -12,7 +12,7 @@ public class GeneriqueRooms : MonoBehaviour
 
     public bool isCleared = false;
 
-    int lvl;
+    protected int lvl;
     string namePath;
     int numOfDoors;
     public RoomType roomType;

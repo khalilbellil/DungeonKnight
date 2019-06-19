@@ -60,6 +60,7 @@ public class RoomManager
     public void UpdateManager()
     {
         ChangeRoom(player);
+
     }
 
     public void FixedUpdateManager()
@@ -126,7 +127,7 @@ public class RoomManager
                 SetDoors2(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
                 break;
             case RoomType.Boss:
-                currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.ennemyRoomDir));
+                currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.bossRoomDir));
                 currentRoomPos = roomPos;
                 currentRoom.GetComponent<GeneriqueRooms>().posInRoomM = roomPos;
                 SetDoors2(roomPos, currentRoom.GetComponent<GeneriqueRooms>());

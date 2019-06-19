@@ -92,9 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe940cad38d258c40aa3aa3c993709c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dammage: 0
+  dammage: 15
   hitBoxSize: {x: 0, y: 0}
-  cdForNextAtk: 0
-  arrowSpeed: 0
-  nbArrow: 0
+  cdForNextAtk: 32.15
+  arrowSpeed: 5
+  speedModifier: 1
   type: 0
+  maxDrawingTime: 3
+  arrowPrefab: {fileID: 8222678705221903874, guid: f9a2cdc5506b78f4db89efd275050b70,
+    type: 3}

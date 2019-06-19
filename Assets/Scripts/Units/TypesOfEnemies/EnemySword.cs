@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eUnitState { ATTACK, MOVE, DODGE }
+
 
 public class EnemySword : Enemy
 {
+
     List<Transition.MyDelegate> list1;
     List<Transition.MyDelegate> list2;
     List<Transition.MyDelegate> list3;
@@ -19,12 +20,14 @@ public class EnemySword : Enemy
 
     override public void Init()
     {
-        rb = GetComponent<Rigidbody2D>();
+        base.Init();
+
+        target = PlayerManager.Instance.player.transform;
 
         list1 = new List<Transition.MyDelegate>()
         {
             // attack ended
-            (enemy) => { return enemy.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
+            (enemy) => { return this.GetRange() < Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position)/*this.weaponList[0].attackAvailable*/; }
         };
 
         list2 = new List<Transition.MyDelegate>()
@@ -34,7 +37,7 @@ public class EnemySword : Enemy
 
         list3 = new List<Transition.MyDelegate>()
         {
-            (enemy) => { return enemy.GetRange() >= Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
+            (enemy) => { return this.GetRange() >= Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
             //(enemy) => { return enemy.GetRange() >= Vector2.Distance(new Vector2(1,1), new Vector2(9,9)); }
         };
 
@@ -45,20 +48,20 @@ public class EnemySword : Enemy
 
         transList1 = new List<Transition>()
         {
-            new Transition(eUnitState.ATTACK, list1, this),
+            new Transition(eUnitState.MOVE, list1, this),
 
         };
 
         transList2 = new List<Transition>()
         {
-            new Transition(eUnitState.DODGE, list2, this),
+            new Transition(eUnitState.MOVE, list2, this),
 
         };
 
         transList3 = new List<Transition>()
         {
-            new Transition(eUnitState.MOVE, list3, this),
-            new Transition(eUnitState.MOVE, list4, this),
+            new Transition(eUnitState.ATTACK, list3, this),
+            new Transition(eUnitState.DODGE, list4, this),
 
         };
 
@@ -72,19 +75,8 @@ public class EnemySword : Enemy
 
         stateM = new StateMachine(eUnitState.MOVE, stateDict);
         
-       // Debug.Log("enemyS init");
     }
 
-    override public void UnitUpdate()
-    {
-        stateM.Update();
-        //Debug.Log("enemyS update");
-    }
-
-    override public void UnitFixedUpdate()
-    {
-        stateM.FixedUpdate();
-        //Debug.Log("enemyS fixedupdate");
-    }
+    
     
 }

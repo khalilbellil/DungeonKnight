@@ -7,28 +7,21 @@ public class EnnemyRoom : GeneriqueRooms
     int roomSet;
     public bool roomSetted = false;
 
-    private void Start()
-    {
-
-        Initialize(1, new RoomType[] { RoomType.Boss, RoomType.Enemy, RoomType.Shop,RoomType.None});
-    }
-
     public override void Initialize(int _lvl, RoomType[] _doors)
     {
         roomType = RoomType.Enemy;
         base.Initialize(_lvl, _doors);
+
         //Choose the roomset using index of child
-<<<<<<< HEAD
         if (!roomSetted)
         {
             roomSet = Random.Range(0, transform.GetChild(8).childCount);
             roomSetted = true;
         }
-        
-=======
+
+
         roomSet = Random.Range(0,transform.GetChild(8).childCount);
-        //roomSet = 1;
->>>>>>> 10a6feab233d7f6b029a6150dbdc8d7d502ecb12
+
         transform.GetChild(8).GetChild(roomSet).gameObject.SetActive(true);
         if (!isCleared)
         {
@@ -55,10 +48,11 @@ public class EnnemyRoom : GeneriqueRooms
 
     void Spawn()
     {
+        int numOfEnemies = Mathf.Clamp(lvl / 3, 2, 10);
         int x;
         int y;
 
-        foreach(Enemy e in EnemyManager.Instance.enemiesAlive)
+        for(int i = 0; i < numOfEnemies; i++)
         {
             x = Random.Range(1, 43);
             y = Random.Range(2, 22);
@@ -67,8 +61,8 @@ public class EnnemyRoom : GeneriqueRooms
                 x = Random.Range(1, 43);
                 y = Random.Range(2, 22);
             }
-            e.transform.position = new Vector3(x, y, 0);
-            //e.transform.position = new Vector3(40, 3, 0);
+
+            EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y));
         }
     }
 }

@@ -5,21 +5,25 @@ public class Player : BaseUnit
 
 	public int coins;
 
+
     override public void Init()
     {
         base.Init();
         //Debug.Log("player init");
+
         foreach(Weapon weapon in weaponList)
         {
             weapon.Init(hitableLayer, this);
         }
+        maxArrowCount = 20;
+
+        isHolding = false;
     }
 
     public void PlayerUpdate(InputManager.InputPkg input, float dt)
     {
 
-        if(input.leftMouseButtonPressed)
-            UseWeapon(input.aimingDirection);
+        isHolding = input.leftMouseButtonHeld;
 
         if(input.interactPressed)
             Interact();
@@ -27,9 +31,9 @@ public class Player : BaseUnit
         if (input.switchWeaponPressed)         
             SwitchWeapon();
 
-        weaponList[activeWeaponIndex].WeaponUpdate(dt);
+        base.UnitUpdate(dt, input.aimingDirection);
         MovementAnimations();
-        base.UnitUpdate();
+
     }
 
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
@@ -38,14 +42,13 @@ public class Player : BaseUnit
             UseDash(input.dirPressed);
 
         UpdateMovement(input.dirPressed);
-
+        //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity);
         base.UnitFixedUpdate();
-
-		CharacterRotation(input.deltaMouse);
     }
 
     override public void Death()
     {
+		gameObject.SetActive(false);
 		GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
 		Debug.Log("player isDead");
     }

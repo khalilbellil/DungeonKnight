@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class UILinks : MonoBehaviour
 {
+	//player UI
 	public TextMeshProUGUI coinText;
 	public TextMeshProUGUI arrowText;
 	public Image healthBar;
 	public Image currentWeapon;
 	public Image active;
+
 }
