@@ -12,7 +12,7 @@ public class GameFlow : Flow
 
         InputManager.Instance.Initialize();
         UIManager.Instance.Initialize();
-        PlayerManager.Instance.Initialize();
+        PlayerManager.Instance.Initialize(this);
         RoomManager.Instance.Initialize();
         EnemyManager.Instance.Initialize();
         ProjectileManager.Instance.Initialize();
@@ -59,4 +59,9 @@ public class GameFlow : Flow
 
     }
 
+
+	public void PlayerDied() {
+		isGame = false;
+		UIManager.Instance.CallDeathScreen();
+	}
 }

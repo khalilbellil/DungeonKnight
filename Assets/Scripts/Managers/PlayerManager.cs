@@ -19,13 +19,13 @@ public class PlayerManager
     #endregion
 
     public Player player;
+	public GameFlow gameFlow;
 
-    public void Initialize()
+    public void Initialize(GameFlow gameFlow)
     {
+		this.gameFlow = gameFlow;
         SpawnPlayer();
         player.Init();
-
-
 
         //Debug.Log("PlayerManager Initialize");
 

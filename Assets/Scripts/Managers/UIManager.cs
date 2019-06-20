@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 
 public class UIManager
@@ -138,16 +138,20 @@ public class UIManager
         UI = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.uiVictDir));
     }
 
-
+	public void CallDeathScreen()
+	{
+		UI = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.uiDeathDir));
+	}
 
 	//GameOver UI:
-	void BackToMainMenuButton()
+	public void BackToMainMenuButton()
 	{//Go back to Menu
 		mainEntry.GoToNextFlow(CurrentState.Game); //Switch to Menu Scene/Flow.
 	}
 	public void TryAgainButton()
 	{//Restart GameFlow
-		mainEntry.GoToNextFlow(CurrentState.End);//Restart the current Scene/Flow.
+
+		mainEntry.GoToNextFlow(CurrentState.Menu); //Switch to Menu Scene/Flow.
 	}
 
 	void CreateUI()

@@ -49,7 +49,8 @@ public class Player : BaseUnit
     override public void Death()
     {
 		gameObject.SetActive(false);
-		GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
+		//GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
+		PlayerManager.Instance.gameFlow.PlayerDied();
 		Debug.Log("player isDead");
     }
 
