@@ -49,6 +49,9 @@ public class Bow : Weapon
         arrowGo = Resources.Load<Arrow>(PrefabsDir.arrowWeaponDir);
         arrowStats.arrowGo = arrowGo;
 
+        animTrigger = "UseBow";
+        
+
         base.Init(hitableLayer, _owner);
 
 
@@ -63,6 +66,7 @@ public class Bow : Weapon
             Debug.Log("Attack not available");
             timerStart = Time.time;
             chargingAtk = true;
+            owner.UseAttackAnim("UseBow");
         }
 
         if(!isHolding && chargingAtk && owner.arrowCount > 0)
@@ -78,6 +82,8 @@ public class Bow : Weapon
             Attack(dir, casterLocation);
 
             owner.arrowCount--;
+
+            owner.UseAttackAnim("ReleaseBow");
 
             ProjectileManager.Instance.CreateArrow(arrowStats);
         }
