@@ -485,11 +485,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2920689653637063252}
-  - component: {fileID: 2920689653637063253}
   - component: {fileID: 2920689653637063258}
   - component: {fileID: 2920689653637063259}
   - component: {fileID: 6626479789936854981}
   - component: {fileID: 3361404925033220622}
+  - component: {fileID: 7696164288052845251}
   m_Layer: 11
   m_Name: Character
   m_TagString: Player
@@ -517,32 +517,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &2920689653637063253
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2920689653637063254}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.41}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.03, y: 1.7}
-  m_EdgeRadius: 0
 --- !u!50 &2920689653637063258
 Rigidbody2D:
   serializedVersion: 4
@@ -720,6 +694,22 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!70 &7696164288052845251
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920689653637063254}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.42}
+  m_Size: {x: 0.98, y: 1.7}
+  m_Direction: 0
 --- !u!1001 &3794234639343094196
 PrefabInstance:
   m_ObjectHideFlags: 0
