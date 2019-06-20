@@ -580,8 +580,8 @@ MonoBehaviour:
   - {fileID: 7284926517214609674}
   isAlive: 1
   activeWeaponIndex: 0
-  maxArrowCount: 0
-  arrowCount: 0
+  maxArrowCount: 10
+  arrowCount: 10
   health: 175
   maxHealth: 175
   speed: 5
