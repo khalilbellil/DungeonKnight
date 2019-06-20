@@ -19,7 +19,10 @@ public class BaseUnit : MonoBehaviour
     private float dashTime;     //time for how long we want the dash to last
     private float dashCDTime;   //cooldown after once the dash is finished
     protected bool dashAvailable;
-
+    //protected float timeOfLastDash;
+    //public float dashCD;
+    //protected bool dashAvailable { get { return (Time.time - timeOfLastDash) > dashCD; } }
+    private TrailRenderer tr;
     #endregion
 
     #region Unit Stats
@@ -51,7 +54,7 @@ public class BaseUnit : MonoBehaviour
        
         rb = GetComponent<Rigidbody2D>();
         // Debug.Log("basic init");
-
+        tr = GetComponent<TrailRenderer>();
         anim = GetComponent<Animator>();
         foreach (Weapon weapon in weaponList)
         {
@@ -87,11 +90,12 @@ public class BaseUnit : MonoBehaviour
     {
         Debug.Log("basic isDead");
         isAlive = false;
+        anim.SetTrigger("isDead");
     }
 
     virtual public void MovementAnimations()
     {
-        Debug.Log("basic animation");
+        //Debug.Log("basic animation");
     }
 
     public void UseWeapon(Vector2 dir) {
@@ -104,7 +108,7 @@ public class BaseUnit : MonoBehaviour
         if (!isDashing)
             rb.velocity = dir * speed * speedMultiplier;
         else
-            UseDash(dir);
+            DashUpdate(dir);
     }
 
     public void ChangeSpeedMultiplier(float _speedMult)
@@ -113,20 +117,34 @@ public class BaseUnit : MonoBehaviour
 
     }
 
-    public void UseDash(Vector2 dir)
+    public void UseDash()
     {
-        isDashing = true;
+        if (!isDashing)
+        {
+            if (tr != null)
+            {
+                tr.enabled = true;
+                isDashing = true;
+                tr.Clear();
+                anim.SetBool("Dashing", true);
+            }
+            
+        }
+        //Debug.Log("Dash");
+    }
+
+    protected void DashUpdate(Vector2 dir)
+    {
         dashTime -= Time.deltaTime;
         if (dashTime <= 0)
         {
             isDashing = false;
             dashTime = dashTimer;
-
+            tr.enabled = false;
             dashAvailable = false;
+            anim.SetBool("Dashing", false);
         }
         rb.velocity = dir * dashingSpeed;
-
-        //Debug.Log("Dash");
     }
      
     public virtual void TakeDamage(float dmg)

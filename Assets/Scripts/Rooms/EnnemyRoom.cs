@@ -9,7 +9,7 @@ public class EnnemyRoom : GeneriqueRooms
 
     public override void Initialize(RoomData _roomData, RoomType[] _doors)
     {
-        base.Initialize(_roomData, _doors);
+        roomType = RoomType.Enemy;
 
         if (!roomData.roomSetted)//if room not setted yet, set it and save it
         {
@@ -20,12 +20,14 @@ public class EnnemyRoom : GeneriqueRooms
 
         transform.GetChild(8).GetChild(roomData.roomSet).gameObject.SetActive(true);
 
+
+        //Set enemies spawn coordinates
+        Spawn();
+        base.Initialize(_roomData, _doors);
         if (!isCleared)
         {
             LockDoors();
         }
-        //Set enemies spawn coordinates
-        Spawn();
     }
 
     public override void RoomUpdate()
@@ -55,7 +57,7 @@ public class EnnemyRoom : GeneriqueRooms
         {
             x = Random.Range(1, 43);
             y = Random.Range(2, 22);
-            while (Physics2D.OverlapBox(new Vector2(x + .5f, y + .5f), new Vector2(.9f, .9f), 0, LayerMask.GetMask("Player", "Objects", "Walls", "RoomSet")) != null)
+            while (Physics2D.OverlapBox(new Vector2(x + .5f, y + .5f), new Vector2(.9f, .9f), 0, LayerMask.GetMask("Player", "Objects", "Walls", "RoomSet", "Enemy")) != null)
             {
                 x = Random.Range(1, 43);
                 y = Random.Range(2, 22);

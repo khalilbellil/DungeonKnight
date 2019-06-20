@@ -35,8 +35,9 @@ public class Player : BaseUnit
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
     {
         if (input.jumpPressed && dashAvailable)
-            isDashing = true;
+            UseDash();
 
+        //Debug.Log("dir: " + input.dirPressed);
         UpdateMovement(input.dirPressed);
 
         base.UnitFixedUpdate();
@@ -46,11 +47,14 @@ public class Player : BaseUnit
     {
 		gameObject.SetActive(false);
 		PlayerManager.Instance.gameFlow.PlayerDied();
+        base.Death();
+
     }
 
 	override public void MovementAnimations()
     {
         anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
+        base.MovementAnimations();
     }
 
     public void Interact()

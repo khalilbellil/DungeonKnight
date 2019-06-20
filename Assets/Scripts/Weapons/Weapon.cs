@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
 
     virtual public void Attack(Vector2 dir, Vector2 casterLocation)
     {
-        owner.UseAttackAnim(animTrigger);
+        //owner.UseAttackAnim(animTrigger);
     }
 
 

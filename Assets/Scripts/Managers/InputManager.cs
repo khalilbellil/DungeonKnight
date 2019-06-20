@@ -36,6 +36,7 @@ public class InputManager
 
     public void FixedUpdateManager()
     {
+        
         FillInputPackage(fixedInputPressed);
     }
 
