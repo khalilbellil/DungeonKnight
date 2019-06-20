@@ -23,9 +23,9 @@ public class EnnemyRoom : GeneriqueRooms
         if (!isCleared)
         {
             LockDoors();
-        }
+			Spawn();
+		}
         //Set enemies spawn coordinates
-        Spawn();
     }
 
     public override void RoomUpdate()

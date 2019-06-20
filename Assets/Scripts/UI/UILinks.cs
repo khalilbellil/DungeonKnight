@@ -12,5 +12,6 @@ public class UILinks : MonoBehaviour
 	public Image healthBar;
 	public Image currentWeapon;
 	public Image active;
+	public Text timer;
 
 }

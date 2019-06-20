@@ -10,6 +10,7 @@ public class GameFlow : Flow
     {
         mainEntry = GameObject.FindObjectOfType<MainEntry>();
 
+		Timer.Instance.Initialize();
         InputManager.Instance.Initialize();
         UIManager.Instance.Initialize();
         PlayerManager.Instance.Initialize(this);
@@ -25,6 +26,7 @@ public class GameFlow : Flow
         UIManager.Instance.UpdateManager();
         if (isGame)
         {
+			Timer.Instance.UpdateTimer();
             InputManager.Instance.UpdateManager();
             PlayerManager.Instance.UpdateManager(dt);
             RoomManager.Instance.UpdateManager();
