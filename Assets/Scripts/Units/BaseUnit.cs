@@ -11,13 +11,13 @@ public class BaseUnit : MonoBehaviour
 
     #region VARIABLES
     public bool isAlive;
-    public bool isDashing;
+    protected bool isDashing;
     public int activeWeaponIndex;
     public int maxArrowCount;
     public int arrowCount;
     protected bool isHolding;
-    private float dashTime;
-    private float dashCDTime;
+    private float dashTime;     //time for how long we want the dash to last
+    private float dashCDTime;   //cooldown after once the dash is finished
     protected bool dashAvailable;
 
     #endregion
@@ -29,8 +29,8 @@ public class BaseUnit : MonoBehaviour
 	[SerializeField] public float maxHealth;
 	[SerializeField] protected int speed;
     [SerializeField] private float dashingSpeed;
-    [SerializeField] private float dashTimer;
-    [SerializeField] private float dashCDTimer;
+    [SerializeField] private float dashTimer;       //set the time of the dash
+    [SerializeField] private float dashCDTimer;     //set the time for after the dash
     [SerializeField] private double critChance;
     [SerializeField] private double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;

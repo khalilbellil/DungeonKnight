@@ -31,49 +31,36 @@ public class InputManager
 
     public void UpdateManager()
     {
-        //Mouse inputs:
-        inputPressed.deltaMouse.x = Input.GetAxis("Mouse X");
-        inputPressed.deltaMouse.y = Input.GetAxis("Mouse Y");
-        inputPressed.mousePosToRay = inputPressed.MousePosToRay(Input.mousePosition);
-        inputPressed.leftMouseButtonPressed = Input.GetMouseButtonDown(0);
-        inputPressed.leftMouseButtonReleased = Input.GetMouseButtonUp(0);
-        inputPressed.leftMouseButtonHeld = Input.GetMouseButton(0);
-        inputPressed.rightMouseButtonPressed = Input.GetMouseButtonDown(1);
-        inputPressed.middleMouseButtonPressed = Input.GetMouseButtonDown(2);
-        
-        inputPressed.anyKeyPressed = Input.anyKeyDown;
-        inputPressed.inventoryPressed = Input.GetButtonDown("Inventory");
-        inputPressed.interactPressed = Input.GetButtonDown("Interaction");
-
-        inputPressed.dirPressed.x = Input.GetAxis("Horizontal");
-        inputPressed.dirPressed.y = Input.GetAxis("Vertical");
-        inputPressed.dirPressed.Normalize();
-        inputPressed.jumpPressed = Input.GetButtonDown("Jump");
-        inputPressed.switchWeaponPressed = Input.GetButtonDown("Switch Weapon");
+        FillInputPackage(inputPressed);
     }
 
     public void FixedUpdateManager()
     {
-        //Mouse inputs:
-        inputPressed.deltaMouse.x = Input.GetAxis("Mouse X");
-        inputPressed.deltaMouse.y = Input.GetAxis("Mouse Y");
-        inputPressed.mousePosToRay = inputPressed.MousePosToRay(Input.mousePosition);
-        inputPressed.aimingDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - PlayerManager.Instance.player.transform.position).normalized;
-        //Debug.Log(string.Format("AimDir:{0},WP:{1},MP:{2}", inputPressed.aimingDirection.normalized, Camera.main.ScreenToWorldPoint(Input.mousePosition), Input.mousePosition));
-        inputPressed.leftMouseButtonPressed = Input.GetMouseButtonDown(0);
-        inputPressed.leftMouseButtonReleased = Input.GetMouseButtonUp(0);
-        inputPressed.leftMouseButtonHeld = Input.GetMouseButton(0);
-        inputPressed.rightMouseButtonPressed = Input.GetMouseButtonDown(1);
-        inputPressed.middleMouseButtonPressed = Input.GetMouseButtonDown(2);
-        
-        inputPressed.anyKeyPressed = Input.anyKeyDown;
-        inputPressed.inventoryPressed = Input.GetButtonDown("Inventory");
-        inputPressed.interactPressed = Input.GetButtonDown("Interaction");
-        fixedInputPressed.dirPressed.x = Input.GetAxis("Horizontal");
-        fixedInputPressed.dirPressed.y = Input.GetAxis("Vertical");
-        inputPressed.dirPressed.Normalize();
-        fixedInputPressed.jumpPressed = Input.GetButtonDown("Jump");
-        inputPressed.switchWeaponPressed = Input.GetButtonDown("Switch Weapon");
+        FillInputPackage(fixedInputPressed);
+    }
+
+    public void FillInputPackage(InputPkg toFill)
+    {
+        toFill.deltaMouse.x = Input.GetAxis("Mouse X");
+        toFill.deltaMouse.y = Input.GetAxis("Mouse Y");
+        toFill.mousePosToRay = toFill.MousePosToRay(Input.mousePosition);
+        if (PlayerManager.Instance.player)
+            toFill.aimingDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - PlayerManager.Instance.player.transform.position).normalized;
+        //Debug.Log(string.Format("AimDir:{0},WP:{1},MP:{2}", toFill.aimingDirection.normalized, Camera.main.ScreenToWorldPoint(Input.mousePosition), Input.mousePosition));
+        toFill.leftMouseButtonPressed = Input.GetMouseButtonDown(0);
+        toFill.leftMouseButtonReleased = Input.GetMouseButtonUp(0);
+        toFill.leftMouseButtonHeld = Input.GetMouseButton(0);
+        toFill.rightMouseButtonPressed = Input.GetMouseButtonDown(1);
+        toFill.middleMouseButtonPressed = Input.GetMouseButtonDown(2);
+
+        toFill.anyKeyPressed = Input.anyKeyDown;
+        toFill.inventoryPressed = Input.GetButtonDown("Inventory");
+        toFill.interactPressed = Input.GetButtonDown("Interaction");
+        toFill.dirPressed.x = Input.GetAxis("Horizontal");
+        toFill.dirPressed.y = Input.GetAxis("Vertical");
+        toFill.dirPressed.Normalize();
+        toFill.jumpPressed = Input.GetButtonDown("Jump");
+        toFill.switchWeaponPressed = Input.GetButtonDown("Switch Weapon");
     }
 
     public void StopManager()
