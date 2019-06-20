@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinScreen : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
 	//WinFlow winFlow;
 	UIManager uiManager;
@@ -14,7 +14,8 @@ public class WinScreen : MonoBehaviour
 		uiManager = _uiManager;
 	}
 
-	public void PlayAgain() {
+	public void PlayAgain()
+	{
 		Debug.Log("Play again was called");
 		UIManager.Instance.TryAgainButton();
 	}
