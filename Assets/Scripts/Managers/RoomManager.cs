@@ -36,6 +36,7 @@ public class RoomManager
     public RoomData[,] roomsArray = new RoomData[10, 10];//All the rooms data pckg are generated and saved here
 
     public GameObject currentRoom; //The room where the player is.
+    GeneriqueRooms currentRoomG;
     Directions dirPlayerCameFrom; //Direction the player came from (example: If he takes the North Door, in the next room he will be exiting the South Door)
 
     //Spawn locations of the player when he change room
@@ -52,7 +53,7 @@ public class RoomManager
     {//Generate Rooms
         player = PlayerManager.Instance.player;
         currentRoom = GameObject.FindObjectOfType<GeneriqueRooms>().gameObject;
-
+        currentRoomG = currentRoom.GetComponent<GeneriqueRooms>();
         GenerateRooms();
         Debug.Log("Room Generated");
     }
@@ -60,7 +61,7 @@ public class RoomManager
     public void UpdateManager()
     {
         ChangeRoom(player);
-
+        currentRoomG.RoomUpdate();
     }
 
     public void FixedUpdateManager()
@@ -106,29 +107,30 @@ public class RoomManager
         roomType = roomsArray[roomPos.x, roomPos.y].roomType;
 
         currentRoom.GetComponent<GeneriqueRooms>().Close();
+        EnemyManager.Instance.enemiesAlive.Clear();
         GameObject.Destroy(currentRoom);
 
         switch (roomType)
         {
             case RoomType.Enemy:
                 currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.ennemyRoomDir));//Instantiate the prefab
-                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y]);//Initialize the room and give it the data pckg
-                SetDoors(roomPos, currentRoom.GetComponent<GeneriqueRooms>());//Set the doors of the room
+                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y], SetDoors(roomPos));//Initialize the room and give it the data pckg
+                currentRoomG = currentRoom.GetComponent<GeneriqueRooms>();
                 break;
             case RoomType.Boss:
                 currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.bossRoomDir));
-                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y]);
-                SetDoors(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
+                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y], SetDoors(roomPos));
+                currentRoomG = currentRoom.GetComponent<GeneriqueRooms>();
                 break;
             case RoomType.Shop:
                 currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.ennemyRoomDir));
-                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y]);
-                SetDoors(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
+                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y], SetDoors(roomPos));
+                currentRoomG = currentRoom.GetComponent<GeneriqueRooms>();
                 break;
             case RoomType.Spawn:
                 currentRoom = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.spawnRoomDir));
-                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y]);
-                SetDoors(roomPos, currentRoom.GetComponent<GeneriqueRooms>());
+                currentRoom.GetComponent<GeneriqueRooms>().Initialize(roomsArray[roomPos.x, roomPos.y], SetDoors(roomPos));
+                currentRoomG = currentRoom.GetComponent<GeneriqueRooms>();
                 break;
             case RoomType.None:
                 break;
@@ -138,37 +140,51 @@ public class RoomManager
         Debug.Log("RoomPos: " + currentRoom.GetComponent<GeneriqueRooms>().roomData.pos);
     }
 
-    public void SetDoors(Vector2Int pos, GeneriqueRooms room)
+    public RoomType[] SetDoors(Vector2Int pos)
     {//Activate the existing doors
-        room.north.SetActive(false);
-        room.east.SetActive(false);
-        room.south.SetActive(false);
-        room.west.SetActive(false);
+        RoomType[] doors = new RoomType[4];
 
         if (pos.x == 0)
-        {
-            room.west.SetActive(true);//Close West Door
+        {//Close West Door
             roomsArray[pos.x, pos.y].westDoor = false;//Save the door state in roomsArray
+            doors[3] = RoomType.None;
+        }
+        else
+        {
+            doors[3] = RoomTypeOfDir(pos, Directions.West);
         }
 
         if (pos.y == 0)
-        {
-            room.south.SetActive(true);//Close South Door
+        {//Close South Door
             roomsArray[pos.x, pos.y].southDoor = false;//Save the door state in roomsArray
+            doors[2] = RoomType.None;
+        }
+        else
+        {
+            doors[2] = RoomTypeOfDir(pos, Directions.South);
         }
 
         if (pos.x == 9)
-        {
-            room.east.SetActive(true);//Close East Door
+        {//Close East Door
             roomsArray[pos.x, pos.y].eastDoor = false;//Save the door state in roomsArray
+            doors[1] = RoomType.None;
+        }
+        else
+        {
+            doors[1] = RoomTypeOfDir(pos, Directions.East);
         }
 
         if (pos.y == 9)
-        {
-            room.north.SetActive(true);//Close North Door
+        {//Close North Door
             roomsArray[pos.x, pos.y].northDoor = false;//Save the door state in roomsArray
+            doors[0] = RoomType.None;
+        }
+        else
+        {
+            doors[0] = RoomTypeOfDir(pos, Directions.North);
         }
 
+        return doors;
     }
 
     void ChangeRoom(Player player)

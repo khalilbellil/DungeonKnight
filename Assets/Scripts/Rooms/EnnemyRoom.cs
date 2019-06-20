@@ -7,7 +7,7 @@ public class EnnemyRoom : GeneriqueRooms
     int roomSet;
     public bool roomSetted = false;
 
-    public override void Initialize(RoomData _roomData)
+    public override void Initialize(RoomData _roomData, RoomType[] _doors)
     {
         roomType = RoomType.Enemy;
 
@@ -26,13 +26,13 @@ public class EnnemyRoom : GeneriqueRooms
         }
         //Set enemies spawn coordinates
         Spawn();
-        base.Initialize(_roomData);
+        base.Initialize(_roomData, _doors);
     }
 
     public override void RoomUpdate()
     {
         base.RoomUpdate();
-        if (isCleared)
+        if (EnemyManager.Instance.enemiesAlive.Count == 0)
         {
             UnlockDoors();
             isCleared = true;
