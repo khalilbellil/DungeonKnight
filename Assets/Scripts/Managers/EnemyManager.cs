@@ -60,7 +60,7 @@ public class EnemyManager
 
     public void SpawnEnemy(int roomLvl,Vector2 location)
     {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
-        Enemy es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir)).GetComponent<Enemy>();
+        Enemy es = GameObject.Instantiate(Resources.Load<EnemyBow>(PrefabsDir.enemyBDir)).GetComponent<Enemy>();
         es.Init();
         AddEnemy(es);
     }

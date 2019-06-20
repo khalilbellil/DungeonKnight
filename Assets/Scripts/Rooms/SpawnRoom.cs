@@ -8,6 +8,7 @@ public class SpawnRoom : GeneriqueRooms
     {
         base.Initialize(_lvl, _doors);
         PlayerManager.Instance.player.transform.position = new Vector3();
+        EnemyManager.Instance.SpawnEnemy(0,new Vector2(40,12));
     }
 
     public override void RoomUpdate()

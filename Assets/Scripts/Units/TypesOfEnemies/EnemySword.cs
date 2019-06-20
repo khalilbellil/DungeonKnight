@@ -32,7 +32,7 @@ public class EnemySword : Enemy
 
         list2 = new List<Transition.MyDelegate>()
         {
-            // ?
+            (enemy) => { return true; }
         };
 
         list3 = new List<Transition.MyDelegate>()
@@ -43,7 +43,7 @@ public class EnemySword : Enemy
 
         list4 = new List<Transition.MyDelegate>()
         {
-            // Player Uses Bow / raycast it enemy, 50% chance, dodge isnt on cooldown
+            (enemy) => { return this.GetRange() * 5 >= Vector2.Distance(PlayerManager.Instance.player.transform.position, this.transform.position); }
         };
 
         transList1 = new List<Transition>()

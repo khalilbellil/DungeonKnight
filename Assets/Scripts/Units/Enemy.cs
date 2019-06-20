@@ -71,7 +71,7 @@ public class Enemy : BaseUnit
 
     public void Dodge()
     {
-
+        UseDash(PlayerManager.Instance.player.transform.position - this.transform.position);
     }
 
     public void Attack()

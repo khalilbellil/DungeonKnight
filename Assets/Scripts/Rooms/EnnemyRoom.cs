@@ -10,7 +10,6 @@ public class EnnemyRoom : GeneriqueRooms
     public override void Initialize(int _lvl, RoomType[] _doors)
     {
         roomType = RoomType.Enemy;
-        base.Initialize(_lvl, _doors);
 
         //Choose the roomset using index of child
         if (!roomSetted)
@@ -29,6 +28,7 @@ public class EnnemyRoom : GeneriqueRooms
         }
         //Set enemies spawn coordinates
         Spawn();
+        base.Initialize(_lvl, _doors);
     }
 
     public override void RoomUpdate()
