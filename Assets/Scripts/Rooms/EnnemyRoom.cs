@@ -31,7 +31,7 @@ public class EnnemyRoom : GeneriqueRooms
     public override void RoomUpdate()
     {
         base.RoomUpdate();
-        if (EnemyManager.Instance.enemiesAlive.Count == 0)
+        if (EnemyManager.Instance.enemiesAlive.Count == 0)//if ennemies are all dead, open the doors
         {
             UnlockDoors();
             isCleared = true;
@@ -61,7 +61,7 @@ public class EnnemyRoom : GeneriqueRooms
                 y = Random.Range(2, 22);
             }
 
-            EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y));
+            EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y));//Spawn Ennemies
         }
     }
 }

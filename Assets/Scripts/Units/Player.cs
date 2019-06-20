@@ -2,9 +2,7 @@
 
 public class Player : BaseUnit
 {
-
 	public int coins;
-
 
     override public void Init()
     {
@@ -22,7 +20,6 @@ public class Player : BaseUnit
 
     public void PlayerUpdate(InputManager.InputPkg input, float dt)
     {
-
         isHolding = input.leftMouseButtonHeld;
 
         if(input.interactPressed)
@@ -33,7 +30,6 @@ public class Player : BaseUnit
 
         base.UnitUpdate(dt, input.aimingDirection);
         MovementAnimations();
-
     }
 
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
@@ -42,7 +38,6 @@ public class Player : BaseUnit
             isDashing = true;
 
         UpdateMovement(input.dirPressed);
-        //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity);
 
         base.UnitFixedUpdate();
     }
@@ -50,16 +45,12 @@ public class Player : BaseUnit
     override public void Death()
     {
 		gameObject.SetActive(false);
-		//GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
 		PlayerManager.Instance.gameFlow.PlayerDied();
-		Debug.Log("player isDead");
     }
 
 	override public void MovementAnimations()
     {
-        //Debug.Log("player animation");
         anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
-
     }
 
     public void Interact()

@@ -35,6 +35,11 @@ public class RoomManager
 
     public RoomData[,] roomsArray = new RoomData[10, 10];//All the rooms data pckg are generated and saved here
 
+    int[,] path1 = new int[10, 10];
+    int[,] path2 = new int[10, 10];
+    int[,] path3 = new int[10, 10];
+    int[,] path4 = new int[10, 10];
+
     public GameObject currentRoom; //The room where the player is.
     GeneriqueRooms currentRoomG;
     Directions dirPlayerCameFrom; //Direction the player came from (example: If he takes the North Door, in the next room he will be exiting the South Door)
@@ -101,6 +106,58 @@ public class RoomManager
         InstantiateRoom(new Vector2Int(0, 0));
     }
 
+    void GenerateRoomsWithPath(int[,] _path)
+    {//Will generate room from a int 2d array
+
+    }
+
+    public RoomType[] SetDoors(Vector2Int pos)
+    {//Activate the existing doors
+        RoomType[] doors = new RoomType[4];
+
+        if (pos.x == 0)
+        {
+            roomsArray[pos.x, pos.y].westDoor = false;//Save the door state in roomsArray
+            doors[3] = RoomType.None;//Close West Door
+        }
+        else
+        {
+            doors[3] = RoomTypeOfDir(pos, Directions.West);//Set the roomType of the door
+        }
+
+        if (pos.y == 0)
+        {
+            roomsArray[pos.x, pos.y].southDoor = false;//Save the door state in roomsArray
+            doors[2] = RoomType.None;//Close South Door
+        }
+        else
+        {
+            doors[2] = RoomTypeOfDir(pos, Directions.South);//Set the roomType of the door
+        }
+
+        if (pos.x == 9)
+        {
+            roomsArray[pos.x, pos.y].eastDoor = false;//Save the door state in roomsArray
+            doors[1] = RoomType.None;//Close East Door
+        }
+        else
+        {
+            doors[1] = RoomTypeOfDir(pos, Directions.East);//Set the roomType of the door
+        }
+
+        if (pos.y == 9)
+        {
+            roomsArray[pos.x, pos.y].northDoor = false;//Save the door state in roomsArray
+            doors[0] = RoomType.None;//Close North Door
+        }
+        else
+        {
+            doors[0] = RoomTypeOfDir(pos, Directions.North);//Set the roomType of the door
+        }
+
+        return doors;
+    }
+
     public void InstantiateRoom(Vector2Int roomPos)
     {
         RoomType roomType = RoomType.None;
@@ -138,53 +195,6 @@ public class RoomManager
                 break;
         }
         Debug.Log("RoomPos: " + currentRoom.GetComponent<GeneriqueRooms>().roomData.pos);
-    }
-
-    public RoomType[] SetDoors(Vector2Int pos)
-    {//Activate the existing doors
-        RoomType[] doors = new RoomType[4];
-
-        if (pos.x == 0)
-        {//Close West Door
-            roomsArray[pos.x, pos.y].westDoor = false;//Save the door state in roomsArray
-            doors[3] = RoomType.None;
-        }
-        else
-        {
-            doors[3] = RoomTypeOfDir(pos, Directions.West);
-        }
-
-        if (pos.y == 0)
-        {//Close South Door
-            roomsArray[pos.x, pos.y].southDoor = false;//Save the door state in roomsArray
-            doors[2] = RoomType.None;
-        }
-        else
-        {
-            doors[2] = RoomTypeOfDir(pos, Directions.South);
-        }
-
-        if (pos.x == 9)
-        {//Close East Door
-            roomsArray[pos.x, pos.y].eastDoor = false;//Save the door state in roomsArray
-            doors[1] = RoomType.None;
-        }
-        else
-        {
-            doors[1] = RoomTypeOfDir(pos, Directions.East);
-        }
-
-        if (pos.y == 9)
-        {//Close North Door
-            roomsArray[pos.x, pos.y].northDoor = false;//Save the door state in roomsArray
-            doors[0] = RoomType.None;
-        }
-        else
-        {
-            doors[0] = RoomTypeOfDir(pos, Directions.North);
-        }
-
-        return doors;
     }
 
     void ChangeRoom(Player player)
