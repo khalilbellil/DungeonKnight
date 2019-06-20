@@ -561,7 +561,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2920689653637063259
 MonoBehaviour:
@@ -579,17 +579,21 @@ MonoBehaviour:
   - {fileID: 2943026494577123764}
   - {fileID: 7284926517214609674}
   isAlive: 1
+  isDashing: 0
   activeWeaponIndex: 0
-  maxArrowCount: 0
-  arrowCount: 0
+  maxArrowCount: 20
+  arrowCount: 20
   health: 175
   maxHealth: 175
   speed: 5
+  dashingSpeed: 50
+  dashTimer: 0.1
+  dashCDTimer: 1.5
   critChance: 0.1
   critMultipier: 1.5
   hitableLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 5888
   speedMultiplier: 1
   rb: {fileID: 2920689653637063258}
   coins: 0
@@ -703,6 +707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
+        type: 3}
+      propertyPath: attackAvailable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0300c1543c927354ca26346ec8c2a90f, type: 3}

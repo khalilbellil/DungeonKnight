@@ -40,15 +40,12 @@ public class Arrow : MonoBehaviour
 
         if (target != null)
         {
-    //need to change so it is not only enemy that can hit (testing purposes)
-                target.GetComponent<BaseUnit>().TakeDamage(arrowStats.dammage);
-                Debug.Log("Target hp : " + target.GetComponent<BaseUnit>().health);
+            target.GetComponent<BaseUnit>()?.TakeDamage(arrowStats.dammage);
+            Debug.Log("Target hp : " + target.GetComponent<BaseUnit>()?.health);
 
             isTravelling = false;
-
-
+            
             Debug.Log("Hit a target ! : " + target.name);
-
 
             RemoveArrow();
         }

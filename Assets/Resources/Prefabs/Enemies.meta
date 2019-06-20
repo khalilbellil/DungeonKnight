@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Prefabs/Enemies.meta
 guid: 025aa7baf75bb374396e13d8b5973702
 folderAsset: yes
 DefaultImporter:
+=======
+guid: b6ba0f3da39d13d44859d89435daf0a1
+PrefabImporter:
+>>>>>>> c5495ad0633c5b5992e0a4e3d92fc1898bbb322f:Assets/Resources/Prefabs/Units/Enemy.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

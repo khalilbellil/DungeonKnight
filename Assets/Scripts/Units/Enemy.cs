@@ -47,6 +47,7 @@ public class Enemy : BaseUnit
 		base.Death();
 		DropItem();
 		EnemyManager.Instance.RemoveEnemy(this);
+		Destroy(gameObject);
     }
 
     override public void MovementAnimations()

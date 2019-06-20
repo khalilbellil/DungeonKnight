@@ -95,7 +95,8 @@ MonoBehaviour:
   dammage: 15
   hitBoxSize: {x: 0, y: 0}
   cdForNextAtk: 32.15
-  arrowSpeed: 5
+  attackAvailable: 0
+  arrowSpeed: 100
   speedModifier: 1
   type: 0
   maxDrawingTime: 3

@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour
             {
                 attackAvailable = true;
                 currentCdTimer = 0;
-                Debug.Log("Attack available");
+                //Debug.Log("Attack available");
             }
         }
     }

@@ -38,18 +38,20 @@ public class Player : BaseUnit
 
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
     {
-        if (input.jumpPressed)
-            UseDash(input.dirPressed);
+        if (input.jumpPressed && dashAvailable)
+            isDashing = true;
 
         UpdateMovement(input.dirPressed);
         //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity);
+
         base.UnitFixedUpdate();
     }
 
     override public void Death()
     {
 		gameObject.SetActive(false);
-		GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
+		//GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
+		PlayerManager.Instance.gameFlow.PlayerDied();
 		Debug.Log("player isDead");
     }
 
