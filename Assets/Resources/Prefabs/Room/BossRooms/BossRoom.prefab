@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3101175700564449583}
   - component: {fileID: 5629839132811113094}
-  - component: {fileID: 1338824215618676763}
   - component: {fileID: 9147039475518031816}
   m_Layer: 0
   m_Name: BossRoom
@@ -54,28 +53,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &1338824215618676763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281450499630756311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a46cbacea57ace343a691cfefef70ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posInRoomM: {x: 0, y: 0}
-  isCleared: 0
-  roomType: 0
-  doors: 
-  north: {fileID: 3419866251279542754}
-  south: {fileID: 4015104074818384102}
-  east: {fileID: 1700435531376134489}
-  west: {fileID: 5026300216178231794}
-  tileDoors: {fileID: 2244110539038653267}
-  roomSetted: 0
 --- !u!114 &9147039475518031816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,14 +65,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7ce612e1992ec4497ac5ba2cf76742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posInRoomM: {x: 0, y: 0}
   isCleared: 0
-  roomType: 0
-  doors: 
+  roomType: 1
   north: {fileID: 3419866251279542754}
   south: {fileID: 4015104074818384102}
   east: {fileID: 1700435531376134489}
   west: {fileID: 5026300216178231794}
+  doors: 
   tileDoors: {fileID: 2244110539038653267}
 --- !u!1 &1033187093377620680
 GameObject:

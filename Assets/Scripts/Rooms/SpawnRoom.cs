@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class SpawnRoom : GeneriqueRooms
 {
-    public override void Initialize(int _lvl, RoomType[] _doors)
+    public override void Initialize(RoomData roomData)
     {
-        base.Initialize(_lvl, _doors);
-        PlayerManager.Instance.player.transform.position = new Vector3();
+        //base.Initialize(_lvl, _doors);
+        //PlayerManager.Instance.player.transform.position = new Vector3();
         EnemyManager.Instance.SpawnEnemy(0,new Vector2(40,12));
+        base.Initialize(roomData);
     }
 
     public override void RoomUpdate()
