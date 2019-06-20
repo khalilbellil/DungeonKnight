@@ -4,25 +4,27 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public enum RoomType { Enemy, Boss, Shop, Spawn, None }
-public enum Directions { North,South,East,West}
+public enum Directions { North, South, East, West }
 
 public class GeneriqueRooms : MonoBehaviour
 {
-    public Vector2 posInRoomM;
-
+    public RoomData roomData;
+    
     public bool isCleared = false;
 
     protected int lvl;
     string namePath;
     int numOfDoors;
+
     public RoomType roomType;
-    public RoomType[] doors;
     public GameObject north;
     public GameObject south;
     public GameObject east;
     public GameObject west;
+
+    public RoomType[] doors;
     public Tilemap tileDoors;
-    
+
     ArrayList coins = new ArrayList(); //Keep track of existing coins.
 
     public Dictionary<RoomType, Color> doorColorDic = new Dictionary<RoomType, Color>() {
@@ -33,24 +35,16 @@ public class GeneriqueRooms : MonoBehaviour
         { RoomType.None, new Color(.5f,.5f,.5f,0) }
     };
 
-    // Start is called before the first frame update
-    public virtual void Initialize(int _lvl, RoomType[] _doors)
+    public virtual void Initialize(RoomData _roomData)
     {
-        lvl = _lvl;   
-        doors = _doors;
-        // roomType = _roomtype;
+        roomData = _roomData;
+        roomType = roomData.roomType;
+        isCleared = roomData.isCleared;
 
-        //north.SetActive(doors[0] == RoomType.None);
-        //east.SetActive(doors[1] == RoomType.None);
-        //south.SetActive(doors[2] == RoomType.None);
-        //west.SetActive(doors[3] == RoomType.None);
-
-        
-
-        ColorDoor(doors[0], Directions.North);
-        ColorDoor(doors[1], Directions.East);
-        ColorDoor(doors[2], Directions.South);
-        ColorDoor(doors[3], Directions.West);
+        //ColorDoor(doors[0], Directions.North);
+        //ColorDoor(doors[1], Directions.East);
+        //ColorDoor(doors[2], Directions.South);
+        //ColorDoor(doors[3], Directions.West);
 
         Grid.InitBoolGrid();
 
@@ -58,51 +52,18 @@ public class GeneriqueRooms : MonoBehaviour
         {
             c.geometryType = CompositeCollider2D.GeometryType.Outlines;
         }
-
-
-        //doors[1]  east
-        //doors[2]  south
-        //doors[3]  west
     }
 
-    // Update is called once per frame
     public virtual void RoomUpdate()
     {
-        
+
     }
 
     public virtual void Close()
     {
-
-    }
-
-    public virtual void SetDoors(Vector2Int pos)
-    {//Activate the existing doors
-        north.SetActive(false);
-        east.SetActive(false);
-        south.SetActive(false);
-        west.SetActive(false);
-
-        if (pos.x == 0)
-        {
-            west.SetActive(true);
-        }
-
-        if (pos.y == 0)
-        {
-            south.SetActive(true);
-        }
-
-        if (pos.x == 9)
-        {
-            north.SetActive(true);
-        }
-
-        if (pos.y == 9)
-        {
-            east.SetActive(true);
-        }
-
+        //Save the RoomData in the RoomManager roomsArray
+        roomData.isCleared = isCleared;
+        RoomManager.Instance.roomsArray[roomData.pos.x, roomData.pos.y] = roomData;
     }
 
     public virtual void LockDoors()
@@ -116,7 +77,6 @@ public class GeneriqueRooms : MonoBehaviour
 
     public virtual void UnlockDoors()
     {
-        
         north.SetActive(doors[0] == RoomType.None);
         east.SetActive(doors[1] == RoomType.None);
         south.SetActive(doors[2] == RoomType.None);
@@ -124,7 +84,7 @@ public class GeneriqueRooms : MonoBehaviour
         tileDoors.GetComponent<TilemapCollider2D>().enabled = true;
     }
 
-    public void ColorDoor(RoomType door,Directions dir)
+    public void ColorDoor(RoomType door, Directions dir)
     {
         Tilemap tm = tileDoors;
         Color newDoorColor = doorColorDic[door];
@@ -167,47 +127,6 @@ public class GeneriqueRooms : MonoBehaviour
         tm.SetTileFlags(pos1, TileFlags.None);
         tm.SetColor(pos0, newDoorColor);
         tm.SetColor(pos1, newDoorColor);
-
-
-        
     }
 
-    public void DoorTriggerEntered(Transform thingEnteredDoor)
-    {
-        
-        Debug.Log("thing entered door: " + thingEnteredDoor.name);
-        //once confirmed is player & location
-        if (thingEnteredDoor.CompareTag("Player"))
-        {
-            if(thingEnteredDoor.position.x <= 21 && thingEnteredDoor.position.x >= 23)
-            {
-                if(thingEnteredDoor.position.y >= 22)
-                {
-                    RoomManager.Instance.RoomExited(Directions.North);
-                }
-                else if(thingEnteredDoor.position.y <= 3)
-                {
-                    RoomManager.Instance.RoomExited(Directions.South);
-                }
-            }
-            else if (thingEnteredDoor.position.y <= 11 && thingEnteredDoor.position.y >= 13)
-            {
-                if (thingEnteredDoor.position.x >= 43)
-                {
-                    RoomManager.Instance.RoomExited(Directions.East);
-                }
-                else if (thingEnteredDoor.position.x <= 1)
-                {
-                    RoomManager.Instance.RoomExited(Directions.West);
-                }
-            }
-        }
-        //calculate which direction
-        //RoomManager.Instance.RoomExited(Directions.North)
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
 }

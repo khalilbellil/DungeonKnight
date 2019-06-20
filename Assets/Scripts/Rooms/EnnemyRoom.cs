@@ -7,22 +7,19 @@ public class EnnemyRoom : GeneriqueRooms
     int roomSet;
     public bool roomSetted = false;
 
-    public override void Initialize(int _lvl, RoomType[] _doors)
+    public override void Initialize(RoomData _roomData)
     {
-        roomType = RoomType.Enemy;
-        base.Initialize(_lvl, _doors);
+        base.Initialize(_roomData);
 
-        //Choose the roomset using index of child
-        if (!roomSetted)
+        if (!roomData.roomSetted)//if room not setted yet, set it and save it
         {
-            roomSet = Random.Range(0, transform.GetChild(8).childCount);
-            roomSetted = true;
+            roomSet = Random.Range(0, transform.GetChild(8).childCount);//Randomly set the roomSet
+            roomData.roomSet = roomSet;//Save the roomSet
+            roomData.roomSetted = true;//Save that the room was setted
         }
 
+        transform.GetChild(8).GetChild(roomData.roomSet).gameObject.SetActive(true);
 
-        roomSet = Random.Range(0,transform.GetChild(8).childCount);
-
-        transform.GetChild(8).GetChild(roomSet).gameObject.SetActive(true);
         if (!isCleared)
         {
             LockDoors();
@@ -34,7 +31,7 @@ public class EnnemyRoom : GeneriqueRooms
     public override void RoomUpdate()
     {
         base.RoomUpdate();
-        if(EnemyManager.Instance.enemiesAlive.Count == 0)
+        if (isCleared)
         {
             UnlockDoors();
             isCleared = true;
@@ -43,6 +40,8 @@ public class EnnemyRoom : GeneriqueRooms
 
     public override void Close()
     {
+        roomData.roomSet = roomSet;
+        roomData.roomSetted = roomSetted;
         base.Close();
     }
 
@@ -52,7 +51,7 @@ public class EnnemyRoom : GeneriqueRooms
         int x;
         int y;
 
-        for(int i = 0; i < numOfEnemies; i++)
+        for (int i = 0; i < numOfEnemies; i++)
         {
             x = Random.Range(1, 43);
             y = Random.Range(2, 22);
