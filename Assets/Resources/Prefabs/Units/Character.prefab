@@ -822,6 +822,11 @@ PrefabInstance:
       propertyPath: attackAvailable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
+        type: 3}
+      propertyPath: dammage
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0300c1543c927354ca26346ec8c2a90f, type: 3}
 --- !u!4 &2242071416263302357 stripped

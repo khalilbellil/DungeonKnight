@@ -7,7 +7,7 @@ public class MainEntry : MonoBehaviour
 {
     bool flowInitialized = false;
     CurrentState currentState;
-    //Flow curFlow;
+
     public Flow curFlow;
     bool sceneLoaded = false;
     public static int sceneNb = 1;

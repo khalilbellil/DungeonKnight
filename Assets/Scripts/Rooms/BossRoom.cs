@@ -6,9 +6,9 @@ using UnityEngine.Tilemaps;
 public class BossRoom : GeneriqueRooms
 {
     
-    public override void Initialize(RoomData _roomData)
+    public override void Initialize(RoomData _roomData, RoomType[] _doors)
     {
-        base.Initialize(_roomData);
+        base.Initialize(_roomData, _doors);
         if (!isCleared)
         {
             LockDoors();
@@ -20,7 +20,7 @@ public class BossRoom : GeneriqueRooms
     public override void RoomUpdate()
     {
         base.RoomUpdate();
-        if (isCleared)
+        if (EnemyManager.Instance.enemiesAlive.Count == 0)
         {
             transform.GetChild(8).gameObject.SetActive(true);
             UnlockDoors();

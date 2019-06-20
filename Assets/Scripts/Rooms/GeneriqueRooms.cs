@@ -35,16 +35,22 @@ public class GeneriqueRooms : MonoBehaviour
         { RoomType.None, new Color(.5f,.5f,.5f,0) }
     };
 
-    public virtual void Initialize(RoomData _roomData)
+    public virtual void Initialize(RoomData _roomData, RoomType[] _doors)
     {
         roomData = _roomData;
         roomType = roomData.roomType;
         isCleared = roomData.isCleared;
+        doors = _doors;
 
-        //ColorDoor(doors[0], Directions.North);
-        //ColorDoor(doors[1], Directions.East);
-        //ColorDoor(doors[2], Directions.South);
-        //ColorDoor(doors[3], Directions.West);
+        north.SetActive(doors[0] == RoomType.None);
+        east.SetActive(doors[1] == RoomType.None);
+        south.SetActive(doors[2] == RoomType.None);
+        west.SetActive(doors[3] == RoomType.None);
+
+        ColorDoor(doors[0], Directions.North);
+        ColorDoor(doors[1], Directions.East);
+        ColorDoor(doors[2], Directions.South);
+        ColorDoor(doors[3], Directions.West);
 
         Grid.InitBoolGrid();
 
