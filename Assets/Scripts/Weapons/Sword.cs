@@ -32,6 +32,7 @@ public class Sword : Weapon
 
         if (attackAvailable)
         {
+            owner.UseAttackAnim("UseSword");
             attackAvailable = false;
 
             Vector2 hitBoxLocation = casterLocation + dir * range;

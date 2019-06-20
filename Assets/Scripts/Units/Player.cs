@@ -39,8 +39,9 @@ public class Player : BaseUnit
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
     {
         if (input.jumpPressed && dashAvailable)
-            isDashing = true;
+            UseDash();
 
+        //Debug.Log("dir: " + input.dirPressed);
         UpdateMovement(input.dirPressed);
         //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity);
 
@@ -49,17 +50,19 @@ public class Player : BaseUnit
 
     override public void Death()
     {
-		gameObject.SetActive(false);
+        base.Death();
+		//gameObject.SetActive(false);
 		//GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
 		PlayerManager.Instance.gameFlow.PlayerDied();
 		Debug.Log("player isDead");
+
     }
 
 	override public void MovementAnimations()
     {
         //Debug.Log("player animation");
         anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
-
+        base.MovementAnimations();
     }
 
     public void Interact()
