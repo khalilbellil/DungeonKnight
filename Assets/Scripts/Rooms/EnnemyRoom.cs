@@ -7,9 +7,9 @@ public class EnnemyRoom : GeneriqueRooms
     int roomSet;
     public bool roomSetted = false;
 
-    public override void Initialize(RoomData _roomData)
+    public override void Initialize(RoomData _roomData, RoomType[] _doors)
     {
-        base.Initialize(_roomData);
+        base.Initialize(_roomData, _doors);
 
         if (!roomData.roomSetted)//if room not setted yet, set it and save it
         {
@@ -31,7 +31,7 @@ public class EnnemyRoom : GeneriqueRooms
     public override void RoomUpdate()
     {
         base.RoomUpdate();
-        if (isCleared)
+        if (EnemyManager.Instance.enemiesAlive.Count == 0)
         {
             UnlockDoors();
             isCleared = true;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SpawnRoom : GeneriqueRooms
 {
-    public override void Initialize(RoomData roomData)
+    public override void Initialize(RoomData roomData, RoomType[] _doors)
     {
-        base.Initialize(roomData);
+        base.Initialize(roomData, _doors);
     }
 
     public override void RoomUpdate()

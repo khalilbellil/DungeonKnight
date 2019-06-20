@@ -33,7 +33,7 @@ public class EnemyManager
         {
             enemiesAlive[i].
         }*/
-        SpawnEnemy(1,new Vector2(41,12));
+        //SpawnEnemy(1,new Vector2(41,12));
         //es.Init();
         
     }
@@ -42,6 +42,8 @@ public class EnemyManager
     {//Check if enemies are alive, if not call KillEnemy.
         foreach (Enemy es in enemiesAlive)
             es.UnitUpdate(dt, (PlayerManager.Instance.player.transform.position - es.transform.position).normalized);
+
+
 
     }
 
