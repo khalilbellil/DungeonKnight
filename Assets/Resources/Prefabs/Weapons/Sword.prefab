@@ -93,5 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dammage: 25
-  hitBoxSize: {x: 1.5, y: 1.5}
+  hitBoxSize: {x: 1.5, y: 2}
   cdForNextAtk: 0.5
+  attackAvailable: 0
