@@ -9,7 +9,7 @@ public class EnnemyRoom : GeneriqueRooms
 
     public override void Initialize(RoomData _roomData, RoomType[] _doors)
     {
-        base.Initialize(_roomData, _doors);
+        roomType = RoomType.Enemy;
 
         if (!roomData.roomSetted)//if room not setted yet, set it and save it
         {
@@ -26,6 +26,7 @@ public class EnnemyRoom : GeneriqueRooms
         }
         //Set enemies spawn coordinates
         Spawn();
+        base.Initialize(_roomData, _doors);
     }
 
     public override void RoomUpdate()

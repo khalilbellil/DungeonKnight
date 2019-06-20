@@ -12,12 +12,14 @@ enum ArrowType
 
 public class Bow : Weapon
 {
+    public static readonly float maxDrawingTime = 3;
+
+
     #region Bow Stats:
     [Header("Bow Specific:")]
     [SerializeField] public float arrowSpeed;
     [SerializeField] private float speedModifier;
     [SerializeField] private ArrowType type;
-    [SerializeField] private float maxDrawingTime;
     [SerializeField] private Arrow arrowPrefab;
     #endregion
 
@@ -38,13 +40,13 @@ public class Bow : Weapon
         type = ArrowType.DEFAULT;
         dammage = 15;
         arrowSpeed = 35;        //to test
-        maxDrawingTime = 3;
+       // maxDrawingTime = 3;
         arrowStats.arrowSpeed = this.arrowSpeed;
         this.speedModifier = 1;
         arrowStats.speedModifier = this.speedModifier;
         arrowStats.hitBoxSize = this.hitBoxSize;
         arrowStats.layerToHit = this.layerToHit;
-        arrowStats.owner = this.owner;
+        arrowStats.owner = _owner;
 
         arrowGo = Resources.Load<Arrow>(PrefabsDir.arrowWeaponDir);
         arrowStats.arrowGo = arrowGo;
