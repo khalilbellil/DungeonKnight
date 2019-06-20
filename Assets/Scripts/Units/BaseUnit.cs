@@ -121,10 +121,14 @@ public class BaseUnit : MonoBehaviour
     {
         if (!isDashing)
         {
-            tr.enabled = true;
-            isDashing = true;
-            tr.Clear();
-            anim.SetBool("Dashing", true);
+            if (tr != null)
+            {
+                tr.enabled = true;
+                isDashing = true;
+                tr.Clear();
+                anim.SetBool("Dashing", true);
+            }
+            
         }
         //Debug.Log("Dash");
     }

@@ -71,7 +71,7 @@ public class Enemy : BaseUnit
 
     public void Dodge()
     {
-        UseDash(PlayerManager.Instance.player.transform.position - this.transform.position);
+        UseDash();
     }
 
     public void Attack()
@@ -96,8 +96,16 @@ public class Enemy : BaseUnit
             }
             else
             {
-                Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position).normalized;
-                UpdateMovement(dir);
+                if (grid.GetPath().Count > 0)
+                {
+                    Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position).normalized;
+                    UpdateMovement(dir);
+                }
+                else
+                {
+                    UpdateMovement(new Vector2());
+                }
+                
             }
         }
         else
