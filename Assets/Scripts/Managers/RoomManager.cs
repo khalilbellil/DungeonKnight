@@ -34,6 +34,7 @@ public class RoomManager
     #endregion
 
     public RoomData[,] roomsArray = new RoomData[10, 10];//All the rooms data pckg are generated and saved here
+
     #region 2D Array Path
     //2D Array Path // 0:None , 1:EnnemyRoom, 2: SpawnRoom, 3:BossRoom
     int[,] path1 = new int[10, 10] {{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
@@ -80,7 +81,6 @@ public class RoomManager
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
     #endregion
-
 
     public GameObject currentRoom; //The room where the player is.
     GeneriqueRooms currentRoomG;

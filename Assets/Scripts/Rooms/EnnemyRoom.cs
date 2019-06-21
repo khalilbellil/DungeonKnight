@@ -63,8 +63,8 @@ public class EnnemyRoom : GeneriqueRooms
 				x = Random.Range(1, 43);
 				y = Random.Range(2, 22);
 			}
-
-			EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y), TypeEnemy.BOW);
+            int etype = Random.Range(0, 2);
+			EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y), (TypeEnemy)etype);
 		}
 
     }

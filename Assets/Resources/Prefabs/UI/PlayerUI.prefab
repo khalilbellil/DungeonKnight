@@ -1425,6 +1425,8 @@ MonoBehaviour:
   arrowText: {fileID: 3648432232159862665}
   healthBar: {fileID: 3648432230582419989}
   currentWeapon: {fileID: 3648432231641567015}
+  weapon1: {fileID: 21300000, guid: af35b6c39fc944fd5b0c55d9075360cd, type: 3}
+  weapon2: {fileID: 21300000, guid: 7ae9f5cd955134dfaa486ffcb8610fcf, type: 3}
   passive: {fileID: 3648432231157560659}
   timer: {fileID: 3946406691127705235}
 --- !u!1 &3648432232304468447
