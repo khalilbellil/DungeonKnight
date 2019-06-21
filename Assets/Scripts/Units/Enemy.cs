@@ -71,7 +71,7 @@ public class Enemy : BaseUnit
 
     public void Dodge()
     {
-        UseDash();
+        //UseDash();
     }
 
     public void Attack()

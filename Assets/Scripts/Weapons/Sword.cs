@@ -9,7 +9,7 @@ public class Sword : Weapon
     public override void Init(LayerMask hitableLayer, BaseUnit _owner)
     {
         range = 2;
-        hitBoxSize = new Vector2(1.5f, 1.5f);
+        hitBoxSize = new Vector2(1.5f, 2f);
         base.Init(hitableLayer, _owner);
         animTrigger = "UseSword";
     }

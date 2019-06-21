@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EnnemyRoom : GeneriqueRooms
 {
@@ -27,7 +28,6 @@ public class EnnemyRoom : GeneriqueRooms
 		if (!isCleared)
 		{
 			LockDoors();
-			Spawn();
 		}
 
 	}
@@ -65,7 +65,9 @@ public class EnnemyRoom : GeneriqueRooms
 				y = Random.Range(2, 22);
 			}
 
-			EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y));
+            TypeEnemy enemyType = System.Enum.GetValues(typeof(TypeEnemy)).Cast<TypeEnemy>().RandomElement();            
+
+			EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y), enemyType);
 		}
 	}
 }
