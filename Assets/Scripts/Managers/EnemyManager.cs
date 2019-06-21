@@ -82,7 +82,7 @@ public class EnemyManager
                 Debug.LogError("Unhandled switch : " + type);
                 goto case TypeEnemy.BOW;
         }
-
+        
         es.transform.position = location;
         es.Init();
         AddEnemy(es);

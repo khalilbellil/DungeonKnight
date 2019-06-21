@@ -24,7 +24,14 @@ public class EnnemyRoom : GeneriqueRooms
 			Spawn();
 		}
 
-	}
+        
+
+        foreach (CompositeCollider2D c in GetComponentsInChildren<CompositeCollider2D>())
+        {
+            c.geometryType = CompositeCollider2D.GeometryType.Outlines;
+        }
+
+    }
 
 	public override void RoomUpdate()
 	{
