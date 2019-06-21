@@ -161,7 +161,7 @@ MonoBehaviour:
   arrowCount: 0
   health: 100
   maxHealth: 100
-  speed: 100
+  speed: 7
   dashingSpeed: 0
   dashTimer: 0
   dashCDTimer: 0

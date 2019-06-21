@@ -12,9 +12,13 @@ public class BossRoom : GeneriqueRooms
         if (!isCleared)
         {
             LockDoors();
+            Spawn();
         }
         //Set boss spawn coordinates
-        Spawn();
+        foreach (CompositeCollider2D c in GetComponentsInChildren<CompositeCollider2D>())
+        {
+            c.geometryType = CompositeCollider2D.GeometryType.Outlines;
+        }
     }
 
     public override void RoomUpdate()
@@ -35,7 +39,7 @@ public class BossRoom : GeneriqueRooms
 
     void Spawn()
     {
-        //EnemyManager.Instance.SpawnBoss(new Vector2(22, 12));
+        EnemyManager.Instance.SpawnBoss(new Vector2(22, 12));
     }
 
     public void TrapTriggerEntered(Transform thingEnteredDoor)
