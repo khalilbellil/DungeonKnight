@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ArrowItem : Item
 {
-    
     public override void Init()
     {
         base.Init();
@@ -13,7 +12,11 @@ public class ArrowItem : Item
 
     protected override void CollidedWithPlayer(Player player)
     {
-        player.arrowCount = player.maxArrowCount;
-
-    }
+		if (!isPickup && player.arrowCount < player.maxArrowCount) {
+			isPickup = true;
+			// this makes player pick up 20 arrows because thats the max arrow count
+			//player.arrowCount = player.maxArrowCount;
+			player.arrowCount += 1; 
+		}
+	}
 }
