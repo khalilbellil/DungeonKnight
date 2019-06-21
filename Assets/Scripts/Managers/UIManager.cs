@@ -129,6 +129,7 @@ public class UIManager
 	//Call the win screen when you win the game//
 	public void CallWinScreen() {
         UI = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.uiVictDir));
+		PlayerManager.Instance.player.gameObject.SetActive(false);
     }
 
 	public void CallDeathScreen()
