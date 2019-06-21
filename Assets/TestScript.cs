@@ -9,6 +9,7 @@ public class TestScript : MonoBehaviour
     {
         Item.LoadItem(Item.AllItems.potion, new Vector3(7, 12, 0));
         Item.LoadItem(Item.AllItems.passive, new Vector3(12, 12, 0));
+        Item.LoadItem(Item.AllItems.passive, new Vector3(14, 12, 0));
     }
 
     // Update is called once per frame

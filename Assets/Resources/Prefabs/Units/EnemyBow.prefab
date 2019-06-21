@@ -99,7 +99,7 @@ MonoBehaviour:
   activeWeaponIndex: 0
   maxArrowCount: 900
   arrowCount: 900
-  health: 1
+  health: 75
   maxHealth: 75
   speed: 4
   dashingSpeed: 0
