@@ -41,7 +41,7 @@ public class RoomManager
                                     { 1, 1, 2, 1, 1, 0, 0, 0, 0, 0 },
                                     { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0 },
                                     { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0 },
-                                    { 1, 1, 1, 0, 1, 0, 0, 0, 0, 0 },
+              /* (<<-- SOUTH)*/     { 1, 1, 1, 0, 1, 0, 0, 0, 0, 0 },  // (-->> NORTH)
                                     { 1, 0, 0, 0, 1, 1, 0, 0, 0, 0 },
                                     { 1, 1, 0, 0, 1, 0, 0, 1, 1, 1 },
                                     { 0, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
@@ -62,7 +62,7 @@ public class RoomManager
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                    { 0, 0, 0, 0, 2, 1, 1, 1, 1, 3 },
+                                    { 0, 0, 0, 0, 2, 1, 1, 1, 1, 3 }, 
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                                     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -102,7 +102,7 @@ public class RoomManager
         currentRoom = GameObject.FindObjectOfType<GeneriqueRooms>().gameObject;
         currentRoomG = currentRoom.GetComponent<GeneriqueRooms>();
         //GenerateRooms();
-        GenerateRoomsWithPath(path2);
+        GenerateRoomsWithPath(path3);
         Debug.Log("Room Generated");
     }
 
