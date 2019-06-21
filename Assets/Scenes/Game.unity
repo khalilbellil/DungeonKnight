@@ -268,7 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCleared: 0
-  roomType: 0
   north: {fileID: 0}
   south: {fileID: 0}
   east: {fileID: 0}

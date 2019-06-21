@@ -5,13 +5,18 @@ using System;
 using System.Linq;
 using Random = UnityEngine.Random;
 
+public enum PassiveType
+{
+    Healer, SpeedBoost, CriticBoost
+}
+
 public class Item : MonoBehaviour
 {
 	public bool isPickup = false;
 
 	public enum AllItems
 	{
-		coin, potion, arrow
+		coin, potion, arrow, passive
 	}
 
 	//Vars
@@ -85,6 +90,18 @@ public class Item : MonoBehaviour
 			case AllItems.arrow:
 				newItem = (GameObject)Resources.Load("Prefabs/Items/ArrowItem");
 				break;
+            case AllItems.passive:
+                int r = Random.Range(0, 2);
+                if (r == 0)
+                {
+                    newItem = (GameObject)Resources.Load("Prefabs/Items/HealerP");
+                }
+                else
+                {
+                    newItem = (GameObject)Resources.Load("Prefabs/Items/SpeedBoosterP");
+                }
+                
+                break;
 			default:
 				Debug.LogError("Unhandled switch case: " + randomValue);				
 				break;

@@ -13,7 +13,7 @@ public class UILinks : MonoBehaviour
 	public Image currentWeapon;
 	public Sprite weapon1;
 	public Sprite weapon2;
-	public Image active;
+	public Image passive;
 	public Text timer;
 
 }
