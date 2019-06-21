@@ -11,7 +11,7 @@ public class UILinks : MonoBehaviour
 	public TextMeshProUGUI arrowText;
 	public Image healthBar;
 	public Image currentWeapon;
-	public Image active;
+	public Image passive;
 	public Text timer;
 
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnnemyRoom : GeneriqueRooms
 {
@@ -9,8 +7,7 @@ public class EnnemyRoom : GeneriqueRooms
 
 	public override void Initialize(RoomData _roomData, RoomType[] _doors)
 	{
-		roomType = RoomType.Enemy;
-
+        base.Initialize(_roomData, _doors);
 		if (!roomData.roomSetted)//if room not setted yet, set it and save it
 		{
 			roomSet = Random.Range(0, transform.GetChild(8).childCount);//Randomly set the roomSet
@@ -19,11 +16,8 @@ public class EnnemyRoom : GeneriqueRooms
 		}
 
 		transform.GetChild(8).GetChild(roomData.roomSet).gameObject.SetActive(true);
+        Debug.Log("RoomSetted");
 
-
-		//Set enemies spawn coordinates
-		Spawn();
-		base.Initialize(_roomData, _doors);
 		if (!isCleared)
 		{
 			LockDoors();
@@ -44,8 +38,6 @@ public class EnnemyRoom : GeneriqueRooms
 
 	public override void Close()
 	{
-		roomData.roomSet = roomSet;
-		roomData.roomSetted = roomSetted;
 		base.Close();
 	}
 

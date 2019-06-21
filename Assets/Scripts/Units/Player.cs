@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
+public enum PassiveType { Healer, SpeedBoost, CriticBoost }
+
 public class Player : BaseUnit
 {
+
 	public int coins;
 
     override public void Init()

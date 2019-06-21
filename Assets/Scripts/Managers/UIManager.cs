@@ -162,4 +162,19 @@ public class UIManager
 		UI = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.uiDir));
 		//player.enabled = true;
 	}
+
+    public void SetPassiveUI(PassiveType passiveType)
+    {
+        switch (passiveType)
+        {
+            case PassiveType.Healer:
+                uiLinks.passive.sprite = Resources.Load<Sprite>(PrefabsDir.healerPDir);
+                break;
+            case PassiveType.SpeedBoost:
+                uiLinks.passive.sprite = Resources.Load<Sprite>(PrefabsDir.speedBoosterPDir);
+                break;
+            default:
+                break;
+        }
+    }
 }

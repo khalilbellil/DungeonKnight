@@ -267,14 +267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ad756f63195504083924660d5f006f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posInRoomM: {x: 0, y: 0}
   isCleared: 0
-  roomType: 0
-  doors: 
   north: {fileID: 0}
   south: {fileID: 0}
   east: {fileID: 0}
   west: {fileID: 0}
+  doors: 
   tileDoors: {fileID: 0}
 --- !u!1 &1488714492
 GameObject:

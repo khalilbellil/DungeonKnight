@@ -34,11 +34,53 @@ public class RoomManager
     #endregion
 
     public RoomData[,] roomsArray = new RoomData[10, 10];//All the rooms data pckg are generated and saved here
+    #region 2D Array Path
+    //2D Array Path // 0:None , 1:EnnemyRoom, 2: SpawnRoom, 3:BossRoom
+    int[,] path1 = new int[10, 10] {{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 1, 1, 2, 1, 1, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0 },
+                                    { 1, 1, 1, 0, 1, 0, 0, 0, 0, 0 },
+                                    { 1, 0, 0, 0, 1, 1, 0, 0, 0, 0 },
+                                    { 1, 1, 0, 0, 1, 0, 0, 1, 1, 1 },
+                                    { 0, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
+                                    { 1, 1, 0, 0, 0, 0, 0, 1, 1, 3 } };
 
-    int[,] path1 = new int[10, 10];
-    int[,] path2 = new int[10, 10];
-    int[,] path3 = new int[10, 10];
-    int[,] path4 = new int[10, 10];
+    int[,] path2 = new int[10, 10] {{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+
+    int[,] path3 = new int[10, 10] {{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+
+    int[,] path4 = new int[10, 10] {{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+    #endregion
+
 
     public GameObject currentRoom; //The room where the player is.
     GeneriqueRooms currentRoomG;
@@ -59,7 +101,8 @@ public class RoomManager
         player = PlayerManager.Instance.player;
         currentRoom = GameObject.FindObjectOfType<GeneriqueRooms>().gameObject;
         currentRoomG = currentRoom.GetComponent<GeneriqueRooms>();
-        GenerateRooms();
+        //GenerateRooms();
+        GenerateRoomsWithPath(path1);
         Debug.Log("Room Generated");
     }
 
@@ -108,6 +151,43 @@ public class RoomManager
 
     void GenerateRoomsWithPath(int[,] _path)
     {//Will generate room from a int 2d array
+
+        Vector2Int spawnRoomPos = new Vector2Int(0,0);
+
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                int r = _path[i, j];
+                if (r == 0)
+                {
+                    roomsArray[i, j] = roomDataContructor();
+                    roomsArray[i, j].roomType = RoomType.None;
+                    roomsArray[i, j].pos = new Vector2Int(i, j);
+                }
+                if (r == 1)
+                {
+                    roomsArray[i, j] = roomDataContructor();
+                    roomsArray[i, j].roomType = RoomType.Enemy;
+                    roomsArray[i, j].pos = new Vector2Int(i, j);
+                }
+                if (r == 2)
+                {
+                    roomsArray[i, j] = roomDataContructor();
+                    roomsArray[i, j].roomType = RoomType.Spawn;
+                    roomsArray[i, j].pos = new Vector2Int(i, j);
+                    spawnRoomPos = new Vector2Int(i, j);
+                }
+                if (r == 3)
+                {
+                    roomsArray[i, j] = roomDataContructor();
+                    roomsArray[i, j].roomType = RoomType.Boss;
+                    roomsArray[i, j].pos = new Vector2Int(i, j);
+                }
+            }
+        }
+
+        InstantiateRoom(spawnRoomPos);
 
     }
 
