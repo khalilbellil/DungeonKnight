@@ -164,4 +164,21 @@ public class UIManager
 			uiLinks.currentWeapon.sprite = uiLinks.weapon1;
 		}
 	}
+
+    public void SetPassiveUI(PassiveType passiveType)
+    {
+        switch (passiveType)
+        {
+            case PassiveType.Healer:
+                uiLinks.passive.sprite = Resources.Load<Sprite>(PrefabsDir.healerPDir);
+                break;
+            case PassiveType.SpeedBoost:
+                uiLinks.passive.sprite = Resources.Load<Sprite>(PrefabsDir.speedBoosterPDir);
+                break;
+            case PassiveType.CriticBoost:
+                break;
+            default:
+                break;
+        }
+    }
 }

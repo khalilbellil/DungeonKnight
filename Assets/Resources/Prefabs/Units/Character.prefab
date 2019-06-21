@@ -557,8 +557,8 @@ MonoBehaviour:
   activeWeaponIndex: 0
   maxArrowCount: 20
   arrowCount: 20
-  health: 175
-  maxHealth: 175
+  health: 300
+  maxHealth: 300
   speed: 5
   dashingSpeed: 50
   dashTimer: 0.1
@@ -815,7 +815,7 @@ PrefabInstance:
     - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
       propertyPath: dammage
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}

@@ -6,7 +6,7 @@ public class AttackState : BaseState
 {
     bool isBow;
     float timeStartDrawing;
-    float percentBowDrawn { get { return Mathf.Clamp01((Time.time - timeStartDrawing) / Bow.maxDrawingTime); } }
+    float percentBowDrawn { get { return Mathf.Clamp01((Time.time - timeStartDrawing) / Bow.maxDrawingTime); } set {  } }
 
     public AttackState(Enemy e, List<Transition> list) : base(e, list, eUnitState.ATTACK)
     {
@@ -16,7 +16,7 @@ public class AttackState : BaseState
     public override void Enter()
     {
 
-        enemy.weaponList[0].WeaponUpdate(Time.deltaTime, true, PlayerManager.Instance.player.transform.position - enemy.transform.position, enemy.transform.position);
+        enemy.weaponList[0].WeaponUpdate(Time.deltaTime, false, PlayerManager.Instance.player.transform.position - enemy.transform.position, enemy.transform.position);
         if(isBow)
             timeStartDrawing = Time.time;
         //Debug.Log("ATTACK ENTER");
@@ -32,12 +32,15 @@ public class AttackState : BaseState
         {
             if(percentBowDrawn == 1)
             {
-                enemy.weaponList[0].WeaponUpdate(Time.deltaTime, false, PlayerManager.Instance.player.transform.position - enemy.transform.position, enemy.transform.position);
+                enemy.weaponList[0].WeaponUpdate(Time.deltaTime, true, PlayerManager.Instance.player.transform.position - enemy.transform.position, enemy.transform.position);
                 timeStartDrawing = Time.time;
+                percentBowDrawn = 0;
+                Debug.Log("");
             }
             else
             {
-                enemy.weaponList[0].WeaponUpdate(Time.deltaTime, true, PlayerManager.Instance.player.transform.position - enemy.transform.position, enemy.transform.position);
+                enemy.weaponList[0].WeaponUpdate(Time.deltaTime, false, PlayerManager.Instance.player.transform.position - enemy.transform.position, enemy.transform.position);
+                Debug.Log("");
             }
         }
         else

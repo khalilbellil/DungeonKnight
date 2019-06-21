@@ -9,7 +9,6 @@ public class MainEntry : MonoBehaviour
     CurrentState currentState;
 
     public Flow curFlow;
-    bool sceneLoaded = false;
     public static int sceneNb = 1;
 
     public void Initialize(CurrentState cs)
