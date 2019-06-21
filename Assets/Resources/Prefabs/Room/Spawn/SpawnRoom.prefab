@@ -62,7 +62,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: -21, y: -2, z: 0}
+  - first: {x: -21, y: -3, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -71,7 +71,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: 20, y: -2, z: 0}
+  - first: {x: 20, y: -3, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -80,7 +80,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: -21, y: 1, z: 0}
+  - first: {x: -21, y: 2, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -89,7 +89,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: 20, y: 1, z: 0}
+  - first: {x: 20, y: 2, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -381,37 +381,37 @@ CompositeCollider2D:
       - X: 20000000
         Y: 90000000
     - - X: -200000000
-        Y: 20000000
+        Y: 30000000
+      - X: -210000000
+        Y: 30000000
       - X: -210000000
         Y: 20000000
-      - X: -210000000
-        Y: 10000000
       - X: -200000000
-        Y: 10000000
+        Y: 20000000
     - - X: 210000000
-        Y: 20000000
+        Y: 30000000
+      - X: 200000000
+        Y: 30000000
       - X: 200000000
         Y: 20000000
-      - X: 200000000
-        Y: 10000000
       - X: 210000000
-        Y: 10000000
+        Y: 20000000
     - - X: -200000000
-        Y: -10000000
-      - X: -210000000
-        Y: -10000000
+        Y: -20000000
       - X: -210000000
         Y: -20000000
+      - X: -210000000
+        Y: -30000000
       - X: -200000000
-        Y: -20000000
+        Y: -30000000
     - - X: 210000000
-        Y: -10000000
-      - X: 200000000
-        Y: -10000000
+        Y: -20000000
       - X: 200000000
         Y: -20000000
+      - X: 200000000
+        Y: -30000000
       - X: 210000000
-        Y: -20000000
+        Y: -30000000
     - - X: -10000000
         Y: -90000000
       - X: -20000000
@@ -466,22 +466,22 @@ CompositeCollider2D:
       - {x: 1, y: 10}
       - {x: 1, y: 9}
       - {x: 2, y: 9}
-    - - {x: -20, y: 2}
+    - - {x: -20, y: 3}
+      - {x: -21, y: 3}
       - {x: -21, y: 2}
-      - {x: -21, y: 1}
-      - {x: -20, y: 1}
-    - - {x: 21, y: 2}
+      - {x: -20, y: 2}
+    - - {x: 21, y: 3}
+      - {x: 20, y: 3}
       - {x: 20, y: 2}
-      - {x: 20, y: 1}
-      - {x: 21, y: 1}
-    - - {x: -20, y: -1}
-      - {x: -21, y: -1}
+      - {x: 21, y: 2}
+    - - {x: -20, y: -2}
       - {x: -21, y: -2}
-      - {x: -20, y: -2}
-    - - {x: 21, y: -1}
-      - {x: 20, y: -1}
+      - {x: -21, y: -3}
+      - {x: -20, y: -3}
+    - - {x: 21, y: -2}
       - {x: 20, y: -2}
-      - {x: 21, y: -2}
+      - {x: 20, y: -3}
+      - {x: 21, y: -3}
     - - {x: -1, y: -9}
       - {x: -2, y: -9}
       - {x: -2, y: -10}
@@ -13376,14 +13376,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5f2d338c90f514796e5b1f78e3cc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posInRoomM: {x: 0, y: 0}
   isCleared: 0
   roomType: 0
-  doors: 
   north: {fileID: 8420346500440402324}
   south: {fileID: 7098289978255816438}
   east: {fileID: 9141687421143823184}
   west: {fileID: 1401714022932976616}
+  doors: 
   tileDoors: {fileID: 5748445627548993726}
 --- !u!1 &8420346500440402324
 GameObject:
