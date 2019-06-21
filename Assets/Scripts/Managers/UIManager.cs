@@ -49,11 +49,11 @@ public class UIManager
 		//-------------------------------------------------//
         
 		CreateUI();
+
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();
 		//fix this Image prefab not loading properly
-		bowImage = Resources.Load(PrefabsDir.bowDir) as Image;
-		swordImage = Resources.Load(PrefabsDir.swordDir) as Image;
+		uiLinks.currentWeapon.sprite = uiLinks.weapon1;
 		AddListenerToButtons();
 	}
 
@@ -61,25 +61,16 @@ public class UIManager
 	{
 		uiLinks.timer.text = Timer.Instance.minutes + ":" + Timer.Instance.seconds; //timer for the game 
 
-		uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString();
+		uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString(); // text for coins
+		uiLinks.arrowText.text = PlayerManager.Instance.player.arrowCount.ToString();  // text for arrows
+
+
 		if (Input.GetKeyDown(KeyCode.C))
 		{
 			PlayerManager.Instance.player.TakeDamage(10);
 			Debug.Log("new hp amount: " + PlayerManager.Instance.player.health);
 		}
 		float a = (float)PlayerManager.Instance.player.health / PlayerManager.Instance.player.maxHealth;
-
-
-
-		switch (PlayerManager.Instance.player.activeWeaponIndex)
-		{
-			case 0:
-				uiLinks.currentWeapon = bowImage;
-				break;
-			case 1:
-				uiLinks.currentWeapon = bowImage;
-				break;
-		}
 
 
 
@@ -161,5 +152,15 @@ public class UIManager
 		//Instantiate the Player(s)
 		UI = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.uiDir));
 		//player.enabled = true;
+	}
+
+	public void ChangeWeapon(int changeWeapon) {
+		if (changeWeapon == 1)
+		{
+			uiLinks.currentWeapon.sprite = uiLinks.weapon2;
+		}
+		else {
+			uiLinks.currentWeapon.sprite = uiLinks.weapon1;
+		}
 	}
 }

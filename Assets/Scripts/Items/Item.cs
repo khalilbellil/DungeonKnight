@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class Item : MonoBehaviour
 {
+	public bool isPickup = false;
+
 	public enum AllItems
 	{
 		coin, potion, arrow

@@ -815,7 +815,7 @@ PrefabInstance:
     - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
       propertyPath: dammage
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2049260203824785408, guid: 0300c1543c927354ca26346ec8c2a90f,
         type: 3}
@@ -952,7 +952,7 @@ PrefabInstance:
     - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: dammage
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
@@ -972,12 +972,17 @@ PrefabInstance:
     - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: arrowSpeed
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: maxDrawingTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: attackAvailable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a20e8c5f449e8224eac9a1e82604451f, type: 3}

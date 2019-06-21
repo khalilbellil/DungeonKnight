@@ -9,9 +9,14 @@ public class Player : BaseUnit
     override public void Init()
     {
         base.Init();
-        //Debug.Log("player init");
+		//Debug.Log("player init");
 
-        foreach(Weapon weapon in weaponList)
+		// ----------------- FOR TESTING PURPOSES ----------------- //
+		//maxHealth = 500000;
+		//health = maxHealth;
+		// --------------------------------------------------------//
+
+		foreach (Weapon weapon in weaponList)
         {
             weapon.Init(hitableLayer, this);
         }
@@ -89,7 +94,7 @@ public class Player : BaseUnit
             {
                 activeWeaponIndex = 0;
             }
-
+			UIManager.Instance.ChangeWeapon(activeWeaponIndex); 
             Debug.Log(weaponList[activeWeaponIndex].transform.name + " equipped");
             weaponList[activeWeaponIndex].gameObject.SetActive(true);   //turns on the weapon using now
         }

@@ -65,7 +65,6 @@ public class Sword : Weapon
         hitbox.GetComponent<SpriteRenderer>().sprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0,0,size.x,size.y), new Vector2(.5f,.5f), 1);
         hitbox.transform.position = center;
         hitbox.transform.eulerAngles = new Vector3(0, 0, rot);
-       // Debug.LogError("");
         hitbox.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
         GameObject.Destroy(hitbox, 2);
     }

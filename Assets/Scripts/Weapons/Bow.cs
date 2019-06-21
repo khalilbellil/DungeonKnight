@@ -38,8 +38,8 @@ public class Bow : Weapon
         arrowStats = new BowPkg();
 
         type = ArrowType.DEFAULT;
-        dammage = 15;
-        arrowSpeed = 35;        //to test
+        //dammage = 15;
+        //arrowSpeed = 35;        //to test
        // maxDrawingTime = 3;
         arrowStats.arrowSpeed = this.arrowSpeed;
         this.speedModifier = 1;

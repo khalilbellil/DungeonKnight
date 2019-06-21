@@ -101,11 +101,12 @@ public class Enemy : BaseUnit
                     Vector2 dir = (grid.GetPath()[grid.GetPath().Count - 1].position - (Vector2)this.transform.position).normalized;
                     UpdateMovement(dir);
                 }
+                /*
                 else
                 {
                     UpdateMovement(new Vector2());
                 }
-                
+                */
             }
         }
         else
