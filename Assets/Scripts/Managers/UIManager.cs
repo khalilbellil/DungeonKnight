@@ -51,7 +51,7 @@ public class UIManager
 		CreateUI();
 		mainEntry = GameObject.FindObjectOfType<MainEntry>();
 		uiLinks = GameObject.FindObjectOfType<UILinks>();
-		// check this out boi krina 
+		//fix this Image prefab not loading properly
 		bowImage = Resources.Load(PrefabsDir.bowDir) as Image;
 		swordImage = Resources.Load(PrefabsDir.swordDir) as Image;
 		AddListenerToButtons();
@@ -59,6 +59,8 @@ public class UIManager
 
 	public void UpdateManager()
 	{
+		uiLinks.timer.text = Timer.Instance.minutes + ":" + Timer.Instance.seconds; //timer for the game 
+
 		uiLinks.coinText.text = PlayerManager.Instance.player.coins.ToString();
 		if (Input.GetKeyDown(KeyCode.C))
 		{

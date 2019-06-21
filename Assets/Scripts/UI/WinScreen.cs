@@ -6,6 +6,7 @@ public class WinScreen : MonoBehaviour
 {
 	//WinFlow winFlow;
 	UIManager uiManager;
+	UILinksWin uILinksWin;
 
 
 	public void Initialize(UIManager _uiManager)
@@ -23,6 +24,11 @@ public class WinScreen : MonoBehaviour
 	{
 		Debug.Log("Main menu was called");
 		UIManager.Instance.BackToMainMenuButton();
+	}
+
+	public void GetTime() {
+		//uILinksWin.timeDisplay.text = Timer.Instance.UpdateTimer();
+		//uiLinks.timer.text = Timer.Instance.minutes + ":" + Timer.Instance.seconds;
 	}
 
 }
