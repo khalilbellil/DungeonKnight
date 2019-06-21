@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using UnityEngine;
 
 public class EnnemyRoom : GeneriqueRooms
 {
@@ -10,8 +7,7 @@ public class EnnemyRoom : GeneriqueRooms
 
 	public override void Initialize(RoomData _roomData, RoomType[] _doors)
 	{
-		roomType = RoomType.Enemy;
-
+        base.Initialize(_roomData, _doors);
 		if (!roomData.roomSetted)//if room not setted yet, set it and save it
 		{
 			roomSet = Random.Range(0, transform.GetChild(8).childCount);//Randomly set the roomSet
@@ -20,14 +16,12 @@ public class EnnemyRoom : GeneriqueRooms
 		}
 
 		transform.GetChild(8).GetChild(roomData.roomSet).gameObject.SetActive(true);
+        Debug.Log("RoomSetted");
 
-
-        //Set enemies spawn coordinates
-		base.Initialize(_roomData, _doors);
-        if (!isCleared)
+		if (!isCleared)
 		{
 			LockDoors();
-            Spawn();
+			Spawn();
 		}
 
         
@@ -51,8 +45,6 @@ public class EnnemyRoom : GeneriqueRooms
 
 	public override void Close()
 	{
-		roomData.roomSet = roomSet;
-		roomData.roomSetted = roomSetted;
 		base.Close();
 	}
 
@@ -72,9 +64,8 @@ public class EnnemyRoom : GeneriqueRooms
 				y = Random.Range(2, 22);
 			}
 
-            TypeEnemy enemyType = System.Enum.GetValues(typeof(TypeEnemy)).Cast<TypeEnemy>().RandomElement();            
-
-			EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y), enemyType);
+			EnemyManager.Instance.SpawnEnemy(lvl, new Vector2(x, y), TypeEnemy.BOW);
 		}
-	}
+
+    }
 }

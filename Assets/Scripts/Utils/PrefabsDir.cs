@@ -27,4 +27,7 @@ public class PrefabsDir
     public static string spawnRoomDir = "Prefabs/Room/Spawn/SpawnRoom";
     public static string bossRoomDir = "Prefabs/Room/BossRooms/BossRoom";
     public static string prototypeRoomDir = "Prefabs/Room/Prototype";
+
+    public static string healerPDir = "PassiveSprites/passive1_sprite";
+    public static string speedBoosterPDir = "PassiveSprites/passive2_sprite";
 }

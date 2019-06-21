@@ -37,7 +37,7 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private float dashTimer;       //set the time of the dash
     [SerializeField] private float dashCDTimer;     //set the time for after the dash
     [SerializeField] private double critChance;
-    [SerializeField] private double critMultipier;
+    [SerializeField] public double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;
     [HideInInspector] public float speedMultiplier = 1;
     #endregion

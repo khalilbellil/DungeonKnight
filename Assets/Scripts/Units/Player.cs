@@ -2,9 +2,8 @@
 
 public class Player : BaseUnit
 {
-
 	public int coins;
-
+    public bool passiveActive = false;
 
     override public void Init()
     {

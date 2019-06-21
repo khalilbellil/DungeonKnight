@@ -11,21 +11,14 @@ public class GeneriqueRooms : MonoBehaviour
     public RoomData roomData;
     
     public bool isCleared = false;
-
     protected int lvl;
-    string namePath;
-    int numOfDoors;
 
-    public RoomType roomType;
     public GameObject north;
     public GameObject south;
     public GameObject east;
     public GameObject west;
-
-    public RoomType[] doors;
+    public RoomType[] doors; //RoomType of each door, 0= north, 1= east, 2= south, 4= west
     public Tilemap tileDoors;
-
-    ArrayList coins = new ArrayList(); //Keep track of existing coins.
 
     public Dictionary<RoomType, Color> doorColorDic = new Dictionary<RoomType, Color>() {
         { RoomType.Boss, new Color(1f,.84f,0f,1) },
@@ -38,7 +31,6 @@ public class GeneriqueRooms : MonoBehaviour
     public virtual void Initialize(RoomData _roomData, RoomType[] _doors)
     {
         roomData = _roomData;
-        roomType = roomData.roomType;
         isCleared = roomData.isCleared;
         doors = _doors;
 

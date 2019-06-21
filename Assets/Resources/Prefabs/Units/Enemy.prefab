@@ -95,6 +95,7 @@ MonoBehaviour:
   dammage: 25
   hitBoxSize: {x: 1.5, y: 1.5}
   cdForNextAtk: 0.5
+  attackAvailable: 0
 --- !u!1 &279844973
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,10 +191,10 @@ MonoBehaviour:
   dammage: 0
   hitBoxSize: {x: 0, y: 0}
   cdForNextAtk: 0
+  attackAvailable: 0
   arrowSpeed: 0
   speedModifier: 0
   type: 0
-  maxDrawingTime: 0
   arrowPrefab: {fileID: 0}
 --- !u!1 &532366635
 GameObject:
@@ -380,8 +381,11 @@ MonoBehaviour:
   maxArrowCount: 0
   arrowCount: 0
   health: 100
-  maxHealth: 0
+  maxHealth: 100
   speed: 4
+  dashingSpeed: 0
+  dashTimer: 0
+  dashCDTimer: 0
   critChance: 1.2
   critMultipier: 1.5
   hitableLayer:
@@ -389,7 +393,10 @@ MonoBehaviour:
     m_Bits: 3840
   speedMultiplier: 1
   rb: {fileID: 0}
-  AstarTimer: 0
+  interpolationPeriod: 0.05
+  Range: 0
+  target: {fileID: 0}
+  Target: {x: 0, y: 0}
 --- !u!95 &5483599597114115623
 Animator:
   serializedVersion: 3
