@@ -726,12 +726,12 @@ PrefabInstance:
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.023127466
       objectReference: {fileID: 0}
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.39644176
       objectReference: {fileID: 0}
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
@@ -741,22 +741,22 @@ PrefabInstance:
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.55133957
       objectReference: {fileID: 0}
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.834281
       objectReference: {fileID: 0}
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
@@ -776,7 +776,32 @@ PrefabInstance:
     - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 66.91801
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6023821
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344937921180863459, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8193008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872548148343803353, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1922152055
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872548148343803353, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872548148343803353, guid: a20e8c5f449e8224eac9a1e82604451f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5944187251507332728, guid: a20e8c5f449e8224eac9a1e82604451f,
         type: 3}

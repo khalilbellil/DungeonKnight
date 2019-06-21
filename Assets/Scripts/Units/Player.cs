@@ -65,8 +65,9 @@ public class Player : BaseUnit
 
 	override public void MovementAnimations()
     {
+        
         //Debug.Log("player animation");
-        anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
+
         base.MovementAnimations();
     }
 

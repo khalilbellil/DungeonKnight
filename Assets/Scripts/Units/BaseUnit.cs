@@ -23,6 +23,8 @@ public class BaseUnit : MonoBehaviour
     //public float dashCD;
     //protected bool dashAvailable { get { return (Time.time - timeOfLastDash) > dashCD; } }
     private TrailRenderer tr;
+
+
     #endregion
 
     #region Unit Stats
@@ -42,6 +44,8 @@ public class BaseUnit : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rb;
     protected Animator anim;
+    //public Transform target;
+    protected Vector3 scale;
 
     // // //
 
@@ -64,6 +68,9 @@ public class BaseUnit : MonoBehaviour
         isHolding = false;
         dashAvailable = true;
         dashTime = dashTimer;
+
+        scale = transform.localScale;
+        scale.x *= -1;
     }
     
     virtual public void UnitUpdate(float dt, Vector2 dir)
@@ -77,8 +84,10 @@ public class BaseUnit : MonoBehaviour
                 dashAvailable = true;
             }
         }
-
+       
         weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir ,this.transform.position);
+
+        Flip(dir);
     }
 
     virtual public void UnitFixedUpdate()
@@ -98,6 +107,21 @@ public class BaseUnit : MonoBehaviour
         //Debug.Log("basic animation");
     }
 
+    private void Flip(Vector2 dir)
+    {
+        if (dir.x < 0)
+        {
+            scale.x = 1;
+            transform.localScale = scale;
+        }
+        else
+        {
+            scale.x = -1;
+            transform.localScale = scale;
+        }
+
+    }
+
     public void UseWeapon(Vector2 dir) {
 
         weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
@@ -106,7 +130,10 @@ public class BaseUnit : MonoBehaviour
     virtual public void UpdateMovement(Vector2 dir)
     {
         if (!isDashing)
+        {
             rb.velocity = dir * speed * speedMultiplier;
+            anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
+        }
         else
             DashUpdate(dir);
     }
