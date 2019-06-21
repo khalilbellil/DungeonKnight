@@ -21,16 +21,23 @@ public class EnnemyRoom : GeneriqueRooms
 		transform.GetChild(8).GetChild(roomData.roomSet).gameObject.SetActive(true);
 
 
-		//Set enemies spawn coordinates
-		Spawn();
+        //Set enemies spawn coordinates
 		base.Initialize(_roomData, _doors);
-		if (!isCleared)
+        if (!isCleared)
 		{
 			LockDoors();
-			Spawn();
+            Spawn();
+			
 		}
 
-	}
+        
+
+        foreach (CompositeCollider2D c in GetComponentsInChildren<CompositeCollider2D>())
+        {
+            c.geometryType = CompositeCollider2D.GeometryType.Outlines;
+        }
+
+    }
 
 	public override void RoomUpdate()
 	{

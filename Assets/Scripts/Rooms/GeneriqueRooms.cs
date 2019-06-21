@@ -53,11 +53,6 @@ public class GeneriqueRooms : MonoBehaviour
         ColorDoor(doors[3], Directions.West);
 
         Grid.InitBoolGrid();
-
-        foreach (CompositeCollider2D c in GetComponentsInChildren<CompositeCollider2D>())
-        {
-            c.geometryType = CompositeCollider2D.GeometryType.Outlines;
-        }
     }
 
     public virtual void RoomUpdate()
