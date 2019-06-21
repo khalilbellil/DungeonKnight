@@ -1,18 +1,22 @@
 ﻿using UnityEngine;
 
-public enum PassiveType { Healer, SpeedBoost, CriticBoost }
-
 public class Player : BaseUnit
 {
 
 	public int coins;
 
+
     override public void Init()
     {
         base.Init();
-        //Debug.Log("player init");
+		//Debug.Log("player init");
 
-        foreach(Weapon weapon in weaponList)
+		// ----------------- FOR TESTING PURPOSES ----------------- //
+		//maxHealth = 500000;
+		//health = maxHealth;
+		// --------------------------------------------------------//
+
+		foreach (Weapon weapon in weaponList)
         {
             weapon.Init(hitableLayer, this);
         }
@@ -23,6 +27,7 @@ public class Player : BaseUnit
 
     public void PlayerUpdate(InputManager.InputPkg input, float dt)
     {
+
         isHolding = input.leftMouseButtonHeld;
 
         if(input.interactPressed)
@@ -33,6 +38,7 @@ public class Player : BaseUnit
 
         base.UnitUpdate(dt, input.aimingDirection);
         MovementAnimations();
+
     }
 
     public void PlayerFixedUpdate(InputManager.InputPkg input, float dt)
@@ -42,21 +48,26 @@ public class Player : BaseUnit
 
         //Debug.Log("dir: " + input.dirPressed);
         UpdateMovement(input.dirPressed);
+        //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity);
 
         base.UnitFixedUpdate();
     }
 
     override public void Death()
     {
-		gameObject.SetActive(false);
-		PlayerManager.Instance.gameFlow.PlayerDied();
         base.Death();
+		//gameObject.SetActive(false);
+		//GameObject.FindObjectOfType<MainEntry>().GoToNextFlow(CurrentState.Menu);//Restart the current Scene/Flow.
+		PlayerManager.Instance.gameFlow.PlayerDied();
+		Debug.Log("player isDead");
 
     }
 
 	override public void MovementAnimations()
     {
-        anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
+        
+        //Debug.Log("player animation");
+
         base.MovementAnimations();
     }
 
@@ -83,7 +94,7 @@ public class Player : BaseUnit
             {
                 activeWeaponIndex = 0;
             }
-
+			UIManager.Instance.ChangeWeapon(activeWeaponIndex); 
             Debug.Log(weaponList[activeWeaponIndex].transform.name + " equipped");
             weaponList[activeWeaponIndex].gameObject.SetActive(true);   //turns on the weapon using now
         }

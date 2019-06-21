@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCleared: 0
+  roomType: 0
   north: {fileID: 0}
   south: {fileID: 0}
   east: {fileID: 0}
@@ -350,7 +351,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1867849429}
   - component: {fileID: 1867849428}
-  - component: {fileID: 1867849430}
   m_Layer: 0
   m_Name: MainEntry
   m_TagString: Untagged
@@ -385,18 +385,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1867849430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867849427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49bc5562ef6cd754da78522e992a328a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2041615332
 GameObject:
   m_ObjectHideFlags: 0

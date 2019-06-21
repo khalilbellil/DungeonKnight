@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TypeEnemy
+{
+    BOW,
+    SWORD
+}
+
 public class EnemyManager
 {
     #region Singleton Pattern
@@ -20,19 +26,31 @@ public class EnemyManager
     }
     #endregion
 
+
     public List<Enemy> enemiesAlive = new List<Enemy>();
+    ArrayList coins = new ArrayList();
+    //public EnemySword es;
 
     // // // 
 
     public void Initialize()
     {
-
+        /*for (int i = 0; i < enemiesAlive.Count; i++)
+        {
+            enemiesAlive[i].
+        }*/
+        //SpawnEnemy(1,new Vector2(41,12));
+        //es.Init();
+        
     }
 
     public void UpdateManager(float dt)
     {//Check if enemies are alive, if not call KillEnemy.
         foreach (Enemy es in enemiesAlive)
             es.UnitUpdate(dt, (PlayerManager.Instance.player.transform.position - es.transform.position).normalized);
+
+
+
     }
 
     public void FixedUpdateManager(float dt)
@@ -48,15 +66,26 @@ public class EnemyManager
 
     // // // 
 
-    public void SpawnEnemy(int roomLvl,Vector2 location)
+    public void SpawnEnemy(int roomLvl,Vector2 location, TypeEnemy type)
     {//Instantiate the Enemy(ies), add him to the collection, then add effects(sounds, ...)
-        Enemy es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir)).GetComponent<Enemy>();
-        Enemy eb = GameObject.Instantiate(Resources.Load<EnemyBow>(PrefabsDir.enemyBDir)).GetComponent<Enemy>();
+        Enemy es;
+        switch (type)
+        {
+            case TypeEnemy.BOW:
+                es = GameObject.Instantiate(Resources.Load<EnemyBow>(PrefabsDir.enemyBDir)).GetComponent<Enemy>();
+                break;
+            case TypeEnemy.SWORD:
+
+                es = GameObject.Instantiate(Resources.Load<EnemySword>(PrefabsDir.enemyDir)).GetComponent<Enemy>();
+                break;
+            default:
+                Debug.LogError("Unhandled switch : " + type);
+                goto case TypeEnemy.BOW;
+        }
+
         es.transform.position = location;
         es.Init();
-        eb.Init();
         AddEnemy(es);
-        AddEnemy(eb);
     }
 
 	public void SpawnBoss(Vector2 location)
@@ -66,6 +95,7 @@ public class EnemyManager
 		boss.Init();
 		AddEnemy(boss);
 	}
+
 
 	void AddEnemy(Enemy enemyToAdd)
     {//add enemy to the collection

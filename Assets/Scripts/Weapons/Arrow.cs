@@ -14,6 +14,8 @@ public class Arrow : MonoBehaviour
     {
 
         arrowStats = bowPkg;
+        if (arrowStats.layerToHit == 0)
+            Debug.Log("");
         isTravelling = true;
         
         rb = GetComponent<Rigidbody2D>();
