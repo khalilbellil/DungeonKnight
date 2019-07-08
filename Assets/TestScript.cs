@@ -7,12 +7,21 @@ public class TestScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Item.LoadItem(Item.AllItems.potion, new Vector3(7, 12, 0));
+        LaunchSlime();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void LaunchSlime()
+    {
+        YeetSlime yS = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.slimeDir)).GetComponent<YeetSlime>();
+        yS.transform.position = new Vector3(7,12,0);
+        yS.Init();
+        yS.Launched(new Vector2(0, 1));
+
     }
 }
