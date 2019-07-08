@@ -16,24 +16,20 @@ public class DodgeState : BaseState
     {
         
         enemy.Dodge();
-        //Debug.Log("DODGE ENTER");
         base.Enter();
     }
 
     public override void Update()
     {
-        //Debug.Log("DODGE UPDATE");
         base.Update();
     }
 
     public override void FixedUpdate()
     {
-        //Debug.Log("DODGE FIXEDUPDATE");
     }
 
     public override void Exit()
     {
-        //Debug.Log("DODGE EXIT");
         base.Exit();
     }
 }

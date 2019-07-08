@@ -23,6 +23,8 @@ public class BaseUnit : MonoBehaviour
     //public float dashCD;
     //protected bool dashAvailable { get { return (Time.time - timeOfLastDash) > dashCD; } }
     private TrailRenderer tr;
+
+
     #endregion
 
     #region Unit Stats
@@ -35,19 +37,21 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private float dashTimer;       //set the time of the dash
     [SerializeField] private float dashCDTimer;     //set the time for after the dash
     [SerializeField] private double critChance;
-    [SerializeField] private double critMultipier;
+    [SerializeField] public double critMultipier;
     [SerializeField] protected LayerMask hitableLayer;
     [HideInInspector] public float speedMultiplier = 1;
     #endregion
 
     [HideInInspector] public Rigidbody2D rb;
     protected Animator anim;
+    //public Transform target;
+    protected Vector3 scale;
 
     // // //
 
     virtual public void Init()
     {
-        speed = 10;
+        //speed = 10;
         isAlive = true;
         if(weaponList != null)
             activeWeaponIndex = 0;
@@ -64,21 +68,30 @@ public class BaseUnit : MonoBehaviour
         isHolding = false;
         dashAvailable = true;
         dashTime = dashTimer;
+
+        scale = transform.localScale;
+        scale.x *= -1;
     }
     
     virtual public void UnitUpdate(float dt, Vector2 dir)
     {
-        if (!dashAvailable)
+        if (weaponList.Length > 0)
         {
-            dashCDTime -= Time.deltaTime;
-            if(dashCDTime <= 0)
+            if (!dashAvailable)
             {
-                dashCDTime = dashCDTimer;
-                dashAvailable = true;
+                dashCDTime -= Time.deltaTime;
+                if (dashCDTime <= 0)
+                {
+                    dashCDTime = dashCDTimer;
+                    dashAvailable = true;
+                }
             }
-        }
 
-        weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir ,this.transform.position);
+            weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir, this.transform.position);
+
+            Flip(dir);
+        }
+        
     }
 
     virtual public void UnitFixedUpdate()
@@ -98,6 +111,21 @@ public class BaseUnit : MonoBehaviour
         //Debug.Log("basic animation");
     }
 
+    private void Flip(Vector2 dir)
+    {
+        if (dir.x < 0)
+        {
+            scale.x = 1;
+            transform.localScale = scale;
+        }
+        else
+        {
+            scale.x = -1;
+            transform.localScale = scale;
+        }
+
+    }
+
     public void UseWeapon(Vector2 dir) {
 
         weaponList[activeWeaponIndex].Attack(dir, this.transform.position);
@@ -106,7 +134,10 @@ public class BaseUnit : MonoBehaviour
     virtual public void UpdateMovement(Vector2 dir)
     {
         if (!isDashing)
+        {
             rb.velocity = dir * speed * speedMultiplier;
+            anim.SetFloat("RunSpeed", rb.velocity.magnitude / speed);
+        }
         else
             DashUpdate(dir);
     }

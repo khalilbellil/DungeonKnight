@@ -4187,7 +4187,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: -21, y: -2, z: 0}
+  - first: {x: -21, y: -3, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -4196,7 +4196,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: 20, y: -2, z: 0}
+  - first: {x: 20, y: -3, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -4205,7 +4205,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: -21, y: 1, z: 0}
+  - first: {x: -21, y: 2, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -4214,7 +4214,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 2
-  - first: {x: 20, y: 1, z: 0}
+  - first: {x: 20, y: 2, z: 0}
     second:
       m_TileIndex: 1
       m_TileSpriteIndex: 1
@@ -4506,37 +4506,37 @@ CompositeCollider2D:
       - X: 20000000
         Y: 90000000
     - - X: -200000000
-        Y: 20000000
+        Y: 30000000
+      - X: -210000000
+        Y: 30000000
       - X: -210000000
         Y: 20000000
-      - X: -210000000
-        Y: 10000000
       - X: -200000000
-        Y: 10000000
+        Y: 20000000
     - - X: 210000000
-        Y: 20000000
+        Y: 30000000
+      - X: 200000000
+        Y: 30000000
       - X: 200000000
         Y: 20000000
-      - X: 200000000
-        Y: 10000000
       - X: 210000000
-        Y: 10000000
+        Y: 20000000
     - - X: -200000000
-        Y: -10000000
-      - X: -210000000
-        Y: -10000000
+        Y: -20000000
       - X: -210000000
         Y: -20000000
+      - X: -210000000
+        Y: -30000000
       - X: -200000000
-        Y: -20000000
+        Y: -30000000
     - - X: 210000000
-        Y: -10000000
-      - X: 200000000
-        Y: -10000000
+        Y: -20000000
       - X: 200000000
         Y: -20000000
+      - X: 200000000
+        Y: -30000000
       - X: 210000000
-        Y: -20000000
+        Y: -30000000
     - - X: -10000000
         Y: -90000000
       - X: -20000000
@@ -4591,22 +4591,22 @@ CompositeCollider2D:
       - {x: 1, y: 10}
       - {x: 1, y: 9}
       - {x: 2, y: 9}
-    - - {x: -20, y: 2}
+    - - {x: -20, y: 3}
+      - {x: -21, y: 3}
       - {x: -21, y: 2}
-      - {x: -21, y: 1}
-      - {x: -20, y: 1}
-    - - {x: 21, y: 2}
+      - {x: -20, y: 2}
+    - - {x: 21, y: 3}
+      - {x: 20, y: 3}
       - {x: 20, y: 2}
-      - {x: 20, y: 1}
-      - {x: 21, y: 1}
-    - - {x: -20, y: -1}
-      - {x: -21, y: -1}
+      - {x: 21, y: 2}
+    - - {x: -20, y: -2}
       - {x: -21, y: -2}
-      - {x: -20, y: -2}
-    - - {x: 21, y: -1}
-      - {x: 20, y: -1}
+      - {x: -21, y: -3}
+      - {x: -20, y: -3}
+    - - {x: 21, y: -2}
       - {x: 20, y: -2}
-      - {x: 21, y: -2}
+      - {x: 20, y: -3}
+      - {x: 21, y: -3}
     - - {x: -1, y: -9}
       - {x: -2, y: -9}
       - {x: -2, y: -10}

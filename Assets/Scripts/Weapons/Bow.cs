@@ -35,6 +35,7 @@ public class Bow : Weapon
 
     override public void Init(LayerMask hitableLayer, BaseUnit _owner)
     {
+        base.Init(hitableLayer, _owner);
         arrowStats = new BowPkg();
 
         type = ArrowType.DEFAULT;
@@ -54,7 +55,6 @@ public class Bow : Weapon
         animTrigger = "UseBow";
         
 
-        base.Init(hitableLayer, _owner);
 
 
     }
