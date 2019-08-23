@@ -67,5 +67,4 @@ public class PlayerManager
         Debug.Log("Game Over !");
 
     }
-
 }
