@@ -84,7 +84,7 @@ public class Enemy : BaseUnit
             YeetSlime yS = GameObject.Instantiate(Resources.Load<YeetSlime>(PrefabsDir.slimeDir)).GetComponent<YeetSlime>();
             yS.transform.position = gridLocToCheck;
             yS.Init();
-            yS.Launched(gridLocToCheck - (Vector2)this.transform.position);
+            yS.Launched(gridLocToCheck);
             EnemyManager.Instance.enemiesAlive.Add(yS);
         }
 
@@ -92,6 +92,7 @@ public class Enemy : BaseUnit
 
     public void Dodge()
     {
+
         rb.AddForce((PlayerManager.Instance.player.transform.position - this.transform.position).normalized * 5, ForceMode2D.Impulse);
     }
 
