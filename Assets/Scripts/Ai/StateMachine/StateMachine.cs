@@ -17,21 +17,12 @@ public class StateMachine
     public void Update()
     {
         stateDict[currentState].Update();
-        Debug.Log(currentState);
         eUnitState newState = stateDict[currentState].Evaluate();
         if (newState != currentState)
         {
             stateDict[currentState].Exit();
             currentState = newState;
-            try
-            {
-                stateDict[currentState].Enter();
-
-            }
-            catch
-            {
-                Debug.Log("");
-            }
+            stateDict[currentState].Enter();
         }
     }
 

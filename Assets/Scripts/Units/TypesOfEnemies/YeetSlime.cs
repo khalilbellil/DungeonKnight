@@ -6,8 +6,6 @@ public class YeetSlime : Enemy
 {
     bool inAir;
     public int yeetForce;
-    float timealive;
-
 
     List<Transition.MyDelegate> list1;
     List<Transition.MyDelegate> list2;
@@ -24,9 +22,7 @@ public class YeetSlime : Enemy
     {
         base.Init();
 
-        timealive = Time.time;
-
-        target = EnemyManager.Instance.enemiesAlive[0].transform;
+        target = PlayerManager.Instance.player.transform;
 
         list1 = new List<Transition.MyDelegate>()
         {
@@ -35,7 +31,7 @@ public class YeetSlime : Enemy
 
         list2 = new List<Transition.MyDelegate>()
         {
-            (enemy) => { return false; }
+            
         };
 
         transList1 = new List<Transition>()
@@ -66,24 +62,15 @@ public class YeetSlime : Enemy
         inAir = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Player"))
         {
-            PlayerManager.Instance.player.TakeDamage(5);
+            PlayerManager.Instance.player.TakeDamage(1);
         }
-
-        if ((Time.time - timealive > 4))
-        {
-            inAir = false;
-            if (collision.transform.CompareTag("Boss"))
-            {
-                EnemyManager.Instance.enemiesAlive.Remove(this);
-                GameObject.Destroy(this.gameObject);
-                Debug.Log("Consumed");
-            }
-        }
-
+       
+        inAir = false;
+        
     }
 
     public bool getInAir()

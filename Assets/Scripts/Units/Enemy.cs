@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eUnitState { ATTACK, MOVE, DODGE, IDLE, ATTACKKSLIME }
+public enum eUnitState { ATTACK, MOVE, DODGE, IDLE }
 
 public class Enemy : BaseUnit
 {
@@ -69,31 +69,9 @@ public class Enemy : BaseUnit
         //Debug.Log("enemy Droped item");
     }
 
-    public void LaunchSlime()
-    {
-
-        int[,] v = new int[,] { { -2, 0 }, { -2, 2 }, { 0, 2 }, { 2, 2 }, { 2, 0 }, { 2, -2 }, { 0, -2 }, { -2, -2 } };
-
-        for (int i = 0; i < 8; i++)
-        {
-            Vector2 gridLocToCheck = (Vector2)this.transform.position;
-
-            gridLocToCheck.x += v[i, 0];
-            gridLocToCheck.y += v[i, 1];
-
-            YeetSlime yS = GameObject.Instantiate(Resources.Load<YeetSlime>(PrefabsDir.slimeDir)).GetComponent<YeetSlime>();
-            yS.transform.position = gridLocToCheck;
-            yS.Init();
-            yS.Launched(gridLocToCheck);
-            EnemyManager.Instance.enemiesAlive.Add(yS);
-        }
-
-    }
-
     public void Dodge()
     {
-
-        rb.AddForce((PlayerManager.Instance.player.transform.position - this.transform.position).normalized * 5, ForceMode2D.Impulse);
+        //UseDash();
     }
 
     public void Attack()

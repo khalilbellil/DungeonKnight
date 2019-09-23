@@ -202,10 +202,10 @@ GameObject:
   - component: {fileID: 5319635093677870565}
   - component: {fileID: 5193791898530331023}
   - component: {fileID: 7867561586976238065}
-  - component: {fileID: 3924915173446560446}
+  - component: {fileID: 2357629450690548006}
   m_Layer: 12
   m_Name: KingSlime
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,8 +290,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &3924915173446560446
+  m_Constraints: 0
+--- !u!114 &2357629450690548006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,28 +300,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 8466195654717230862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af8276575ba6c043ab7227fd3ac3636, type: 3}
+  m_Script: {fileID: 11500000, guid: cd71076f0311d4b41b0be88404b9a63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponList: []
-  isAlive: 1
+  isAlive: 0
   activeWeaponIndex: 0
   maxArrowCount: 0
   arrowCount: 0
-  health: 1
-  maxHealth: 1
-  speed: 4
-  dashingSpeed: 0
-  dashTimer: 0
-  dashCDTimer: 0
+  health: 1000
+  maxHealth: 1000
+  speed: 2
   critChance: 0
   critMultipier: 0
   hitableLayer:
     serializedVersion: 2
-    m_Bits: 3840
+    m_Bits: 2048
   speedMultiplier: 1
   rb: {fileID: 0}
   interpolationPeriod: 0.05
-  Range: 10
-  target: {fileID: 0}
+  Range: 0
   Target: {x: 0, y: 0}

@@ -51,7 +51,7 @@ public class BaseUnit : MonoBehaviour
 
     virtual public void Init()
     {
-        //speed = 10;
+        speed = 10;
         isAlive = true;
         if(weaponList != null)
             activeWeaponIndex = 0;
@@ -75,23 +75,19 @@ public class BaseUnit : MonoBehaviour
     
     virtual public void UnitUpdate(float dt, Vector2 dir)
     {
-        if (weaponList.Length > 0)
+        if (!dashAvailable)
         {
-            if (!dashAvailable)
+            dashCDTime -= Time.deltaTime;
+            if(dashCDTime <= 0)
             {
-                dashCDTime -= Time.deltaTime;
-                if (dashCDTime <= 0)
-                {
-                    dashCDTime = dashCDTimer;
-                    dashAvailable = true;
-                }
+                dashCDTime = dashCDTimer;
+                dashAvailable = true;
             }
-
-            weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir, this.transform.position);
-
-            Flip(dir);
         }
-        
+       
+        weaponList[activeWeaponIndex].WeaponUpdate(dt, isHolding, dir ,this.transform.position);
+
+        Flip(dir);
     }
 
     virtual public void UnitFixedUpdate()

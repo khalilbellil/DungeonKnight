@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IdleState : BaseState
 {
-    public IdleState(Enemy e, List<Transition> list) : base(e, list, eUnitState.IDLE)
+    public IdleState(Enemy e, List<Transition> list) : base(e, list, eUnitState.ATTACK)
     {
 
     }

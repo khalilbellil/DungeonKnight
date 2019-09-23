@@ -559,7 +559,7 @@ MonoBehaviour:
   arrowCount: 20
   health: 300
   maxHealth: 300
-  speed: 10
+  speed: 5
   dashingSpeed: 50
   dashTimer: 0.1
   dashCDTimer: 1.5

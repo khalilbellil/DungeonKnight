@@ -46,7 +46,7 @@ public class EnemyManager
 
     public void UpdateManager(float dt)
     {//Check if enemies are alive, if not call KillEnemy.
-        foreach (Enemy es in enemiesAlive.ToArray())
+        foreach (Enemy es in enemiesAlive)
             es.UnitUpdate(dt, (PlayerManager.Instance.player.transform.position - es.transform.position).normalized);
 
 
@@ -90,7 +90,7 @@ public class EnemyManager
 
 	public void SpawnBoss(Vector2 location)
 	{
-		Boss boss = GameObject.Instantiate(Resources.Load<GameObject>(PrefabsDir.bossDir)).GetComponent<Boss>();
+		Boss boss = GameObject.Instantiate(Resources.Load<Boss>(PrefabsDir.enemyDir)).GetComponent<Boss>();
 		boss.transform.position = location;
 		boss.Init();
 		AddEnemy(boss);
@@ -105,17 +105,6 @@ public class EnemyManager
     public void RemoveEnemy(Enemy enemyToRemove)
     {//remove enemy from the collection
         enemiesAlive.Remove(enemyToRemove);
-    }
-
-    public void KillAll()
-    {
-        foreach (Enemy es in enemiesAlive.ToArray())
-        {
-            GameObject.Destroy(es.gameObject);
-            enemiesAlive.Remove(es);
-        }
-            
-
     }
 
     void SpawnCoin(Vector2 killedEnemyPosition)
